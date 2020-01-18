@@ -1,0 +1,203 @@
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #222222;
+
+}
+
+#mainWrap {
+    width: 50vw;
+    height: 50vh;
+    margin: 25vw auto;
+    background-color: darkmagenta;
+    position: relative;
+}
+
+.lemon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: lemonchiffon;
+    border-radius: 35px;
+    animation: lemonMove 2s infinite;
+}
+
+.melon {
+    width: 20px;
+    height: 30px;
+    background-color: lightgreen;
+    animation: melonMove 3s infinite;
+}
+
+.drop {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    background-color: lightskyblue;
+    border-radius: 50px;
+    animation: dropMove 5s infinite;
+}
+
+.secoundFruit {
+    transform: skew(40deg);
+    transition-delay: 500ms;
+    opacity: 0.5;
+    margin: 50px;
+    animation-duration: 10s;
+    filter: blur(1px);
+}
+.woodStick {
+    width: 2px;
+    height: 100%;
+    background-color: rgb(48, 86, 86);
+    margin-left: 20px;
+    float: left;
+}
+
+#woodBox {
+    width: 800px;
+    height: 800px;
+    background-color: sandybrown;
+    opacity: 0.5;
+    animation: woodMove 5s infinite;
+}
+
+.third {
+    background-color: tomato;
+    animation-duration: 15s;
+    opacity: 0.8;
+}
+
+.circle {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background-color: whitesmoke;
+    position: absolute;
+    top: -250px;
+    left: -250px;
+    z-index: -1;
+    animation: circleMove 10s infinite;
+}
+
+@keyframes lemonMove {
+    0%   {height: 0%;
+        width: 50px;
+        margin-left: 0;
+        padding-top: 0;
+}
+    25%  {height: 50%;
+        width: 20px;
+        margin-left: 30%;
+        padding-top: 50%;
+    }
+    50%  {height: 100%;
+        width: 70px;
+        margin-left: 80%;
+        padding-top: 30%;
+}
+    75%  {height: 50%;
+        width: 40px;
+        margin-left: 30%;
+        padding-top: 70%;
+}
+    100% {height: 0%;
+        width: 50px;
+        margin-left: 0;
+        padding-top: 0;
+    }
+  }
+
+@keyframes melonMove {
+    0% {
+        width: 30%;
+    }
+    40% {
+        width: 100%;
+    }
+    50% {
+        width: 70%;
+    }
+    75% {
+        width: 120%;
+    }
+    100% {
+        width: 30%;
+    }
+}
+
+@keyframes dropMove {
+    0% {
+        transform: scale(0);
+        top: 10%;
+        left: 10%;
+    }
+    25% {
+        transform: scale(1);
+        top: 50%;
+        left: 50%;
+    }
+    50% {
+        transform: scale(0.6);
+        top: 10%;
+        left: 70%;
+    }
+    100% {
+        transform: scale(0);
+        top: 90%;
+        left: 20%;
+    }
+}
+
+@keyframes secoundMove {
+    0% {
+        transform: scaleX(100%);
+        transform: scaleX(100%) scaleY(20%);
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: scaleX(50%);
+        transform: scaleX(20%) scaleY(100%);
+        transform: rotate(20deg);
+    }
+    100% {
+        transform: scaleX(100%);
+        transform: scaleX(100%) scaleY(20%);
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes woodMove {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes circleMove{
+    0% {
+        transform: scale(0);
+    }
+    25% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1);
+    }
+    80% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
