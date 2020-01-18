@@ -4,18 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Playground</title>
+    <title>Dancing Squares</title>
     <link rel="stylesheet" href="style.css">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="mainWrap">
         <div class="circle"></div>
         <div class="lemon"></div>
         <div class="melon"></div>
+        <div class="melon delayABit rotateNinety"></div>
         <div class="lemon secoundFruit"></div>
         <div class="lemon secoundFruit third"></div>
         <div class="melon secoundFruit"></div>
         <div class="drop secoundFruit"></div>
+        <div class="drop delayABit"></div>
         <div id="woodBox">
             <div class="woodStick"></div>
             <div class="woodStick secoundFruit rotateNinety"></div>
@@ -27,14 +33,17 @@
             <div class="woodStick rotateNinety"></div>
             <div class="woodStick"></div>
             <div class="woodStick secoundFruit third"></div>
-            <div class="woodStick rotateNinety"></div>
+            <div class="woodStick"></div>
             <div class="woodStick secoundFruit"></div>
             <div class="woodStick"></div>
             <div class="woodStick"></div>
         </div>
         <div class="drop"></div>
+        <div class="drop secoundFruit delayABit"></div>
         <div class="drop secoundFruit third"></div>
+        <div class="drop secoundFruit third delayABit"></div>
         <div class="rain"></div>
+        <div class="rain delayABit"></div>
         <div class="rain secoundFruit"></div>
     </div>
     

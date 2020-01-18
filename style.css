@@ -33,10 +33,10 @@ body {
 
 .drop {
     position: fixed;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     background-color: lightskyblue;
-    border-radius: 50px;
+    border-radius: 75px;
     animation: dropMove 5s infinite ease-in-out;
 }
 
@@ -61,7 +61,7 @@ body {
 
 .woodStick {
     width: 2px;
-    height: 100%;
+    height: 60vw;
     background-color: rgb(48, 86, 86);
     margin-left: 20px;
     float: left;
@@ -99,9 +99,12 @@ body {
     transform: rotate(90deg);
     position: absolute;
     left: 45%;
-    top: -20%;
 }
 
+.delayABit {
+    animation-delay: 1800ms;
+    filter: hue-rotate(-60deg);
+}
 
 @keyframes lemonMove {
     0%   {height: 0%;
