@@ -4,13 +4,12 @@ body {
     margin: 0;
     padding: 0;
     background-color: #222222;
-
 }
 
 #mainWrap {
     width: 50vw;
     height: 50vh;
-    margin: 25vw auto;
+    margin: 25vh auto;
     background-color: darkmagenta;
     position: relative;
 }
@@ -63,10 +62,14 @@ body {
 #woodBox {
     width: 60vw;
     height: 60vw;
-    background-color: sandybrown;
+    background-color: rgb(244, 135, 96);
     opacity: 0.7;
     animation: woodMove 6s infinite;
     overflow: hidden;
+    max-width: 60vh;
+    max-height: 60vh;
+    position: absolute;
+    top: 10vh;
 }
 
 .circle {
