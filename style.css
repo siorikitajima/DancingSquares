@@ -1,3 +1,7 @@
+body,html {
+    overflow: hidden;
+    }
+
 body {
     width: 100%;
     height: 100%;
@@ -27,7 +31,7 @@ body {
     width: 20px;
     height: 30px;
     background-color: lightseagreen;
-    animation: melonMove 3s infinite linear;
+    animation: melonMove 4s infinite linear;
 }
 
 .drop {
@@ -36,17 +40,17 @@ body {
     height: 150px;
     background-color: lightskyblue;
     border-radius: 75px;
-    animation: dropMove 5s infinite ease-in-out;
+    animation: dropMove 8s infinite ease-in-out;
 }
 
 .rain {
-    width: 100px;
+    width: 20vw;
     height: 100%;
     background-color: #222222;
     position: fixed;
     top: 0;
-    left: 50%;
-    animation: rainMove 20s infinite;
+    left: 40vw;
+    animation: rainMove 16s infinite ease-in-out;
     z-index: 99;
 }
 
@@ -81,7 +85,7 @@ body {
     top: -20vw;
     left: -20vw;
     z-index: -1;
-    animation: circleMove 10s infinite;
+    animation: circleMove 12s infinite;
 }
 
 .rotateNinety {
@@ -100,14 +104,14 @@ body {
     transition-delay: 500ms;
     opacity: 0.5;
     margin: 50px;
-    animation-duration: 10s;
+    animation-duration: 8s;
     filter: blur(1px);
 }
 
 .third {
     background-color: tomato;
     transform: translateY(40px);
-    animation-duration: 15s;
+    animation-duration: 16s;
     animation-delay: 1s;
     opacity: 0.8;
 }
@@ -265,15 +269,15 @@ body {
         height: 0;
         top: 0;
     }
-    70% {
+    60% {
         height: 0;
         top: 0;
     }
-    85% {
+    75% {
         height: 100%;
         top: 90%;
     }
-    90% {
+    80% {
         height: 100%;
         top: 90%;
     }
