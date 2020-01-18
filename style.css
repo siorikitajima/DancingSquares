@@ -21,14 +21,14 @@ body {
     height: 50px;
     background-color: lemonchiffon;
     border-radius: 35px;
-    animation: lemonMove 2s infinite;
+    animation: lemonMove 2s infinite ease-in-out;
 }
 
 .melon {
     width: 20px;
     height: 30px;
     background-color: lightgreen;
-    animation: melonMove 3s infinite;
+    animation: melonMove 3s infinite linear;
 }
 
 .drop {
@@ -37,27 +37,28 @@ body {
     height: 100px;
     background-color: lightskyblue;
     border-radius: 50px;
-    animation: dropMove 5s infinite;
+    animation: dropMove 5s infinite ease-in-out;
 }
 
 .rain {
-    width: 50px;
+    width: 100px;
     height: 100%;
     background-color: #222222;
     position: fixed;
     top: 0;
     left: 50%;
-    animation: rainMove 24s infinite;
+    animation: rainMove 20s infinite;
 }
 
 .secoundFruit {
-    transform: skew(40deg);
+    transform: skew(40deg) translateX(40px) translateY(-20px);
     transition-delay: 500ms;
     opacity: 0.5;
     margin: 50px;
     animation-duration: 10s;
     filter: blur(1px);
 }
+
 .woodStick {
     width: 2px;
     height: 100%;
@@ -70,13 +71,15 @@ body {
     width: 60vw;
     height: 60vw;
     background-color: sandybrown;
-    opacity: 0.5;
-    animation: woodMove 5s infinite;
+    opacity: 0.7;
+    animation: woodMove 6s infinite;
 }
 
 .third {
     background-color: tomato;
+    transform: translateY(40px);
     animation-duration: 15s;
+    animation-delay: 1s;
     opacity: 0.8;
 }
 
@@ -92,6 +95,12 @@ body {
     animation: circleMove 10s infinite;
 }
 
+.rotateNinety {
+    transform: rotate(90deg);
+    position: absolute;
+    left: 45%;
+    top: -20%;
+}
 
 
 @keyframes lemonMove {
