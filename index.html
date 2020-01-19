@@ -10,45 +10,55 @@
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
+  <script src="howler.js"></script>
 </head>
 <body>
     <div id="mainWrap">
-        <div class="circle"></div>
-        <div class="melon"></div>
-        <div class="melon delayABit rotateNinety"></div>
-        <div class="lemon rotateNinety delayABit"></div>
-        <div class="lemon secoundFruit"></div>
-        <div class="lemon secoundFruit third"></div>
-        <div class="melon secoundFruit"></div>
-        <div class="drop secoundFruit"></div>
-        <div class="melon bottom"></div>
-        <div id="woodBox">
-            <div class="woodStick"></div>
-            <div class="woodStick secoundFruit rotateNinety"></div>
-            <div class="woodStick third"></div>
-            <div class="woodStick rotateNinety"></div>
-            <div class="woodStick"></div>
-            <div class="woodStick secoundFruit"></div>
-            <div class="woodStick"></div>
-            <div class="woodStick rotateNinety"></div>
-            <div class="woodStick"></div>
-            <div class="woodStick secoundFruit third"></div>
-            <div class="woodStick"></div>
-            <div class="woodStick secoundFruit"></div>
-            <div class="woodStick"></div>
-            <div class="woodStick"></div>
+        <div class="circle circleMove"></div>
+        <div class="melon melonMove"></div>
+        <div class="melon melonMove delayABit rotateNinety"></div>
+        <div class="lemon lemonMove rotateNinety delayABit"></div>
+        <div class="lemon lemonMove secoundFruit"></div>
+        <div class="lemon lemonMove secoundFruit third"></div>
+        <div class="melon melonMove secoundFruit"></div>
+        <div class="drop dropMove secoundFruit"></div>
+        <div class="melon melonMove bottom"></div>
+        <div id="woodBox" class="woodBoxMove">
+            <div class="woodStick woodStickMove"></div>
+            <div class="woodStick woodStickMove secoundFruit rotateNinety"></div>
+            <div class="woodStick woodStickMove third"></div>
+            <div class="woodStick woodStickMove rotateNinety"></div>
+            <div class="woodStick woodStickMove"></div>
+            <div class="woodStick woodStickMove secoundFruit"></div>
+            <div class="woodStick woodStickMove"></div>
+            <div class="woodStick woodStickMove rotateNinety"></div>
+            <div class="woodStick woodStickMove"></div>
+            <div class="woodStick woodStickMove secoundFruit third"></div>
+            <div class="woodStick woodStickMove"></div>
+            <div class="woodStick woodStickMove secoundFruit"></div>
+            <div class="woodStick woodStickMove"></div>
+            <div class="woodStick woodStickMove"></div>
         </div>
-        <div class="lemon"></div>
-        <div class="drop delayABit"></div>
-        <div class="drop"></div>
-        <div class="drop secoundFruit delayABit"></div>
-        <div class="drop secoundFruit third"></div>
-        <div class="drop secoundFruit third delayABit"></div>
-        <div class="rain"></div>
-        <div class="rain delayABit"></div>
-        <div class="rain secoundFruit"></div>
+        <div class="lemon lemonMove"></div>
+        <div class="drop dropMove delayABit"></div>
+        <div class="drop dropMove"></div>
+        <div class="drop dropMove secoundFruit delayABit"></div>
+        <div class="drop dropMove secoundFruit third"></div>
+        <div class="drop dropMove secoundFruit third delayABit"></div>
+        <div class="rain rainMove"></div>
+        <div class="rain rainMove delayABit"></div>
+        <div class="rain rainMove secoundFruit"></div>
+        <div class="startBtn">
+            <img src="assets/Play_btn.svg">
+        </div>
     </div>
-    
+    <div id="header">
+        <img src="assets/cover-thumb.jpg" id="albumCover">
+        <div id="songInfo">
+            <p><b>Greene Drone</b><br/> by Joseph Minadeo</p>
+        <img src="assets/Pause_btn.svg" id="pauseTrack">
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

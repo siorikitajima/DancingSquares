@@ -1,6 +1,4 @@
-body,html {
-    overflow: hidden;
-    }
+body,html {    overflow: hidden;    }
 
 body {
     width: 100%;
@@ -21,17 +19,15 @@ body {
 .lemon {
     position: absolute;
     width: 50px;
-    height: 50px;
+    height: 100%;
     background-color: rgb(254, 241, 128);
     border-radius: 35px;
-    animation: lemonMove 2s infinite ease-in-out;
 }
 
 .melon {
-    width: 20px;
     height: 30px;
+    width: 30%;
     background-color: lightseagreen;
-    animation: melonMove 4s infinite linear;
 }
 
 .drop {
@@ -40,18 +36,8 @@ body {
     height: 150px;
     background-color: lightskyblue;
     border-radius: 75px;
-    animation: dropMove 8s infinite ease-in-out;
-}
-
-.rain {
-    width: 20vw;
-    height: 100%;
-    background-color: #222222;
-    position: fixed;
-    top: 0;
-    left: 40vw;
-    animation: rainMove 16s infinite ease-in-out;
-    z-index: 99;
+    top: 50%;
+    left: 50%;
 }
 
 .woodStick {
@@ -60,7 +46,6 @@ body {
     background-color: #222222;
     margin-left: 20px;
     float: left;
-    animation: woodstickMove 4s infinite;
 }
 
 #woodBox {
@@ -68,7 +53,6 @@ body {
     height: 60vw;
     background-color: rgb(244, 135, 96);
     opacity: 0.7;
-    animation: woodMove 6s infinite;
     overflow: hidden;
     max-width: 60vh;
     max-height: 60vh;
@@ -85,34 +69,103 @@ body {
     top: -20vw;
     left: -20vw;
     z-index: -1;
-    animation: circleMove 12s infinite;
+}
+
+.rain, .startBtn {
+    width: 20vw;
+    background-color: #222222;
+    position: fixed;
+    top: 0;
+    left: 40vw;
+    z-index: 99;
+}
+
+.startBtn img, #header img {
+    width: 60px;
+    height: 60px;
+    display: block;
+    cursor: pointer;
+}
+
+.startBtn img {
+    margin: 45vh auto;
+}
+
+.startBtn img:hover, #header img:hover {
+    opacity: 0.5;
+    transition-duration: 500ms;
+}
+
+#header {
+    height: 80px;
+    width: 100%;
+    background: #222222;
+    position: fixed;
+    top: -85px;
+    z-index: 1000;
+    border-bottom: solid 2px whitesmoke;
+    transition-duration: 200ms;
+}
+
+#header img {
+    margin: 10px;
+}
+
+#albumCover, #header p {
+    float: left;
+}
+
+#pauseTrack {
+    float: right;
+}
+
+#header p {
+    margin: 20px 10px;
+    color: whitesmoke;
+    font-family: monospace;
+    font-size: 1.2em;
+    line-height: 1.3em;
+}
+
+/****** Applying animation ******/
+
+.lemonMove {    animation: lemonMove 1840ms infinite ease-in-out;}
+.melonMove {    animation: melonMove 1380ms infinite ease-in-out;}
+.dropMove {    animation: dropMove 8280ms infinite ease-in-out;}
+.woodStickMove {    animation: woodstickMove 4140s infinite;}
+.woodBoxMove {    animation: woodMove 5520ms infinite ease-in-out;}
+.circleMove {    animation: circleMove 11040ms infinite;}
+.rainMove {    animation: rainMove 16560ms infinite ease-in-out;}
+
+/****** Global Additions ******/
+
+.secoundFruit {
+    transform: skew(45deg) translateX(40px) translateY(-20px);
+    opacity: 0.5;
+    margin: 50px;
+    animation-duration: 8280ms;
+    animation-delay: 920ms;
+    filter: blur(1px);
 }
 
 .rotateNinety {
     transform: rotate(90deg);
     position: absolute;
-    left: 45%;
+    left: 25%;
+    animation-delay: 920ms;
 }
 
 .delayABit {
-    animation-delay: 1800ms;
-    filter: hue-rotate(-60deg);
-}
-
-.secoundFruit {
-    transform: skew(45deg) translateX(40px) translateY(-20px);
-    transition-delay: 500ms;
-    opacity: 0.5;
-    margin: 50px;
-    animation-duration: 8s;
-    filter: blur(1px);
+    animation-delay: 920ms;
+    filter: hue-rotate(-40deg);
+    animation-direction: reverse;
 }
 
 .third {
     background-color: tomato;
     transform: translateY(40px);
     animation-duration: 16s;
-    animation-delay: 1s;
+    animation-delay: 1840ms;
     opacity: 0.8;
 }
 
@@ -155,43 +208,33 @@ body {
   }
 
 @keyframes melonMove {
-    0% {
-        width: 30%;
-    }
-    40% {
-        width: 100%;
-    }
-    50% {
-        width: 70%;
-    }
-    75% {
-        width: 120%;
-    }
-    100% {
-        width: 30%;
-    }
+    0% { width: 30%;}
+    25% { width: 100%;}
+    50% { width: 70%;}
+    75% { width: 120%;}
+    100% { width: 30%;}
 }
 
 @keyframes dropMove {
-    0% {
-        transform: scale(0);
-        top: 10%;
-        left: 10%;
-    }
-    25% {
+    0%, 100% {
         transform: scale(1);
         top: 50%;
         left: 50%;
     }
-    50% {
+    25% {
         transform: scale(0.6);
         top: 10%;
         left: 70%;
     }
-    100% {
+    60% {
         transform: scale(0);
         top: 90%;
         left: 20%;
+    }
+    75% {
+        transform: scale(0);
+        top: 10%;
+        left: 10%;
     }
 }
 
@@ -214,72 +257,34 @@ body {
 }
 
 @keyframes woodstickMove {
-    0% {
-        filter: drop-shadow(0);
-    }
-    40% {
-        filter: drop-shadow(8px 8px 0px tomato);
-    }
-    70% {
-        filter: drop-shadow(-8px 10px 0px tomato);
-    }
-    85% {
-        filter: drop-shadow(20px -10px 0px  tomato);
-    }
-    100% {
-        filter: drop-shadow(0);
-    }
+    0% { filter: drop-shadow(0);}
+    40% { filter: drop-shadow(8px 8px 0px tomato);}
+    70% { filter: drop-shadow(-8px 10px 0px tomato);}
+    85% { filter: drop-shadow(20px -10px 0px  tomato);}
+    100% { filter: drop-shadow(0);}
 }
 
 @keyframes woodMove {
-    0% {
-        transform: rotate(0deg);
-    }
-    25% {
-        transform: rotate(0deg);
-    }
-    50% {
-        transform: rotate(180deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+    0% { transform: rotate(0deg);}
+    25% { transform: rotate(0deg);}
+    50% { transform: rotate(180deg);}
+    100% { transform: rotate(360deg);}
 }
 
 @keyframes circleMove{
-    0% {
-        transform: scale(0);
-    }
-    25% {
-        transform: scale(0);
-    }
-    50% {
-        transform: scale(1);
-    }
-    80% {
-        transform: scale(0);
-    }
-    100% {
-        transform: scale(0);
-    }
+    0%, 25% {transform: scale(0);}
+    50% {transform: scale(1);}
+    75%, 100% {transform: scale(0);}
 }
 
 @keyframes rainMove{
-    0% {
+    0%, 60% {
         height: 0;
         top: 0;
     }
-    60% {
-        height: 0;
-        top: 0;
-    }
-    75% {
+    75%, 80% {
         height: 100%;
-        top: 90%;
-    }
-    80% {
-        height: 100%;
-        top: 90%;
+        top: 95%;
     }
     100% {
         height: 0;
