@@ -69,10 +69,14 @@ $(pauseBtn).on('click',function(){
 var allSquares = $('.lemon, .melon, .drop, .woodStick, #woodBox, .circle, .circleMove, .rain, #mainWrap');
 
 // click event listener
-$(allSquares).on('click', function(e) {
+$(allSquares).click(function (e) { 
   explode(e.pageX, e.pageY);
-  theSample.play();
-})
+  theSample.play();  
+});
+// $(allSquares).on('click', function(e) {
+//   explode(e.pageX, e.pageY);
+//   theSample.play();
+// })
 
 // explosion construction
 function explode(x, y) {
@@ -91,10 +95,10 @@ function explode(x, y) {
     // positioning x,y of the particle on the circle (little randomized radius)
     var x = (explosion.width() / 2) + rand(80, 150) * Math.cos(2 * Math.PI * i / rand(particles - 10, particles + 10)),
       y = (explosion.height() / 2) + rand(80, 150) * Math.sin(2 * Math.PI * i / rand(particles - 10, particles + 10)),
-      color = rand(100, 155) + ', ' + rand(30, 75) + ', ' + rand(70, 105), // randomize the color rgb
+      color = rand(100, 155) + ', ' + rand(50, 75) + ', ' + rand(50, 105), // randomize the color rgb
         // particle element creation (could be anything other than div)
       elm = $('<div class="particle" style="' +
-        'background-color: rgb(' + color + ') ;' +
+        'border: rgb(' + color + ') 3px solid ;' +
         'top: ' + y + 'px; ' +
         'left: ' + x + 'px"></div>');
 

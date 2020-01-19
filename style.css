@@ -20,8 +20,7 @@ body {
     position: absolute;
     width: 50px;
     height: 100%;
-    background-color: rgb(254, 241, 128);
-    border-radius: 35px;
+    background-color: indianred;
 }
 
 .melon {
@@ -38,7 +37,7 @@ body {
     border-radius: 75px;
     top: 50%;
     left: 50%;
-    z-index: 98;
+    opacity: 0.7;
 }
 
 .woodStick {
@@ -78,7 +77,11 @@ body {
     position: fixed;
     top: 0;
     left: 40vw;
-    z-index: 200;
+    display: block;
+}
+
+.startBtn {
+    z-index: 900;
 }
 
 .startBtn img, #header img {
@@ -140,13 +143,18 @@ body {
 
 /****** Global Additions ******/
 
-.secoundFruit {
+.secoundFruit, .secoundFruitLine {
     transform: skew(45deg) translateX(40px) translateY(-20px);
     opacity: 0.5;
     margin: 50px;
     animation-duration: 8280ms;
     animation-delay: 920ms;
     filter: blur(1px);
+}
+
+.secoundFruitLine {
+background-color: unset;
+border: steelblue 4px solid;
 }
 
 .rotateNinety {
@@ -162,17 +170,26 @@ body {
     animation-direction: reverse;
 }
 
-.third {
-    background-color: tomato;
+.third, .thirdLine {
     transform: translateY(40px);
     animation-duration: 16s;
     animation-delay: 1840ms;
     opacity: 0.8;
 }
 
+.third {
+    background-color: tomato;
+}
+
+.thirdLine {
+    border: tomato 4px solid;
+    background-color: unset;
+    opacity: 1;
+}
+
 .bottom {
     position: absolute;
-    background-color: seagreen;
+    background-color: rgb(254, 241, 128);
     bottom:0;
     height: 40px;
     animation-duration: 8s;
@@ -307,7 +324,7 @@ body {
     position: absolute; /* required  */
     width: 30px;
     height: 30px;
-    opacity: 0.6;
+    opacity: 0.8;
     z-index: 300;
     border-radius: 50%;
     animation: pop 960ms reverse forwards; /* required */
