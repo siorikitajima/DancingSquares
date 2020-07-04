@@ -1,0 +1,54 @@
+html, body {
+    background-color: #E0E0D8;
+    width: 100%;
+    height:100%;
+    margin: 0;
+    overflow: hidden;
+  }
+  
+  #topRow, #secondRow, #thirdRow, #fourthRow, #fifthRow {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  #topRow {
+    height: 20vh;
+    position: fixed;
+    top: 5vh;
+  }
+  #secondRow {
+    height: 25vh;
+    position: fixed;
+    top: 15vh;
+  }
+  #thirdRow {
+    height: 35vh;
+    position: fixed;
+    top: 25vh;
+  }
+  #fourthRow {
+    height: 50vh;
+    position: fixed;
+    top: 35vh;
+  }
+  #fifthRow {
+    height: 66vh;
+    position: fixed;
+    top: 55vh;
+  }
+
+  .walkers {
+    width: 100%;
+    height: 100%;
+  }
+
+  .fromRight {
+    position: absolute;
+    right: -70vw;
+  }
+
+  .fromLeft {
+    position: absolute;
+    left: -70vw;
+    top: 30px;
+}
