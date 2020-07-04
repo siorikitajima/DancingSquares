@@ -9,7 +9,6 @@ html, body {
   #topRow, #secondRow, #thirdRow, #fourthRow, #fifthRow {
     width: 100%;
     position: relative;
-    overflow: hidden;
   }
   #topRow {
     height: 20vh;
