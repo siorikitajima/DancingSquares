@@ -1,7 +1,7 @@
 # Test Site by Siori Kitajima
 ## DancingSquares
-SVG + CSS Animation
+SVG + CSS Animation 
 https://siorikitajima.github.io/Test-Site/dancingSquares/
 ## Crowd Walking
-SVG + JS Animation
+SVG + JS Animation 
 https://siorikitajima.github.io/Test-Site/crowdWalking/
