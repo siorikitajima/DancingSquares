@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dancing Squares</title>
+    <link rel="stylesheet" href="style.css">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <script src="howler.js"></script>
+</head>
+<body>
+    <div id="mainWrap">
+        <div class="circle circleMove"></div>
+        <div class="melon melonMove"></div>
+        <div class="melon melonMove delayABit rotateNinety"></div>
+        <div class="lemon lemonMove rotateNinety delayABit"></div>
+        <div class="lemon lemonMove secoundFruit"></div>
+        <div class="lemon lemonMove secoundFruit thirdLine"></div>
+        <div class="melon melonMove secoundFruit"></div>
+        <div class="drop dropMove secoundFruit"></div>
+        <div class="melon melonMove bottom"></div>
+        <div id="woodBox" class="woodBoxMove">
+            <div class="woodStick woodStickMove"></div>
+            <div class="woodStick woodStickMove secoundFruit rotateNinety"></div>
+            <div class="woodStick woodStickMove third"></div>
+            <div class="woodStick woodStickMove rotateNinety"></div>
+            <div class="woodStick woodStickMove"></div>
+            <div class="woodStick woodStickMove secoundFruit"></div>
+            <div class="woodStick woodStickMove"></div>
+            <div class="woodStick woodStickMove rotateNinety"></div>
+            <div class="woodStick woodStickMove"></div>
+            <div class="woodStick woodStickMove secoundFruit third"></div>
+            <div class="woodStick woodStickMove"></div>
+            <div class="woodStick woodStickMove secoundFruit"></div>
+            <div class="woodStick woodStickMove"></div>
+            <div class="woodStick woodStickMove"></div>
+        </div>
+        <div class="lemon lemonMove"></div>
+        <div class="drop dropMove delayABit"></div>
+        <div class="drop dropMove"></div>
+        <div class="drop dropMove secoundFruitLine delayABit"></div>
+        <div class="drop dropMove secoundFruit thirdLine"></div>
+        <div class="drop dropMove secoundFruit third delayABit"></div>
+        <div class="rain rainMove"></div>
+        <div class="rain rainMove delayABit"></div>
+        <div class="rain rainMove secoundFruit"></div>
+    </div>
+    <div class="startBtn">
+        <img src="assets/Play_btn.svg">
+    </div>
+    <div id="header">
+        <a href="https://albums.patternbased.com/track/greene-drone-2" target="_blank"><img src="assets/cover-thumb.jpg" id="albumCover"></a>
+        <div id="songInfo">
+            <p><b>Greene Drone</b><br/> by Joseph Minadeo</p>
+        <img src="assets/Pause_btn.svg" id="pauseTrack">
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
