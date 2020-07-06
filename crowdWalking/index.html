@@ -13,6 +13,10 @@
     <script src="anime.js"></script>
 </head>
 <body>
+    <div id="modalBG">
+        <div class="loadingSpinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+
     <div id="topRow">
         <div id="girl1RTop" class="walkers fromRight girl1R"></div>
         <div id="girl2RTop" class="walkers fromRight girl2R"></div>
@@ -101,6 +105,13 @@
     </div> -->
   
     <!-- Scripts -->
+    <script>
+        $(document).ready(function() {
+            setTimeout(function(){ 
+                $('.loadingSpinner, #modalBG').fadeOut(1000);
+             }, 3000);
+        });
+    </script>
     <script src="walkers.js"></script>
     <script src="animation.js"></script>
 </body>
