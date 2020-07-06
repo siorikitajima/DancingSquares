@@ -2,8 +2,8 @@ $(document).ready( function(){
 
 var width = $(window).width();
 var rowId = ['Top', 'Second', 'Third', 'Fourth', 'Fifth'];
-var translateDistance = [1.2, 1.3, 1.4, 1.5, 1.6];
-var durations = [5, 4.6, 4.3, 3.9, 3.5];
+var translateDistance = (width < 600) ? [1.4, 1.5, 1.7, 2, 2.3] : [1.2, 1.3, 1.4, 1.5, 1.6];
+var durations = (width < 600) ? [5 * 2, 4.6 * 2, 4.3 * 2, 3.9 * 2, 3.5 * 2] : [5, 4.6, 4.3, 3.9, 3.5];
 var delayValue = [width * 2.3, width * 1.5, width * 1.2, width * 1.8, width * 1.3];
 
 var playList = [
@@ -21,7 +21,7 @@ var playList = [
 
 for (let s = 0; s<5; s++) {
   var randomAni = Math.random();
-  var randomDelay = Math.random(1.8, 3.5);
+  var randomDelay = (width < 600) ? Math.random(0.2, 0.28):Math.random(1.8, 3.5);
   var delay1 = '+=' + (delayValue[s] * randomDelay);
   var delay2 = '-=' + (delayValue[s] * 2.8 * randomDelay);
   var delay3 = '-=' + (delayValue[s] * 1.4 * randomDelay);

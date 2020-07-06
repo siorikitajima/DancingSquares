@@ -94,3 +94,37 @@ html, body {
   #fifthRow .fromLeft {
     left: -66vh;
   }
+
+  @media only screen and (max-width: 600px) {
+    #topRow .fromRight {
+      right: -30vw;
+    }
+    #secondRow .fromRight {
+      right: -30vh;
+    }
+    #thirdRow .fromRight {
+      right: -45vh;
+    }
+    #fourthRow .fromRight {
+      right: -60vh;
+    }
+    #fifthRow .fromRight {
+      right: -80vh;
+    }
+  
+    #topRow .fromLeft {
+      left: -30vw;
+    }
+    #secondRow .fromLeft {
+      left: -30vh;
+    }
+    #thirdRow .fromLeft {
+      left: -45vh;
+    }
+    #fourthRow .fromLeft {
+      left: -60vh;
+    }
+    #fifthRow .fromLeft {
+      left: -80vh;
+    }
+  }
