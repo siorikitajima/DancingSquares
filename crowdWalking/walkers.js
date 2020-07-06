@@ -36,6 +36,6 @@ var charactors = ['girl1RTop','girl1LTop','girl2RTop','girl2LTop','girl3RTop'
         };
         anim = lottie.loadAnimation(animData);
         anim.setSubframe(false);
-        setTimeout(function(){ anim.play(); }, randomDelay * 0.5);
+        setTimeout(function(){ anim.play(); }, randomDelay);
     }
   });
