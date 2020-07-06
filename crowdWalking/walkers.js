@@ -24,6 +24,7 @@ var charactors = ['girl1RTop','girl1LTop','girl2RTop','girl2LTop','girl3RTop'
 
     var i, len = charactors.length;
     for(i = 0; i < len; i += 1) {
+        var randomDelay =   Math.random() * 10000;
         var anim;
         var elem = document.getElementById(charactors[i]);
         var animData = {
@@ -35,85 +36,6 @@ var charactors = ['girl1RTop','girl1LTop','girl2RTop','girl2LTop','girl3RTop'
         };
         anim = lottie.loadAnimation(animData);
         anim.setSubframe(false);
+        setTimeout(function(){ anim.play(); }, randomDelay * 0.5);
     }
   });
-
-// var girl1R = lottie.loadAnimation({
-//     container: document.getElementById('girl1R'),
-//     renderer: 'svg',
-//     loop: true,
-//     autoplay: true,
-//     path: 'walkers/girl1R.json'
-//   })
-  
-// var girl1L = lottie.loadAnimation({
-//     container: document.getElementById('girl1L'),
-//     renderer: 'svg',
-//     loop: true,
-//     autoplay: true,
-//     path: 'walkers/girl1L.json'
-//   })
-
-//   var girl2R = lottie.loadAnimation({
-//     container: document.getElementById('girl2R'),
-//     renderer: 'svg',
-//     loop: true,
-//     autoplay: true,
-//     path: 'walkers/girl2R.json'
-//   })
-
-//   var girl2L = lottie.loadAnimation({
-//     container: document.getElementById('girl2L'),
-//     renderer: 'svg',
-//     loop: true,
-//     autoplay: true,
-//     path: 'walkers/girl2L.json'
-//   })
-
-//   var girl3R = lottie.loadAnimation({
-//     container: document.getElementById('girl3R'),
-//     renderer: 'svg',
-//     loop: true,
-//     autoplay: true,
-//     path: 'walkers/girl3R.json'
-//   })
-
-//   var girl3L = lottie.loadAnimation({
-//     container: document.getElementById('girl3L'),
-//     renderer: 'svg',
-//     loop: true,
-//     autoplay: true,
-//     path: 'walkers/girl3L.json'
-//   })
-
-//   var girl4R = lottie.loadAnimation({
-//     container: document.getElementById('girl4R'),
-//     renderer: 'svg',
-//     loop: true,
-//     autoplay: true,
-//     path: 'walkers/girl4R.json'
-//   })
-
-//   var girl4L = lottie.loadAnimation({
-//     container: document.getElementById('girl4L'),
-//     renderer: 'svg',
-//     loop: true,
-//     autoplay: true,
-//     path: 'walkers/girl4L.json'
-//   })
-
-//   var girl5R = lottie.loadAnimation({
-//     container: document.getElementById('girl5R'),
-//     renderer: 'svg',
-//     loop: true,
-//     autoplay: true,
-//     path: 'walkers/girl5R.json'
-//   })
-
-//   var girl5L = lottie.loadAnimation({
-//     container: document.getElementById('girl5L'),
-//     renderer: 'svg',
-//     loop: true,
-//     autoplay: true,
-//     path: 'walkers/girl5L.json'
-//   })

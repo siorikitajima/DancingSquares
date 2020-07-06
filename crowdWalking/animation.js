@@ -1,18 +1,37 @@
 $(document).ready( function(){
 
 var width = $(window).width();
-var randomDelay = [
-  Math.random() * 10000,
-  Math.random() * 10000,
-  Math.random() * 10000,
-  Math.random() * 10000,
-  Math.random() * 10000,
-  Math.random() * 10000,
-  Math.random() * 10000,
-  Math.random() * 10000,
-  Math.random() * 10000,
-  Math.random() * 10000
-];
+var rowId = ['Top', 'Second', 'Third', 'Fourth', 'Fifth'];
+var translateDistance = [1.2, 1.3, 1.4, 1.5, 1.6];
+var durations = [5, 4.6, 4.3, 3.9, 3.5];
+var delayValue = [width * 2.3, width * 1.5, width * 1.2, width * 1.8, width * 1.3];
+
+var playList = [
+  {"firstR":"#girl1R", "secondR": "#girl2R", "thirdR": "#girl3R", "fourthR": "#girl4R", "fifthR": "#girl5R",
+  "firstL":"#girl3L", "secondL": "#girl4L", "thirdL": "#girl5L", "fourthL": "#girl1L", "fifthL": "#girl2L"},
+  {"firstR":"#girl2R", "secondR": "#girl3R", "thirdR": "#girl4R", "fourthR": "#girl5R", "fifthR": "#girl1R",
+  "firstL":"#girl4L", "secondL": "#girl5L", "thirdL": "#girl1L", "fourthL": "#girl2L", "fifthL": "#girl3L"},
+  {"firstR":"#girl3R", "secondR": "#girl4R", "thirdR": "#girl5R", "fourthR": "#girl1R", "fifthR": "#girl2R",
+  "firstL":"#girl5L", "secondL": "#girl1L", "thirdL": "#girl2L", "fourthL": "#girl3L", "fifthL": "#girl4L"},
+  {"firstR":"#girl4R", "secondR": "#girl5R", "thirdR": "#girl1R", "fourthR": "#girl2R", "fifthR": "#girl3R",
+  "firstL":"#girl1L", "secondL": "#girl2L", "thirdL": "#girl3L", "fourthL": "#girl4L", "fifthL": "#girl5L"},
+  {"firstR":"#girl5R", "secondR": "#girl1R", "thirdR": "#girl2R", "fourthR": "#girl3R", "fifthR": "#girl4R",
+  "firstL":"#girl2L", "secondL": "#girl3L", "thirdL": "#girl4L", "fourthL": "#girl5L", "fifthL": "#girl6L"}
+]
+
+for (let s = 0; s<5; s++) {
+  var randomAni = Math.random();
+  var randomDelay = Math.random(1.8, 3.5);
+  var delay1 = '+=' + (delayValue[s] * randomDelay);
+  var delay2 = '-=' + (delayValue[s] * 2.8 * randomDelay);
+  var delay3 = '-=' + (delayValue[s] * 1.4 * randomDelay);
+  var delay4 = '-=' + (delayValue[s] * 2.5 * randomDelay);
+  var delay5 = '-=' + (delayValue[s] * 1.9 * randomDelay);
+  var delay6 = '+=' + (delayValue[s] * 1.3 * randomDelay);
+  var delay7 = '-=' + (delayValue[s] * 1.8 * randomDelay);
+  var delay8 = '-=' + (delayValue[s] * 3.2 * randomDelay);
+  var delay9 = '-=' + (delayValue[s] * 3.5 * randomDelay);
+  var delay10 = '-=' + (delayValue[s] * 2.2 * randomDelay);
 
 // Timeline for Top Row from Right
 var walkerlistR = anime.timeline({
@@ -22,34 +41,35 @@ var walkerlistR = anime.timeline({
 
 walkerlistR
 .add({
-  targets: '.girl1R',
-  translateX: -(width*1.2),
-  duration: width*1.2*5
-})
+  targets: playList[s].firstR + rowId[s],
+  translateX: -(width * translateDistance[s]),
+  duration: width*1.1 * durations[s] + randomAni,
+  easing: 'linear',
+}, delay1)
 .add({
-  targets: '.girl2R',
-  translateX: -(width*1.2),
-  duration: width*1.2*4.6,
-  //offset: randomDelay[1],
-},'-=3600')
+  targets: playList[s].secondR + rowId[s],
+  translateX: -(width * translateDistance[s]),
+  duration: width*1.2 * durations[s],
+  easing: 'linear',
+}, delay2)
 .add({
-  targets: '.girl3R',
-  translateX: -(width*1.2),
-  duration: width*1.2*4.8,
-  //offset: randomDelay[2],
-}, '-=2500')
+  targets: playList[s].thirdR + rowId[s],
+  translateX: -(width * translateDistance[s]),
+  duration: width*1.1 * durations[s] + randomAni,
+  easing: 'linear',
+}, delay3)
 .add({
-  targets: '.girl4R',
-  translateX: -(width*1.2),
-  duration: width*1.2*5.2,
-  //offset: randomDelay[3],
-}, '-=4500')
+  targets: playList[s].fourthR + rowId[s],
+  translateX: -(width * translateDistance[s]),
+  duration: width*1.2 * durations[s],
+  easing: 'linear',
+}, delay4)
 .add({
-  targets: '.girl5R',
-  translateX: -(width*1.2),
-  duration: width*1.2*5.4,
-  //offset: randomDelay[4],
-}, '-=2000');
+  targets: playList[s].fifthR + rowId[s],
+  translateX: -(width * translateDistance[s]),
+  duration: width*1.1 * durations[s] + randomAni,
+  easing: 'linear',
+}, delay5);
 
 // Timeline for Top Row from Left
 var walkerlistL = anime.timeline({
@@ -59,123 +79,30 @@ var walkerlistL = anime.timeline({
 
 walkerlistL
 .add({
-  targets: '.girl1L',
-  translateX: width*1.2,
-  duration: width*1.2*5
-})
+  targets: playList[s].firstL + rowId[s],
+  translateX: width * translateDistance[s],
+  duration: width*1.2 * durations[s],
+}, delay6)
 .add({
-  targets: '.girl2L',
-  translateX: width*1.2,
-  duration: width*1.2*4.6,
-  //offset: randomDelay[1],
-},'-=4600')
+  targets: playList[s].secondL + rowId[s],
+  translateX: width * translateDistance[s],
+  duration: width*1.1 * durations[s] + randomAni,
+}, delay7)
 .add({
-  targets: '.girl3L',
-  translateX: width*1.2,
-  duration: width*1.2*4.8,
-  //offset: randomDelay[2],
-}, '-=2400')
+  targets: playList[s].thirdL + rowId[s],
+  translateX: width * translateDistance[s],
+  duration: width*1.2 * durations[s],
+}, delay8)
 .add({
-  targets: '.girl4L',
-  translateX: width*1.2,
-  duration: width*1.2*5.2,
-  //offset: randomDelay[3],
-}, '-=3900')
+  targets: playList[s].fourthL + rowId[s],
+  translateX: width * translateDistance[s],
+  duration: width*1.1 * durations[s] + randomAni,
+}, delay9)
 .add({
-  targets: '.girl5L',
-  translateX: width*1.2,
-  duration: width*1.2*5.4,
-  //offset: randomDelay[4],
-}, '-=2200');
+  targets: playList[s].fifthL + rowId[s],
+  translateX: width * translateDistance[s],
+  duration: width*1.2 * durations[s],
+}, delay10);
+}
 
 });
-
-// anime({
-//   targets: '.girl1R',
-//   translateX: -(width*1.2),
-//   easing: 'linear',
-//   duration: width*1.2*5,
-//   loop: true,
-//   delay: randomDelay[0]
-// });
-
-// anime({
-//   targets: '.girl1L',
-//   translateX: width*1.2,
-//   easing: 'linear',
-//   duration: width*1.2*5,
-//   loop: true,
-//   delay: randomDelay[1]
-// });
-
-// anime({
-//   targets: '.girl2R',
-//   translateX: -(width*1.2),
-//   easing: 'linear',
-//   duration: width*1.2*4,
-//   loop: true,
-//   delay: randomDelay[2]
-// });
-
-// anime({
-//   targets: '.girl2L',
-//   translateX: width*1.2,
-//   easing: 'linear',
-//   duration: width*1.2*4,
-//   loop: true,
-//   delay: randomDelay[3]
-// });
-
-// anime({
-//   targets: '.girl3R',
-//   translateX: -(width*1.2),
-//   easing: 'linear',
-//   duration: width*1.2*3,
-//   loop: true,
-//   delay: randomDelay[4]
-// });
-
-// anime({
-//   targets: '.girl3L',
-//   translateX: width*1.2,
-//   easing: 'linear',
-//   duration: width*1.2*3,
-//   loop: true,
-//   delay: randomDelay[5]
-// });
-
-// anime({
-//   targets: '.girl4R',
-//   translateX: -(width*1.2),
-//   easing: 'linear',
-//   duration: width*1.2*2.5,
-//   loop: true,
-//   delay: randomDelay[6]
-// });
-
-// anime({
-//   targets: '.girl4L',
-//   translateX: width*1.2,
-//   easing: 'linear',
-//   duration: width*1.2*2.5,
-//   loop: true,
-//   delay: randomDelay[7]
-// });
-
-// anime({
-//   targets: '.girl5R',
-//   translateX: -(width*1.2),
-//   easing: 'linear',
-//   duration: width*1.2*2,
-//   loop: true,
-//   delay: randomDelay[8]
-// });
-
-// anime({
-//   targets: '.girl5L',
-//   translateX: width*1.2,
-//   easing: 'linear',
-//   duration: width*1.2*2,
-//   loop: true,
-//   delay: randomDelay[9]
-// });
