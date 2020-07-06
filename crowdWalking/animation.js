@@ -21,7 +21,7 @@ var playList = [
 
 for (let s = 0; s<5; s++) {
   var randomAni = Math.random();
-  var randomDelay = (width < 600) ? Math.random(0.2, 0.28):Math.random(1.8, 3.5);
+  var randomDelay = (width < 600) ? Math.random(0.08,0.12) : Math.random(1.8, 2.5);
   var delay1 = '+=' + (delayValue[s] * randomDelay);
   var delay2 = '-=' + (delayValue[s] * 2.8 * randomDelay);
   var delay3 = '-=' + (delayValue[s] * 1.4 * randomDelay);
