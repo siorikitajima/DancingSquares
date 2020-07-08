@@ -156,64 +156,90 @@ function setup() {
   fifthRowR = new Group();
   fifthRowL = new Group();
 
-  var playListR = [
+  var playListR = (width < 600) ? [
+    {"rowID": topRowR , "x": random(width, width*1.3 *2), "y":100, "scale":0.7},
+    {"rowID": secondRowR , "x": random(width, width*2 *2), "y":height/5, "scale":1},
+    {"rowID": thirdRowR , "x": random(width, width*3 *2), "y":height/3, "scale":1.4},
+    {"rowID": fourthRowR , "x": random(width, width*4 *2), "y":height/2, "scale":1.8},
+    {"rowID": fifthRowR , "x": random(width, width*5 *2), "y":height-100, "scale":2.4}
+    ]:[
     {"rowID": topRowR , "x": random(width, width*1.3), "y":150, "scale":0.7},
     {"rowID": secondRowR , "x": random(width, width*2), "y":height/5, "scale":1},
     {"rowID": thirdRowR , "x": random(width, width*3), "y":height/3, "scale":1.5},
     {"rowID": fourthRowR , "x": random(width, width*4), "y":height/2, "scale":2},
-    {"rowID": fifthRowR , "x": random(width, width*5), "y":height-300, "scale":2.8}]
-  var playListL = [
+    {"rowID": fifthRowR , "x": random(width, width*5), "y":height-300, "scale":2.8}
+    ];
+  var playListL = (width < 600) ? [
+    {"rowID": topRowL , "x": random(0, -width*0.5 *2), "y":120, "scale":0.7},
+    {"rowID": secondRowL , "x": random(0, -width*1.5 *2), "y":height/5 + 15, "scale":1},
+    {"rowID": thirdRowL , "x": random(0, -width*2.5 *2), "y":height/3 + 20, "scale":1.4},
+    {"rowID": fourthRowL , "x": random(0, -width*3.5 *2), "y":height/2 + 25, "scale":1.8},
+    {"rowID": fifthRowL , "x": random(0, -width*4.5 *2), "y":height-100 + 30, "scale":2.4}
+    ] : [
     {"rowID": topRowL , "x": random(0, -width*0.5), "y":170, "scale":0.7},
     {"rowID": secondRowL , "x": random(0, -width*1.5), "y":height/5 + 30, "scale":1},
     {"rowID": thirdRowL , "x": random(0, -width*2.5), "y":height/3 + 40, "scale":1.5},
     {"rowID": fourthRowL , "x": random(0, -width*3.5), "y":height/2 + 50, "scale":2},
-    {"rowID": fifthRowL , "x": random(0, -width*4.5), "y":height-300 + 60, "scale":2.8}]
+    {"rowID": fifthRowL , "x": random(0, -width*4.5), "y":height-300 + 60, "scale":2.8}
+    ];
 
   //assign new sprites to Rows
 
   for(var i = 0; i<5; i++) {
+    var randomFrame = random(0,11);
     var newGirl5R = createSprite(playListR[i].x, playListR[i].y); 
     newGirl5R.scale = playListR[i].scale; 
     newGirl5R.addAnimation('floating', girlWalk5R);
+    newGirl5R.changeFrame = randomFrame +1;
     newGirl5R.addToGroup(playListR[i].rowID);
     var newGirl1R = createSprite(playListR[i].x, playListR[i].y); 
     newGirl1R.scale = playListR[i].scale; 
     newGirl1R.addAnimation('floating', girlWalk1R);
+    newGirl1R.changeFrame = randomFrame +3;
     newGirl1R.addToGroup(playListR[i].rowID);
     var newGirl4R = createSprite(playListR[i].x, playListR[i].y); 
     newGirl4R.scale = playListR[i].scale; 
     newGirl4R.addAnimation('floating', girlWalk4R);
+    newGirl4R.changeFrame = randomFrame +5;
     newGirl4R.addToGroup(playListR[i].rowID);
     var newGirl2R = createSprite(playListR[i].x, playListR[i].y); 
     newGirl2R.scale = playListR[i].scale; 
     newGirl2R.addAnimation('floating', girlWalk2R);
+    newGirl2R.changeFrame = randomFrame +7;
     newGirl2R.addToGroup(playListR[i].rowID);
     var newGirl3R = createSprite(playListR[i].x, playListR[i].y); 
     newGirl3R.scale = playListR[i].scale; 
     newGirl3R.addAnimation('floating', girlWalk3R);
+    newGirl3R.changeFrame = randomFrame +9;
     newGirl3R.addToGroup(playListR[i].rowID);
   }
 
   for(var i = 0; i<5; i++) {
+    var randomFrame = random(0,11);
     var newGirl1L = createSprite(playListL[i].x, playListL[i].y); 
     newGirl1L.scale = playListL[i].scale; 
     newGirl1L.addAnimation('floating', girlWalk1L);
+    newGirl1L.changeFrame = randomFrame +1;
     newGirl1L.addToGroup(playListL[i].rowID);
     var newGirl2L = createSprite(playListL[i].x, playListL[i].y); 
     newGirl2L.scale = playListL[i].scale; 
     newGirl2L.addAnimation('floating', girlWalk2L);
+    newGirl2L.changeFrame = randomFrame +3;
     newGirl2L.addToGroup(playListL[i].rowID);
     var newGirl3L = createSprite(playListL[i].x, playListL[i].y); 
     newGirl3L.scale = playListL[i].scale; 
     newGirl3L.addAnimation('floating', girlWalk3L);
+    newGirl3L.changeFrame = randomFrame +5;
     newGirl3L.addToGroup(playListL[i].rowID);
     var newGirl4L = createSprite(playListL[i].x, playListL[i].y); 
     newGirl4L.scale = playListL[i].scale; 
     newGirl4L.addAnimation('floating', girlWalk4L);
+    newGirl4L.changeFrame = randomFrame +7;
     newGirl4L.addToGroup(playListL[i].rowID);
     var newGirl5L = createSprite(playListL[i].x, playListL[i].y); 
     newGirl5L.scale = playListL[i].scale; 
     newGirl5L.addAnimation('floating', girlWalk5L);
+    newGirl5L.changeFrame = randomFrame +9;
     newGirl5L.addToGroup(playListL[i].rowID);
   }
 }
@@ -226,67 +252,67 @@ function draw() {
   for(var i = 0; i<topRowR.length; i++) {
     var t = topRowR[i];
     t.position.x -= 1.5;
-    if (t.position.x < 0) {
-        t.position.x = random(width, width*1.3);
+    if (t.position.x < -100) {
+        t.position.x = (width < 600) ? random(width, width*1.3 *4): random(width, width*1.3);
     }}
   for(var i = 0; i<topRowL.length; i++) {
     var t = topRowL[i];
     t.position.x += 1.5;
-    if (t.position.x > width) {
-        t.position.x = random(0, -width*0.5);
+    if (t.position.x > width+100) {
+        t.position.x = (width < 600) ? random(width, -width*0.5 *4): random(0, -width*0.5);
     }}
 
 //Second Row
   for(var i = 0; i<secondRowR.length; i++) {
     var t = secondRowR[i];
     t.position.x -= 2;
-    if (t.position.x < 0) {
-        t.position.x = random(width, width*2);
+    if (t.position.x < -100) {
+        t.position.x = (width < 600) ? random(width, width*2 *4): random(width, width*2);
     }}
   for(var i = 0; i<secondRowL.length; i++) {
     var t = secondRowL[i];
     t.position.x += 2;
-    if (t.position.x > width) {
-        t.position.x = random(0, -width*1.5);
+    if (t.position.x > width+100) {
+        t.position.x = (width < 600) ? random(width, -width*1.5 *4): random(0, -width*1.5);
     }}
 //Third Row
   for(var i = 0; i<thirdRowR.length; i++) {
     var t = thirdRowR[i];
     t.position.x -= 3;
-    if (t.position.x < 0) {
-        t.position.x = random(width, width*3);
+    if (t.position.x < -100) {
+        t.position.x = (width < 600) ? random(width, width*3 *4): random(width, width*3);
     }}
   for(var i = 0; i<thirdRowL.length; i++) {
     var t = thirdRowL[i];
     t.position.x += 3;
-    if (t.position.x > width) {
-        t.position.x = random(0, -width*2.5);
+    if (t.position.x > width+100) {
+        t.position.x = (width < 600) ? random(width, -width*2.5 *4): random(0, -width*2.5);
     }}
 //Fourth Row
   for(var i = 0; i<fourthRowR.length; i++) {
     var t = fourthRowR[i];
     t.position.x -= 4;
-    if (t.position.x < 0) {
-        t.position.x = random(width, width*4);
+    if (t.position.x < -100) {
+        t.position.x = (width < 600) ? random(width, width*4 *4): random(width, width*4);
     }}
   for(var i = 0; i<fourthRowL.length; i++) {
     var t = fourthRowL[i];
     t.position.x += 4;
-    if (t.position.x > width) {
-        t.position.x = random(0, -width*3.5);
+    if (t.position.x > width+100) {
+        t.position.x = (width < 600) ? random(width, -width*3.5 *4): random(0, -width*3.5);
     }}
 //Fifth Row
 for(var i = 0; i<fifthRowR.length; i++) {
     var t = fifthRowR[i];
     t.position.x -= 5;
-    if (t.position.x < 0) {
-        t.position.x = random(width, width*5);
+    if (t.position.x < -100) {
+        t.position.x = (width < 600) ? random(width, width*5 *4): random(width, width*5);
     }}
   for(var i = 0; i<fifthRowL.length; i++) {
     var t = fifthRowL[i];
     t.position.x += 5;
-    if (t.position.x > width) {
-        t.position.x = random(0, -width*4.5);
+    if (t.position.x > width+100) {
+        t.position.x = (width < 600) ? random(width, -width*4.5 *4): random(0, -width*4.5);
     }}
 
    drawSprites(topRowR);
