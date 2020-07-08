@@ -259,7 +259,7 @@ function draw() {
     var t = topRowL[i];
     t.position.x += 1.5;
     if (t.position.x > width+100) {
-        t.position.x = (width < 600) ? random(width, -width*0.5 *4): random(0, -width*0.5);
+        t.position.x = (width < 600) ? random(0, -width*0.5 *4): random(0, -width*0.5);
     }}
 
 //Second Row
@@ -273,7 +273,7 @@ function draw() {
     var t = secondRowL[i];
     t.position.x += 2;
     if (t.position.x > width+100) {
-        t.position.x = (width < 600) ? random(width, -width*1.5 *4): random(0, -width*1.5);
+        t.position.x = (width < 600) ? random(0, -width*1.5 *4): random(0, -width*1.5);
     }}
 //Third Row
   for(var i = 0; i<thirdRowR.length; i++) {
@@ -286,7 +286,7 @@ function draw() {
     var t = thirdRowL[i];
     t.position.x += 3;
     if (t.position.x > width+100) {
-        t.position.x = (width < 600) ? random(width, -width*2.5 *4): random(0, -width*2.5);
+        t.position.x = (width < 600) ? random(0, -width*2.5 *4): random(0, -width*2.5);
     }}
 //Fourth Row
   for(var i = 0; i<fourthRowR.length; i++) {
@@ -299,7 +299,7 @@ function draw() {
     var t = fourthRowL[i];
     t.position.x += 4;
     if (t.position.x > width+100) {
-        t.position.x = (width < 600) ? random(width, -width*3.5 *4): random(0, -width*3.5);
+        t.position.x = (width < 600) ? random(0, -width*3.5 *4): random(0, -width*3.5);
     }}
 //Fifth Row
 for(var i = 0; i<fifthRowR.length; i++) {
@@ -312,7 +312,7 @@ for(var i = 0; i<fifthRowR.length; i++) {
     var t = fifthRowL[i];
     t.position.x += 5;
     if (t.position.x > width+100) {
-        t.position.x = (width < 600) ? random(width, -width*4.5 *4): random(0, -width*4.5);
+        t.position.x = (width < 600) ? random(0, -width*4.5 *4): random(0, -width*4.5);
     }}
 
    drawSprites(topRowR);
