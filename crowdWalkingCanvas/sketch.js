@@ -158,16 +158,16 @@ function setup() {
 
   var playListR = [
     {"rowID": topRowR , "x": random(width, width*1.3), "y":150, "scale":0.7},
-    {"rowID": secondRowR , "x": random(width, width*2), "y":width/5, "scale":1},
-    {"rowID": thirdRowR , "x": random(width, width*3), "y":width/3, "scale":1.5},
-    {"rowID": fourthRowR , "x": random(width, width*4), "y":width/2, "scale":2},
-    {"rowID": fifthRowR , "x": random(width, width*5), "y":width-300, "scale":2.8}]
+    {"rowID": secondRowR , "x": random(width, width*2), "y":height/5, "scale":1},
+    {"rowID": thirdRowR , "x": random(width, width*3), "y":height/3, "scale":1.5},
+    {"rowID": fourthRowR , "x": random(width, width*4), "y":height/2, "scale":2},
+    {"rowID": fifthRowR , "x": random(width, width*5), "y":height-300, "scale":2.8}]
   var playListL = [
     {"rowID": topRowL , "x": random(0, -width*0.5), "y":170, "scale":0.7},
-    {"rowID": secondRowL , "x": random(0, -width*1.5), "y":width/5 + 30, "scale":1},
-    {"rowID": thirdRowL , "x": random(0, -width*2.5), "y":width/3 + 40, "scale":1.5},
-    {"rowID": fourthRowL , "x": random(0, -width*3.5), "y":width/2 + 50, "scale":2},
-    {"rowID": fifthRowL , "x": random(0, -width*4.5), "y":width-300 + 60, "scale":2.8}]
+    {"rowID": secondRowL , "x": random(0, -width*1.5), "y":height/5 + 30, "scale":1},
+    {"rowID": thirdRowL , "x": random(0, -width*2.5), "y":height/3 + 40, "scale":1.5},
+    {"rowID": fourthRowL , "x": random(0, -width*3.5), "y":height/2 + 50, "scale":2},
+    {"rowID": fifthRowL , "x": random(0, -width*4.5), "y":height-300 + 60, "scale":2.8}]
 
   //assign new sprites to Rows
 
