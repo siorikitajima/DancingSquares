@@ -22,7 +22,7 @@ function preload() {
      'walkers/girl-1r/girl-1r0008.png',
      'walkers/girl-1r/girl-1r0009.png',
      'walkers/girl-1r/girl-1r0010.png', 
-     'walkers/Girl-1r/girl-1r0011.png');
+     'walkers/girl-1r/girl-1r0011.png');
  girlWalk1L = loadAnimation(
      'walkers/girl-1l/girl-1l0000.png',
      'walkers/girl-1l/girl-1l0001.png',
@@ -35,7 +35,7 @@ function preload() {
      'walkers/girl-1l/girl-1l0008.png',
      'walkers/girl-1l/girl-1l0009.png',
      'walkers/girl-1l/girl-1l0010.png', 
-     'walkers/Girl-1l/girl-1l0011.png');
+     'walkers/girl-1l/girl-1l0011.png');
  girlWalk2R = loadAnimation(
      'walkers/girl-2r/girl-1r0000.png',
      'walkers/girl-2r/girl-1r0001.png',
@@ -48,7 +48,7 @@ function preload() {
      'walkers/girl-2r/girl-1r0008.png',
      'walkers/girl-2r/girl-1r0009.png',
      'walkers/girl-2r/girl-1r0010.png', 
-     'walkers/Girl-2r/girl-1r0011.png');
+     'walkers/girl-2r/girl-1r0011.png');
  girlWalk2L = loadAnimation(
      'walkers/girl-2l/girl-1l0000.png',
      'walkers/girl-2l/girl-1l0001.png',
@@ -61,7 +61,7 @@ function preload() {
      'walkers/girl-2l/girl-1l0008.png',
      'walkers/girl-2l/girl-1l0009.png',
      'walkers/girl-2l/girl-1l0010.png', 
-     'walkers/Girl-2l/girl-1l0011.png');
+     'walkers/girl-2l/girl-1l0011.png');
  girlWalk3R = loadAnimation(
      'walkers/girl-3r/girl-1r0000.png',
      'walkers/girl-3r/girl-1r0001.png',
@@ -74,7 +74,7 @@ function preload() {
      'walkers/girl-3r/girl-1r0008.png',
      'walkers/girl-3r/girl-1r0009.png',
      'walkers/girl-3r/girl-1r0010.png', 
-     'walkers/Girl-3r/girl-1r0011.png');
+     'walkers/girl-3r/girl-1r0011.png');
  girlWalk3L = loadAnimation(
      'walkers/girl-3l/girl-1l0000.png',
      'walkers/girl-3l/girl-1l0001.png',
@@ -87,7 +87,7 @@ function preload() {
      'walkers/girl-3l/girl-1l0008.png',
      'walkers/girl-3l/girl-1l0009.png',
      'walkers/girl-3l/girl-1l0010.png', 
-     'walkers/Girl-3l/girl-1l0011.png');
+     'walkers/girl-3l/girl-1l0011.png');
  girlWalk4R = loadAnimation(
      'walkers/girl-4r/girl-1r0000.png',
      'walkers/girl-4r/girl-1r0001.png',
@@ -100,7 +100,7 @@ function preload() {
      'walkers/girl-4r/girl-1r0008.png',
      'walkers/girl-4r/girl-1r0009.png',
      'walkers/girl-4r/girl-1r0010.png', 
-     'walkers/Girl-4r/girl-1r0011.png');
+     'walkers/girl-4r/girl-1r0011.png');
  girlWalk4L = loadAnimation(
      'walkers/girl-4l/girl-1l0000.png',
      'walkers/girl-4l/girl-1l0001.png',
@@ -113,7 +113,7 @@ function preload() {
      'walkers/girl-4l/girl-1l0008.png',
      'walkers/girl-4l/girl-1l0009.png',
      'walkers/girl-4l/girl-1l0010.png', 
-     'walkers/Girl-4l/girl-1l0011.png');
+     'walkers/girl-4l/girl-1l0011.png');
  girlWalk5R = loadAnimation(
      'walkers/girl-5r/girl-1r0000.png',
      'walkers/girl-5r/girl-1r0001.png',
@@ -126,7 +126,7 @@ function preload() {
      'walkers/girl-5r/girl-1r0008.png',
      'walkers/girl-5r/girl-1r0009.png',
      'walkers/girl-5r/girl-1r0010.png', 
-     'walkers/Girl-5r/girl-1r0011.png');
+     'walkers/girl-5r/girl-1r0011.png');
  girlWalk5L = loadAnimation(
      'walkers/girl-5l/girl-1l0000.png',
      'walkers/girl-5l/girl-1l0001.png',
@@ -139,7 +139,7 @@ function preload() {
      'walkers/girl-5l/girl-1l0008.png',
      'walkers/girl-5l/girl-1l0009.png',
      'walkers/girl-5l/girl-1l0010.png', 
-     'walkers/Girl-5l/girl-1l0011.png');
+     'walkers/girl-5l/girl-1l0011.png');
 }
 
 function setup() {
