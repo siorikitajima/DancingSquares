@@ -202,60 +202,48 @@ function setup() {
   //assign new sprites to Rows
 
   for(var i = 0; i<5; i++) {
-    //var randomFrame = random(10,11);
     var newGirl5R = createSprite(random(width, playListR[i].x), playListR[i].y); 
     newGirl5R.scale = playListR[i].scale;
     newGirl5R.addAnimation('floating', girlWalk5R);
-    //newGirl5R.frameDelay = randomFrame +1.6;
     newGirl5R.addToGroup(playListR[i].rowID);
     var newGirl1R = createSprite(random(width, playListR[i].x), playListR[i].y); 
     newGirl1R.scale = playListR[i].scale; 
     newGirl1R.addAnimation('floating', girlWalk1R);
-    //newGirl1R.frameDelay = randomFrame +1.2;
     newGirl1R.addToGroup(playListR[i].rowID);
     var newGirl4R = createSprite(random(width, playListR[i].x), playListR[i].y); 
     newGirl4R.scale = playListR[i].scale; 
     newGirl4R.addAnimation('floating', girlWalk4R);
-    //newGirl4R.frameDelay = randomFrame +0.8;
     newGirl4R.addToGroup(playListR[i].rowID);
     var newGirl2R = createSprite(random(width, playListR[i].x), playListR[i].y); 
     newGirl2R.scale = playListR[i].scale; 
     newGirl2R.addAnimation('floating', girlWalk2R);
-    //newGirl2R.frameDelay = randomFrame +0.4;
     newGirl2R.addToGroup(playListR[i].rowID);
     var newGirl3R = createSprite(random(width, playListR[i].x), playListR[i].y); 
     newGirl3R.scale = playListR[i].scale; 
     newGirl3R.addAnimation('floating', girlWalk3R);
-    //newGirl3R.frameDelay = randomFrame +2;
     newGirl3R.addToGroup(playListR[i].rowID);
   }
 
   for(var i = 0; i<5; i++) {
-    //var randomFrame = random(10,11);
     var newGirl1L = createSprite(random(0,playListL[i].x), playListL[i].y); 
     newGirl1L.scale = playListL[i].scale;
     newGirl1L.addAnimation('floating', girlWalk1L);
-    //newGirl1L.frameDelay = randomFrame +1.4;
     newGirl1L.addToGroup(playListL[i].rowID);
     var newGirl2L = createSprite(random(0,playListL[i].x), playListL[i].y); 
     newGirl2L.scale = playListL[i].scale;
     newGirl2L.addAnimation('floating', girlWalk2L);
-    //newGirl2L.frameDelay = randomFrame +1;
     newGirl2L.addToGroup(playListL[i].rowID);
     var newGirl3L = createSprite(random(0,playListL[i].x), playListL[i].y); 
     newGirl3L.scale = playListL[i].scale;
     newGirl3L.addAnimation('floating', girlWalk3L);
-    //newGirl3L.frameDelay = randomFrame +1.8;
     newGirl3L.addToGroup(playListL[i].rowID);
     var newGirl4L = createSprite(random(0,playListL[i].x), playListL[i].y); 
     newGirl4L.scale = playListL[i].scale;
     newGirl4L.addAnimation('floating', girlWalk4L);
-    //newGirl4L.frameDelay = randomFrame +1.2;
     newGirl4L.addToGroup(playListL[i].rowID);
     var newGirl5L = createSprite(random(0,playListL[i].x), playListL[i].y); 
     newGirl5L.scale = playListL[i].scale;
     newGirl5L.addAnimation('floating', girlWalk5L);
-    //newGirl5L.frameDelay = randomFrame +1.6;
     newGirl5L.addToGroup(playListL[i].rowID);
   }
 
@@ -267,10 +255,6 @@ function setup() {
     var t = theGroup[i];
     var cloneGroup = theGroup.slice();
     cloneGroup.splice(i,1);
-
-  // for(var oc = 0; oc<cloneGroup.length; oc++) {
-  //   t.bounce(cloneGroup[oc]);
-  //   }
   }
   }
 }
@@ -278,35 +262,26 @@ function setup() {
 function draw() {
   background(224, 224, 216);
 
-
 ////// Horizontal Animation for Top Row
 
   for(var i = 0; i<topRowR.length; i++) {
     var t = topRowR[i];
     var cloneRow = topRowR.slice();
     cloneRow.splice(i,1);
-    //otherCharacters = cloneRow.join;
-    t.position.x -= 1.5;
+    t.position.x -= 1.5 + i/4;
 
     if (t.position.x < -100) {
         t.position.x = (width < 600) ? random(width, width*1.3 *4): random(width, width*1.3*2);
     }
-    // for(var oc = 0; oc<cloneRow.length; oc++) {
-    // t.bounce(cloneRow[oc], moveToRight);
-    // }
   }
   for(var i = 0; i<topRowL.length; i++) {
     var t = topRowL[i];
     var cloneRow = topRowL.slice();
     cloneRow.splice(i,1);
-    //otherCharacters = cloneRow.join;
-    t.position.x += 1.5;
+    t.position.x += 1.5 + i/4;
     if (t.position.x > width+100) {
         t.position.x = (width < 600) ? random(-(width), -(width*0.5 *4)): random(0, -width*0.5*2);
     }
-    // for(var oc = 0; oc<cloneRow.length; oc++) {
-    // t.bounce(cloneRow[oc], moveToRight);
-    // }
   }
 
 //Second Row
@@ -314,108 +289,79 @@ function draw() {
     var t = secondRowR[i];
     var cloneRow = secondRowR.slice();
     cloneRow.splice(i,1);
-    //otherCharacters = cloneRow.join;
-    t.position.x -= 2;
+    t.position.x -= 2 + i/4;
     if (t.position.x < -100) {
         t.position.x = (width < 600) ? random(width, width*2 *4): random(width, width*2*2);
     }
-    // for(var oc = 0; oc<cloneRow.length; oc++) {
-    //   t.bounce(cloneRow[oc], moveToRight);
-    //   }
   }
   for(var i = 0; i<secondRowL.length; i++) {
     var t = secondRowL[i];
     var cloneRow = secondRowL.slice();
     cloneRow.splice(i,1);
-    //otherCharacters = cloneRow.join;
-    t.position.x += 2;
+    t.position.x += 2 + i/4;
     if (t.position.x > width+100) {
         t.position.x = (width < 600) ? random(-(width), -(width*1.5 *4)): random(0, -width*1.5*2);
     }
-    // for(var oc = 0; oc<cloneRow.length; oc++) {
-    //   t.bounce(cloneRow[oc], moveToRight);
-    //   }
   }
+
 //Third Row
   for(var i = 0; i<thirdRowR.length; i++) {
     var t = thirdRowR[i];
     var cloneRow = thirdRowR.slice();
     cloneRow.splice(i,1);
-    //otherCharacters = cloneRow.join;
-    t.position.x -= 3;
+    t.position.x -= 3 + i/4;
     if (t.position.x < -100) {
         t.position.x = (width < 600) ? random(width, width*3 *4): random(width, width*3*2);
     }
-    // for(var oc = 0; oc<cloneRow.length; oc++) {
-    //   t.bounce(cloneRow[oc], moveToRight);
-    //   }
   }
   for(var i = 0; i<thirdRowL.length; i++) {
     var t = thirdRowL[i];
     var cloneRow = thirdRowL.slice();
     cloneRow.splice(i,1);
-    //otherCharacters = cloneRow.join;
-    t.position.x += 3;
+    t.position.x += 3 + i/4;
     if (t.position.x > width+100) {
         t.position.x = (width < 600) ? random(-(width), -(width*2.5 *4)): random(0, -width*2.5*2);
     }
-    // for(var oc = 0; oc<cloneRow.length; oc++) {
-    //   t.bounce(cloneRow[oc], moveToRight);
-    //   }
   }
+
 //Fourth Row
   for(var i = 0; i<fourthRowR.length; i++) {
     var t = fourthRowR[i];
     var cloneRow = fourthRowR.slice();
     cloneRow.splice(i,1);
-    //otherCharacters = cloneRow.join;
-    t.position.x -= 4;
+    t.position.x -= 4 + i/4;
     if (t.position.x < -100) {
         t.position.x = (width < 600) ? random(width, width*4 *4): random(width, width*4*2);
     }
-    // for(var oc = 0; oc<cloneRow.length; oc++) {
-    //   t.bounce(cloneRow[oc], moveToRight);
-    //   }
   }
   for(var i = 0; i<fourthRowL.length; i++) {
     var t = fourthRowL[i];
     var cloneRow = fourthRowL.slice();
     cloneRow.splice(i,1);
-    //otherCharacters = cloneRow.join;
-    t.position.x += 4;
+    t.position.x += 4 + i/4;
     if (t.position.x > width+100) {
         t.position.x = (width < 600) ? random(-(width), -(width*3.5 *4)): random(0, -width*3.5*2);
     }
-    // for(var oc = 0; oc<cloneRow.length; oc++) {
-    //   t.bounce(cloneRow[oc], moveToRight);
-    //   }
   }
+
 //Fifth Row
 for(var i = 0; i<fifthRowR.length; i++) {
     var t = fifthRowR[i];
     var cloneRow = fifthRowR.slice();
     cloneRow.splice(i,1);
-    //otherCharacters = cloneRow.join;
-    t.position.x -= 5;
+    t.position.x -= 5 + i/4;
     if (t.position.x < -100) {
         t.position.x = (width < 600) ? random(width, width*5 *4): random(width, width*5*2);
     }
-    // for(var oc = 0; oc<cloneRow.length; oc++) {
-    //   t.bounce(cloneRow[oc], moveToRight);
-    //   }
   }
   for(var i = 0; i<fifthRowL.length; i++) {
     var t = fifthRowL[i];
     var cloneRow = fifthRowL.slice();
     cloneRow.splice(i,1);
-    //otherCharacters = cloneRow.join;
-    t.position.x += 5;
+    t.position.x += 5 + i/4;
     if (t.position.x > width+100) {
         t.position.x = (width < 600) ? random(-(width), -(width*4.5 *4)): random(0, -width*4.5*2);
     }
-    // for(var oc = 0; oc<cloneRow.length; oc++) {
-    //   t.bounce(cloneRow[oc], moveToRight);
-    //   }
   }
 
    drawSprites(topRowR);
