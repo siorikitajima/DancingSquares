@@ -3,12 +3,22 @@ var playListR = []; var playListL = [];
 var pauseSwitch = true;
 var infoSwitch = false;
 var colorSwitch = 7;
+var groundImg = [
+  {'id':0, 'name':'numbers_pink'},
+  {'id':1, 'name':'numbers_green'},
+  {'id':2, 'name':'numbers_yellow'},
+  {'id':3, 'name':'numbers_purple'},
+  {'id':4, 'name':'numbers_orange'},
+  {'id':5, 'name':'numbers_teal'},
+  {'id':6, 'name':'numbers_red'},
+  {'id':7, 'name':'numbers_gray'}
+];
 
 // Group Names = Each Row
 var topRowR, topRowL, secondRowR, secondRowL, thirdRowR, thirdRowL, fourthRowR, fourthRowL, fifthRowR, fifthRowL;
 
 // Sprite Names
-var charactorList = ["tyny", "peter", "jon"];
+var charactorList = ["tiny", "peter", "jon"];
 
 // Data for each Charactor
 var tinyListR = [
@@ -36,7 +46,7 @@ var colorList = [
     {'id':0, 'name':'_pink', 'number':21, 'r':255, 'g': 53, 'b':98},
     {'id':1, 'name':'_green', 'number':5, 'r':30, 'g': 85, 'b':92},
     {'id':2, 'name':'_yellow', 'number':5, 'r':239, 'g': 160, 'b':11},
-    {'id':3, 'name':'_purple', 'number':11, 'r':49, 'g': 10, 'b':49},
+    {'id':3, 'name':'_purple', 'number':11, 'r':86, 'g': 16, 'b':86},
     {'id':4, 'name':'_orange', 'number':11, 'r':220, 'g': 96, 'b':46},
     {'id':5, 'name':'_teal', 'number':2, 'r':0, 'g': 175, 'b':185},
     {'id':6, 'name':'_red', 'number':4, 'r':145, 'g': 39, 'b':55},
@@ -63,6 +73,10 @@ function preload() {
       var animImg = 'walkers/' + tinyListL[a].name + '.png';
       animName = loadSpriteSheet(animImg, 200, 300, 6);
       tinyListL[a].name = loadAnimation(animName);
+    }
+
+    for(var im=0; im<groundImg.length;im++){
+      groundImg[im] = loadImage('images/' + groundImg[im].name + '.png');
     }
 };
 
@@ -115,11 +129,14 @@ playListL = (width < 600) ? [
         animSpr = createSprite(playListR[r].x * randomX, playListR[r].y, 200, 300);
         animSpr.scale = playListR[r].scale;
         animSpr.addAnimation(animLab, tinyListR[coId].name);
-        //Get color ID when clicked
-        animSpr.setDefaultCollider ();
+        //Get color ID when clicked and hover
+        animSpr.setCollider("rectangle", 35, 0, 130, 230);
         animSpr.onMousePressed = function() {
           colorSwitch = this.getAnimationLabel();
         };
+        animSpr.onMouseOver = function() {
+          colorSwitch = this.getAnimationLabel();
+        };        
         //
         animSpr.addToGroup(playListR[r].rowID);
         }
@@ -136,11 +153,14 @@ playListL = (width < 600) ? [
         animSpr = createSprite(playListL[r].x * randomX, playListL[r].y, 200, 300);
         animSpr.scale = playListL[r].scale;
         animSpr.addAnimation(animLab, tinyListL[coId].name);
-        //Get color ID when clicked
-        animSpr.setDefaultCollider ();
+        //Get color ID
+        animSpr.setCollider("rectangle", -35, 0, 130, 230);
         animSpr.onMousePressed = function() {
           colorSwitch = this.getAnimationLabel();
         };
+        animSpr.onMouseOver = function() {
+          colorSwitch = this.getAnimationLabel();
+        };     
         //
         animSpr.addToGroup(playListL[r].rowID);
         }
@@ -167,9 +187,12 @@ for(var row=0; row < playListR.length; row++){
         var newSpr = createSprite(playListR[row].x, playListR[row].y, 200, 300);
         newSpr.scale = playListR[row].scale;
         newSpr.addAnimation(animLab, tinyListR[coId].name);
-        //Get color ID when clicked
-        newSpr.setDefaultCollider();
+        //Get color ID
+        newSpr.setCollider("rectangle", 35, 0, 130, 230);
         newSpr.onMousePressed = function() {
+          colorSwitch = this.getAnimationLabel();
+        };
+        newSpr.onMouseOver = function() {
           colorSwitch = this.getAnimationLabel();
         };
         //
@@ -194,32 +217,24 @@ for(var row=0; row < playListL.length; row++){
         var newSpr = createSprite(playListL[row].x, playListL[row].y, 200, 300);
         newSpr.scale = playListL[row].scale;
         newSpr.addAnimation(animLab, tinyListL[coId].name);
-        //Get color ID when clicked
-        newSpr.setDefaultCollider ();
+        //Get color ID
+        newSpr.setCollider("rectangle", -35, 0, 130, 230);
         newSpr.onMousePressed = function() {
           colorSwitch = this.getAnimationLabel();
         };
+        newSpr.onMouseOver = function() {
+          colorSwitch = this.getAnimationLabel();
+        };     
         //
         newSpr.addToGroup(rowID);
         }
   }}
 
-// Draw sprite in the Z-index order
-drawSprites(topRowR);
-drawSprites(topRowL);
-// fill(224,224,224,20);
-// rect(0,0,width, height);
-drawSprites(secondRowR);
-drawSprites(secondRowL);
-// rect(0,0,width, height);
-drawSprites(thirdRowR);
-drawSprites(thirdRowL);
-// rect(0,0,width, height);
-drawSprites(fourthRowR);
-drawSprites(fourthRowL);
-// rect(0,0,width, height);
-drawSprites(fifthRowR);
-drawSprites(fifthRowL);
+  imageMode(CENTER);
+  for(var im=0; im<groundImg.length;im++){
+    var c = colorSwitch;
+    image(groundImg[c], width/2, height/2);
+  }
 
 //Showing the info popup
 if(infoSwitch) {
@@ -228,6 +243,25 @@ if(infoSwitch) {
   fill(colorList[c].r, colorList[c].g, colorList[c].b);
   rect(0,0, width, 200);
 }
+
+// Draw sprite in the Z-index order
+fill(224,224,224,20);
+rect(0,0,width, height);
+drawSprites(topRowR);
+drawSprites(topRowL);
+rect(0,0,width, height);
+drawSprites(secondRowR);
+drawSprites(secondRowL);
+rect(0,0,width, height);
+drawSprites(thirdRowR);
+drawSprites(thirdRowL);
+rect(0,0,width, height);
+drawSprites(fourthRowR);
+drawSprites(fourthRowL);
+rect(0,0,width, height);
+drawSprites(fifthRowR);
+drawSprites(fifthRowL);
+
 };
 
 function mouseClicked() {
