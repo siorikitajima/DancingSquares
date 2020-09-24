@@ -118,7 +118,7 @@ playListR = (width < 600) ? [
     {"rowID": fourthRowR, "x": width*12, "y":height/2, "scale":1.5, "speed": -5},
     {"rowID": fifthRowR, "x": width*16, "y":height-100, "scale":2.08, "speed": -6}
     ]:[
-    {"rowID": topRowR, "x": width*2, "y":height/7, "scale":0.52, "speed": -2},
+    {"rowID": topRowR, "x": width*2, "y":height/7, "scale":0.52, "speed": -2.2},
     {"rowID": secondRowR, "x": width*3, "y":height/5, "scale":0.72, "speed": -3},
     {"rowID": thirdRowR, "x": width*4, "y":height/3, "scale":1.08, "speed": -4},
     {"rowID": fourthRowR, "x": width*5, "y":height/2, "scale":1.5, "speed": -5},
@@ -253,32 +253,34 @@ for(var row=0; row < playListL.length; row++){
         }
   }}
 
-  //Number images for the floor
+//Number images for the floor
   imageMode(CENTER);
   for(var im=0; im<groundImg.length;im++){
     var c = colorSwitch;
     (width < 900) ? [
-      image(groundImg[c], width/2, height/2, width, width*0.7)
+      image(groundImg[c], width/2, (height/2) - 50, width, width*0.7)
     ]:[
       image(groundImg[c], width/2, height/2)
     ]
   }
 
-//Showing the info popup BG
+//Top info popup
 if(infoSwitch) {
   var c = colorSwitch;
   noStroke();
   fill(colorList[c].r, colorList[c].g, colorList[c].b, 180);
-  rect(0,0, width, 150);
-  fill(224);
+  rect(0,0, width, 100);
+  noFill();
+  stroke(224);
   for(ic=0;ic<icon.length;ic++){
-    ellipse((width/2-60) + (60*ic), 40, 40, 40);
-    image(icon[ic],(width/2-60) + (60*ic), 40, 40, 40);
+    ellipse((width/2-80) + (80*ic), 50, 50, 50);
+    image(icon[ic],(width/2-80) + (80*ic), 50, 50, 50);
     }
 }
 
 // Draw sprite in the Z-index order
-fill(224,224,224,20);
+noStroke();
+fill(255,255,255,20);
 rect(0,0,width, height);
 drawSprites(topRowR);
 drawSprites(topRowL);
@@ -295,7 +297,7 @@ rect(0,0,width, height);
 drawSprites(fifthRowR);
 drawSprites(fifthRowL);
 
-//Content for the info popup
+//Bottom info popup
 if(infoSwitch) {
   var c = colorSwitch;
   var h = infoText[c].h1;
@@ -303,7 +305,7 @@ if(infoSwitch) {
   noStroke();
   fill(colorList[c].r, colorList[c].g, colorList[c].b);
   (width < 900) ? [
-    rect(0, (height - 40 - 150), width, 100)]:[
+    rect(0, (height - 40 - 190), width, 200)]:[
     rect(0, (height - 40 - 100), width, 100)]
   rect(0, (height - 100), width, 100);
   fill(224);
@@ -311,12 +313,12 @@ if(infoSwitch) {
   textAlign(CENTER);
   (width < 900) ? [textSize(20)]:[textSize(24)];
   (width < 900) ? [
-    text(h, width/16, (height - 40 - 130), (width - width/8), 100)]:[
+    text(h, width/16, (height - 40 - 160), (width - width/8), 100)]:[
     text(h, width/8, (height - 40 - 80), (width - width/4), 100)];
   textFont(bodyFont);
   textSize(16);
   (width < 900) ? [
-    text(t, width/16, (height - 40 - 90), (width - width/8), 100)]:[
+    text(t, width/16, (height - 40 - 120), (width - width/8), 100)]:[
     text(t, width/8, (height - 40 - 40), (width - width/4), 100)];
 }
 };
