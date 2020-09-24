@@ -3,6 +3,9 @@ var playListR = []; var playListL = [];
 var pauseSwitch = true;
 var infoSwitch = false;
 var colorSwitch = 7;
+var mainFont, bodyFont;
+
+// Info popup data
 var groundImg = [
   {'id':0, 'name':'numbers_pink'},
   {'id':1, 'name':'numbers_green'},
@@ -13,6 +16,16 @@ var groundImg = [
   {'id':6, 'name':'numbers_red'},
   {'id':7, 'name':'numbers_gray'}
 ];
+var infoText = [
+  {'h1':'Depression / MDD', 'body':'A mental health disorder characterized by persistently depressed mood or loss of interest in activities, causing significant impairment in daily life.'},
+  {'h1':'Bipolar', 'body':'A mental health disorder characterized by persistently depressed mood or loss of interest in activities, causing significant impairment in daily life.'},
+  {'h1':'Anxiety / GAD', 'body':'A mental health disorder characterized by persistently depressed mood or loss of interest in activities, causing significant impairment in daily life.'},
+  {'h1':'Obsessive-Compulsive Disorder / OCD', 'body':'A mental health disorder characterized by persistently depressed mood or loss of interest in activities, causing significant impairment in daily life.'},
+  {'h1':'Alcohol Abuse', 'body':'A mental health disorder characterized by persistently depressed mood or loss of interest in activities, causing significant impairment in daily life.'},
+  {'h1':'Alcohol Dependence', 'body':'A mental health disorder characterized by persistently depressed mood or loss of interest in activities, causing significant impairment in daily life.'},
+  {'h1':'Multiple issues', 'body':'A mental health disorder characterized by persistently depressed mood or loss of interest in activities, causing significant impairment in daily life.'},
+  {'h1':'Mental health issues', 'body':'A mental health disorder characterized by persistently depressed mood or loss of interest in activities, causing significant impairment in daily life.'}
+]
 
 // Group Names = Each Row
 var topRowR, topRowL, secondRowR, secondRowL, thirdRowR, thirdRowL, fourthRowR, fourthRowL, fifthRowR, fifthRowL;
@@ -78,6 +91,8 @@ function preload() {
     for(var im=0; im<groundImg.length;im++){
       groundImg[im] = loadImage('images/' + groundImg[im].name + '.png');
     }
+    mainFont = loadFont('assets/PlayfairDisplay-BoldItalic.otf');
+    bodyFont = loadFont('assets/Montserrat-Regular.otf');
 };
 
 function setup() {
@@ -132,10 +147,20 @@ playListL = (width < 600) ? [
         //Get color ID when clicked and hover
         animSpr.setCollider("rectangle", 35, 0, 130, 230);
         animSpr.onMousePressed = function() {
-          colorSwitch = this.getAnimationLabel();
+          var newColor = this.getAnimationLabel();
+          (newColor == 7) ? [
+            colorSwitch = colorSwitch
+          ]:[
+            colorSwitch = newColor
+          ]
         };
         animSpr.onMouseOver = function() {
-          colorSwitch = this.getAnimationLabel();
+          var newColor = this.getAnimationLabel();
+          (newColor == 7) ? [
+            colorSwitch = colorSwitch
+          ]:[
+            colorSwitch = newColor
+          ]
         };        
         //
         animSpr.addToGroup(playListR[r].rowID);
@@ -156,10 +181,20 @@ playListL = (width < 600) ? [
         //Get color ID
         animSpr.setCollider("rectangle", -35, 0, 130, 230);
         animSpr.onMousePressed = function() {
-          colorSwitch = this.getAnimationLabel();
+          var newColor = this.getAnimationLabel();
+          (newColor == 7) ? [
+            colorSwitch = colorSwitch
+          ]:[
+            colorSwitch = newColor
+          ]
         };
         animSpr.onMouseOver = function() {
-          colorSwitch = this.getAnimationLabel();
+          var newColor = this.getAnimationLabel();
+          (newColor == 7) ? [
+            colorSwitch = colorSwitch
+          ]:[
+            colorSwitch = newColor
+          ]
         };     
         //
         animSpr.addToGroup(playListL[r].rowID);
@@ -190,10 +225,20 @@ for(var row=0; row < playListR.length; row++){
         //Get color ID
         newSpr.setCollider("rectangle", 35, 0, 130, 230);
         newSpr.onMousePressed = function() {
-          colorSwitch = this.getAnimationLabel();
+          var newColor = this.getAnimationLabel();
+          (newColor == 7) ? [
+            colorSwitch = colorSwitch
+          ]:[
+            colorSwitch = newColor
+          ]
         };
         newSpr.onMouseOver = function() {
-          colorSwitch = this.getAnimationLabel();
+          var newColor = this.getAnimationLabel();
+          (newColor == 7) ? [
+            colorSwitch = colorSwitch
+          ]:[
+            colorSwitch = newColor
+          ]
         };
         //
         newSpr.addToGroup(rowID);
@@ -220,10 +265,20 @@ for(var row=0; row < playListL.length; row++){
         //Get color ID
         newSpr.setCollider("rectangle", -35, 0, 130, 230);
         newSpr.onMousePressed = function() {
-          colorSwitch = this.getAnimationLabel();
+          var newColor = this.getAnimationLabel();
+          (newColor == 7) ? [
+            colorSwitch = colorSwitch
+          ]:[
+            colorSwitch = newColor
+          ]
         };
         newSpr.onMouseOver = function() {
-          colorSwitch = this.getAnimationLabel();
+          var newColor = this.getAnimationLabel();
+          (newColor == 7) ? [
+            colorSwitch = colorSwitch
+          ]:[
+            colorSwitch = newColor
+          ]
         };     
         //
         newSpr.addToGroup(rowID);
@@ -233,7 +288,11 @@ for(var row=0; row < playListL.length; row++){
   imageMode(CENTER);
   for(var im=0; im<groundImg.length;im++){
     var c = colorSwitch;
-    image(groundImg[c], width/2, height/2);
+    (width < 900) ? [
+      image(groundImg[c], width/2, height/2, width, width*0.7)
+    ]:[
+      image(groundImg[c], width/2, height/2)
+    ]
   }
 
 //Showing the info popup
@@ -261,6 +320,22 @@ drawSprites(fourthRowL);
 rect(0,0,width, height);
 drawSprites(fifthRowR);
 drawSprites(fifthRowL);
+
+//Content for the info popup
+if(infoSwitch) {
+  var c = colorSwitch;
+  var h = infoText[c].h1;
+  var t = infoText[c].body;
+  noStroke();
+  fill(224);
+  textFont(mainFont);
+  textAlign(CENTER);
+  textSize(28);
+  text(h, width/8, 30, (width - width/4), 100);
+  textFont(bodyFont);
+  textSize(18);
+  text(t, width/8, 80, (width - width/4), 100);
+}
 
 };
 
