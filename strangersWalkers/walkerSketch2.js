@@ -303,21 +303,21 @@ if(infoSwitch) {
   noStroke();
   fill(colorList[c].r, colorList[c].g, colorList[c].b);
   (width < 900) ? [
-    rect(0, (height - 150), width, 100)]:[
-    rect(0, (height - 100), width, 100)]
+    rect(0, (height - 40 - 150), width, 100)]:[
+    rect(0, (height - 40 - 100), width, 100)]
   rect(0, (height - 100), width, 100);
   fill(224);
   textFont(mainFont);
   textAlign(CENTER);
   (width < 900) ? [textSize(20)]:[textSize(24)];
   (width < 900) ? [
-    text(h, width/16, (height - 130), (width - width/8), 100)]:[
-    text(h, width/8, (height - 80), (width - width/4), 100)];
+    text(h, width/16, (height - 40 - 130), (width - width/8), 100)]:[
+    text(h, width/8, (height - 40 - 80), (width - width/4), 100)];
   textFont(bodyFont);
   textSize(16);
   (width < 900) ? [
-    text(t, width/16, (height - 90), (width - width/8), 100)]:[
-    text(t, width/8, (height - 40), (width - width/4), 100)];
+    text(t, width/16, (height - 40 - 90), (width - width/8), 100)]:[
+    text(t, width/8, (height - 40 - 40), (width - width/4), 100)];
 }
 };
 
