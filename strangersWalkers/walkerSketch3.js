@@ -195,7 +195,7 @@ playListL = (width < 600) ? [
 
 function draw() {
   clear();
-  background(224, 224, 224);
+  background(202);
 
 ////// Horizontal Animation from the Right
 for(var row=0; row < playListR.length; row++){
@@ -299,7 +299,7 @@ if(infoSwitch) {
 
 // Draw sprite in the Z-index order
 noStroke();
-fill(255,255,255,20);
+fill(255,255,255,25);
 rect(0,0,width, height);
 drawSprites(topRowR);
 drawSprites(topRowL);
