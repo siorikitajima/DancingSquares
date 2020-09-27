@@ -206,7 +206,7 @@ for(var row=0; row < playListR.length; row++){
     var cloneRow = rowID.slice();
     cloneRow.splice(i,1);
     var delayValue = floor(random(3,5.9));
-    var mappin = map((i + 1) / delayValue, 1/5, rowID.length/3, 1, 2);
+    var mappin = map((i + 1) / delayValue, 1/5, rowID.length/3, 0.8, 2.2);
     thisSpr.velocity.x = playListR[row].speed * 0.7 * mappin;
      if (thisSpr.position.x < - 300) {
         var oldLabel = thisSpr.getAnimationLabel();
