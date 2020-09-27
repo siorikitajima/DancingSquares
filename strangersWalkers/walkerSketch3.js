@@ -46,15 +46,15 @@ var charactorList = [
     imageR: ['uncleR_pink', 'uncleR_green', 'uncleR_yellow', 'uncleR_purple', 'uncleR_orange', 'uncleR_teal', 'uncleR_red', 'uncleR_gray'],
     imageL: ['uncleL_pink', 'uncleL_green', 'uncleL_yellow', 'uncleL_purple', 'uncleL_orange', 'uncleL_teal', 'uncleL_red', 'uncleL_gray']},
   { name:'puffy', id:'4',
-    imageR: ['tinyR_pink', 'tinyR_green', 'tinyR_yellow', 'tinyR_purple', 'tinyR_orange', 'tinyR_teal', 'tinyR_red', 'tinyR_gray'],
-    imageL: ['tinyL_pink', 'tinyL_green', 'tinyL_yellow', 'tinyL_purple', 'tinyL_orange', 'tinyL_teal', 'tinyL_red', 'tinyL_gray']}, 
-  { name:'booknerd', id:'5',
-    imageR: ['peterR_pink', 'peterR_green', 'peterR_yellow', 'peterR_purple', 'peterR_orange', 'peterR_teal', 'peterR_red', 'peterR_gray'],
-    imageL: ['peterL_pink', 'peterL_green', 'peterL_yellow', 'peterL_purple', 'peterL_orange', 'peterL_teal', 'peterL_red', 'peterL_gray']},
+    imageR: ['puffyR_pink', 'puffyR_green', 'puffyR_yellow', 'puffyR_purple', 'puffyR_orange', 'puffyR_teal', 'puffyR_red', 'puffyR_gray'],
+    imageL: ['puffyL_pink', 'puffyL_green', 'puffyL_yellow', 'puffyL_purple', 'puffyL_orange', 'puffyL_teal', 'puffyL_red', 'puffyL_gray']}, 
+  { name:'notsure', id:'5',
+    imageR: ['notsureR_pink', 'notsureR_green', 'notsureR_yellow', 'notsureR_purple', 'notsureR_orange', 'notsureR_teal', 'notsureR_red', 'notsureR_gray'],
+    imageL: ['notsureL_pink', 'notsureL_green', 'notsureL_yellow', 'notsureL_purple', 'notsureL_orange', 'notsureL_teal', 'notsureL_red', 'notsureL_gray']},
     { name:'yuki', id:'6',
     imageR: ['granolaR_pink', 'granolaR_green', 'granolaR_yellow', 'granolaR_purple', 'granolaR_orange', 'granolaR_teal', 'granolaR_red', 'granolaR_gray'],
     imageL: ['granolaL_pink', 'granolaL_green', 'granolaL_yellow', 'granolaL_purple', 'granolaL_orange', 'granolaL_teal', 'granolaL_red', 'granolaL_gray']},  
-  { name:'notsure', id:'7',
+  { name:'potato', id:'7',
     imageR: ['uncleR_pink', 'uncleR_green', 'uncleR_yellow', 'uncleR_purple', 'uncleR_orange', 'uncleR_teal', 'uncleR_red', 'uncleR_gray'],
     imageL: ['uncleL_pink', 'uncleL_green', 'uncleL_yellow', 'uncleL_purple', 'uncleL_orange', 'uncleL_teal', 'uncleL_red', 'uncleL_gray']}];
 
@@ -71,12 +71,12 @@ var colorList = [
 var colorArray = [];
 
 function preload() {
-    //Push 400 colors into the array
+    // Push 400 colors into the array
     for(var c=0; c<colorList.length;c++){
       for(var cn=0; cn<colorList[c].number;cn++){
         colorArray.push(colorList[c].id);
     }}
-    //Number images on the floor
+    // Prepare number images for the floor
     for(var im=0; im<groundImg.length;im++){
       groundImg[im] = loadImage('images/' + groundImg[im].name + '.png');
     }
@@ -84,7 +84,7 @@ function preload() {
       icons[ic] = loadImage(icons[ic].img);
     }
 
-    //Prepare all charactor animations x 8 Colors each side
+    // Prepare all charactor animations x 8 Colors each side x 2
     for(var ch=0; ch<charactorList.length;ch++){
       for(var c=0; c<colorList.length;c++){
         animNameR = charactorList[ch].imageR[c] + '_anim';
@@ -105,36 +105,37 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  setFrameRate(30);
   topRowR = new Group(); secondRowR = new Group(); thirdRowR = new Group(); fourthRowR = new Group(); fifthRowR = new Group();
   topRowL = new Group(); secondRowL = new Group(); thirdRowL = new Group(); fourthRowL = new Group(); fifthRowL = new Group();
 
 // Setup size, speed and position of each row group
 playListR = (width < 600) ? [
-    {"rowID": topRowR, "x": width*4, "y":100, "scale":0.55, "speed": -1.8},
-    {"rowID": secondRowR, "x": width*6, "y":height/5, "scale":0.72, "speed": -3},
-    {"rowID": thirdRowR, "x": width*8, "y":height/3, "scale":1.08, "speed": -4},
-    {"rowID": fourthRowR, "x": width*12, "y":height/2, "scale":1.5, "speed": -5},
-    {"rowID": fifthRowR, "x": width*16, "y":height-100, "scale":2.08, "speed": -6}
+    {"rowID": topRowR, "x": width*4, "y":100, "scale":0.55, "speed": -3},
+    {"rowID": secondRowR, "x": width*6, "y":height/5, "scale":0.72, "speed": -4},
+    {"rowID": thirdRowR, "x": width*8, "y":height/3, "scale":1.08, "speed": -5},
+    {"rowID": fourthRowR, "x": width*12, "y":height/2, "scale":1.5, "speed": -6.5},
+    {"rowID": fifthRowR, "x": width*16, "y":height-100, "scale":2.4, "speed": -8}
     ]:[
-    {"rowID": topRowR, "x": width*2, "y":height/7, "scale":0.52, "speed": -1.8},
-    {"rowID": secondRowR, "x": width*3, "y":height/5, "scale":0.72, "speed": -3},
-    {"rowID": thirdRowR, "x": width*4, "y":height/3, "scale":1.08, "speed": -4},
-    {"rowID": fourthRowR, "x": width*5, "y":height/2, "scale":1.5, "speed": -5},
-    {"rowID": fifthRowR, "x": width*7, "y":height-200, "scale":2.08, "speed": -6}];
+    {"rowID": topRowR, "x": width*2, "y":height/7, "scale":0.52, "speed": -3},
+    {"rowID": secondRowR, "x": width*3, "y":height/5, "scale":0.72, "speed": -4},
+    {"rowID": thirdRowR, "x": width*4, "y":height/3, "scale":1.08, "speed": -5},
+    {"rowID": fourthRowR, "x": width*5, "y":height/2, "scale":1.5, "speed": -6.5},
+    {"rowID": fifthRowR, "x": width*7, "y":height-220, "scale":2.4, "speed": -8}];
 playListL = (width < 600) ? [
-    {"rowID": topRowL, "x": -(width*4), "y":120, "scale":0.6, "speed": 0.7},
-    {"rowID": secondRowL, "x": -(width*6), "y":height/5 + 15, "scale":0.76, "speed": 1.3},
-    {"rowID": thirdRowL, "x": -(width*8), "y":height/3 + 20, "scale":1.12, "speed": 2.5},
-    {"rowID": fourthRowL, "x": -(width*16), "y":height/2 + 25, "scale":1.54, "speed": 3.5},
-    {"rowID": fifthRowL, "x": -(width*16), "y":height-100 + 30, "scale":2.12, "speed": 4.5}
+    {"rowID": topRowL, "x": -(width*4), "y":120, "scale":0.6, "speed": 1.5},
+    {"rowID": secondRowL, "x": -(width*6), "y":height/5 + 15, "scale":0.76, "speed": 2.5},
+    {"rowID": thirdRowL, "x": -(width*8), "y":height/3 + 20, "scale":1.12, "speed": 4},
+    {"rowID": fourthRowL, "x": -(width*16), "y":height/2 + 25, "scale":1.54, "speed": 5.5},
+    {"rowID": fifthRowL, "x": -(width*16), "y":height-100, "scale":2.5, "speed": 7}
     ]:[
-    {"rowID": topRowL, "x": -(width*1.2), "y":height/7 + 20, "scale":0.56, "speed": 0.7},
-    {"rowID": secondRowL, "x": -(width*2.5), "y":height/5 + 30, "scale":0.76, "speed": 1.3},
-    {"rowID": thirdRowL, "x": -(width*4), "y":height/3 + 40, "scale":1.12, "speed": 2.5},
-    {"rowID": fourthRowL, "x": -(width*5), "y":height/2 + 50, "scale":1.54, "speed": 3.5},
-    {"rowID": fifthRowL, "x": -(width*7), "y":height-200 + 60, "scale":2.12, "speed": 4.5}];
+    {"rowID": topRowL, "x": -(width*1.2), "y":height/7 + 20, "scale":0.56, "speed": 1.5},
+    {"rowID": secondRowL, "x": -(width*2.5), "y":height/5 + 30, "scale":0.76, "speed": 2.5},
+    {"rowID": thirdRowL, "x": -(width*4), "y":height/3 + 40, "scale":1.12, "speed": 4},
+    {"rowID": fourthRowL, "x": -(width*5), "y":height/2 + 50, "scale":1.54, "speed": 5.5},
+    {"rowID": fifthRowL, "x": -(width*7), "y":height-200, "scale":2.5, "speed": 7}];
 
-//assign sprites to Right Rows
+// Assign sprites to Right Rows
     for(var r=0; r<playListR.length;r++){
       for(var ch=0; ch<charactorList.length;ch++){
         var randomColor = floor(random(0, 399.9));
@@ -143,7 +144,7 @@ playListL = (width < 600) ? [
         var animSpr = charactorList[ch].imageR[coId] + '_spr';
         // var animLab = str(coId);
         var animLab = str(charactorList[ch].id + 'R' + coId);
-        charactorList[ch].imageR[coId].frameDelay = floor(random(6,9.9));
+        charactorList[ch].imageR[coId].frameDelay = floor(random(3,5.9));
         animSpr = createSprite(playListR[r].x * randomX, playListR[r].y, 200, 300);
         animSpr.scale = playListR[r].scale;
         animSpr.addAnimation(animLab, charactorList[ch].imageR[coId]);
@@ -163,7 +164,7 @@ playListL = (width < 600) ? [
         }
     }
 
-//assign sprites to Left Rows
+// Assign sprites to Left Rows
     for(var r=0; r<playListL.length;r++){
       for(var ch=0; ch<charactorList.length;ch++){
         var randomColor = floor(random(0, 399.9));
@@ -172,7 +173,7 @@ playListL = (width < 600) ? [
         var animSpr = charactorList[ch].imageL[coId] + '_spr';
         // var animLab = str(coId);
         var animLab = str(charactorList[ch].id + 'L' + coId);
-        charactorList[ch].imageL[coId].frameDelay = floor(random(6,9.9));
+        charactorList[ch].imageL[coId].frameDelay = floor(random(3,5.9));
         animSpr = createSprite(playListL[r].x * randomX, playListL[r].y, 200, 300);
         animSpr.scale = playListL[r].scale;
         animSpr.addAnimation(animLab, charactorList[ch].imageL[coId]);
@@ -204,7 +205,9 @@ for(var row=0; row < playListR.length; row++){
     var thisSpr = rowID[i];
     var cloneRow = rowID.slice();
     cloneRow.splice(i,1);
-    thisSpr.velocity.x = playListR[row].speed + i/3;
+    var delayValue = floor(random(3,5.9));
+    var mappin = map((i + 1) / delayValue, 1/5, rowID.length/3, 1, 2);
+    thisSpr.velocity.x = playListR[row].speed * 0.7 * mappin;
      if (thisSpr.position.x < - 300) {
         var oldLabel = thisSpr.getAnimationLabel();
         thisSpr.remove();
@@ -216,6 +219,7 @@ for(var row=0; row < playListR.length; row++){
         var newR_label = charaId + 'R' + coId;
         var newSpr = createSprite(playListR[row].x, playListR[row].y, 200, 300);
         newSpr.scale = playListR[row].scale;
+        charactorList[charaId].imageR[coId].frameDelay = delayValue;
         newSpr.addAnimation(newR_label, charactorList[charaId].imageR[coId]);
         }
         //Get color ID
@@ -242,7 +246,9 @@ for(var row=0; row < playListL.length; row++){
     var thisSpr = rowID[i];
     var cloneRow = rowID.slice();
     cloneRow.splice(i,1);
-    thisSpr.velocity.x = playListL[row].speed + i/3;
+    var delayValue = floor(random(3,5.9));
+    var mappin = map((i + 1) / delayValue, 1/5, rowID.length/3, 1, 2);
+    thisSpr.velocity.x = playListL[row].speed * 0.7 * mappin;
      if (thisSpr.position.x > width + 200) {
         var oldLabel = thisSpr.getAnimationLabel();
         thisSpr.remove();
@@ -254,6 +260,7 @@ for(var row=0; row < playListL.length; row++){
         var newL_label = charaId + 'L' + coId;
         var newSpr = createSprite(playListL[row].x, playListL[row].y, 200, 300);
         newSpr.scale = playListL[row].scale;
+        charactorList[charaId].imageL[coId].frameDelay = delayValue;
         newSpr.addAnimation(newL_label, charactorList[charaId].imageL[coId]);
         }
         //Get color ID
@@ -272,7 +279,7 @@ for(var row=0; row < playListL.length; row++){
          }
   }}
 
-//Number images for the floor
+// Place number images on the floor
   imageMode(CENTER);
   for(var im=0; im<groundImg.length;im++){
     var c = colorSwitch;
@@ -283,7 +290,15 @@ for(var row=0; row < playListL.length; row++){
     ]
   }
 
-//Top info popup
+//////// Frame rate test
+var fr = 'FrameRate test:' + floor(getFrameRate());
+fill(100);
+textAlign(CENTER);
+textFont(mainFont);
+textSize(30);
+text(fr, width/2, 50);
+
+// Top info popup
 if(infoSwitch) {
   var c = colorSwitch;
   noStroke();
@@ -297,7 +312,7 @@ if(infoSwitch) {
     }
 }
 
-// Draw sprite in the Z-index order
+// Draw sprite in the Z-index order + white screens in between
 noStroke();
 fill(255,255,255,25);
 rect(0,0,width, height);
@@ -316,7 +331,7 @@ rect(0,0,width, height);
 drawSprites(fifthRowR);
 drawSprites(fifthRowL);
 
-//Bottom info popup
+// Bottom info popup
 if(infoSwitch) {
   var c = colorSwitch;
   var h = infoText[c].h1;
