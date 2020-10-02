@@ -1,137 +1,181 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display:ital,wght@1,700&display=swap');
+
 html, body {
-    background-color: rgb(224, 224, 216);
+    background-color: rgb(206, 206, 198);
     width: 100%;
-    height:100%;
+    height: 100%;
     margin: 0;
     overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
   }
-/*   
-  #girl1R {
-    width: 200px;
+
+  canvas {
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    pointer-events: none;
   }
-  
-  #topRow, #secondRow, #thirdRow, #fourthRow, #fifthRow {
+
+  #floor {
+    z-index: 1;
     width: 100%;
-    position: relative;
-    overflow: visible;
-  }
-  #topRow {
-    height: 20vh;
-    position: fixed;
-    top: 5vh;
-  }
-  #secondRow {
-    height: 25vh;
-    position: fixed;
-    top: 15vh;
-  }
-  #thirdRow {
-    height: 35vh;
-    position: fixed;
-    top: 25vh;
-  }
-  #fourthRow {
-    height: 50vh;
-    position: fixed;
-    top: 35vh;
-  }
-  #fifthRow {
-    height: 66vh;
-    position: fixed;
-    top: 55vh;
-  }
-
-  #topRow .walkers {
-    width: 20vh;
-  }
-  #secondRow .walkers {
-    width: 25vh;
-  }
-  #thirdRow .walkers {
-    width: 35vh;
-  }
-  #fourthRow .walkers {
-    width: 50vh;
-  }
-  #fifthRow .walkers {
-    width: 66vh;
-  }
-  .walkers {
     height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    position: relative;
+  }
+  #GroundImg {
+    width: 1000px;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @media only screen and (max-width: 1000px) {
+    #GroundImg {
+      width: 100vw;
+      height: 40vw;
+  }
+}
+
+  #topPanel, #topPanelContent{
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    top: -100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 300ms;
   }
 
-  .fromRight {
+  #topPanelContent {
+    z-index: 900;
+  }
+  #topPanel {
+    z-index: 0;
+  }
+
+  .infoBtn {
+    height: 50px;
+    width: fit-content;
+    margin: 0 20px;
+    /* background-color: rgb(224, 224, 216); */
+    position: relative;
+    display: flex;
+    color: rgb(224, 224, 216);
+    cursor: pointer;
+  }
+  .infoBtn img {
+    height: 50px;
+    width: 50px;
+  }
+  .infoBtn:hover {
+    opacity: 0.5;
+    transition-duration: 300ms;
+  }
+
+  #bottomPanel {
+    height: 150px;
+    width: 100%;
+    position: fixed;
+    bottom: -150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 700;
+    transition-duration: 300ms;
+    color: rgb(224, 224, 216);
+  }
+  #prevIssue, #nextIssue {
+    width: calc((100% - 800px)/2);
+    height: 100%;
+    margin: 0;
     position: absolute;
   }
-  #topRow .fromRight {
-    right: -20vw;
+  #prevIssue {
+    left: 0;
   }
-  #secondRow .fromRight {
-    right: -25vh;
+  #prevIssue img {
+    right: 10px;
   }
-  #thirdRow .fromRight {
-    right: -35vh;
+  #nextIssue {
+    right: 0;
   }
-  #fourthRow .fromRight {
-    right: -50vh;
+  #nextIssue img {
+    left: 10px;
   }
-  #fifthRow .fromRight {
-    right: -66vh;
+  #thisIssue {
+    text-align: center;
+    width: 800px;
+    max-width: 100%;
   }
-
-  .fromLeft {
+  #issueH1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    margin: 0 auto 10px auto;
+    width: 700px;
+    max-width: 80%;
+  }
+  #issueP {
+    width: 700px;
+    margin: 0 auto;
+    max-width: 80%;
+  }
+  img.arrows {
+    width: 70px;
+    height: 70px;
     position: absolute;
-    top: 30px;
+    top: 50%;
+    transform: translateY(-50%);
   }
-  #topRow .fromLeft {
-    left: -20vw;
-  }
-  #secondRow .fromLeft {
-    left: -25vh;
-  }
-  #thirdRow .fromLeft {
-    left: -35vh;
-  }
-  #fourthRow .fromLeft {
-    left: -50vh;
-  }
-  #fifthRow .fromLeft {
-    left: -66vh;
+  img.arrows:hover {
+    opacity: 0.5;
+    transition-duration: 300ms;
   }
 
-  @media only screen and (max-width: 600px) {
-    #topRow .fromRight {
-      right: -30vw;
+  @media only screen and (max-width: 600px){
+    #topPanel, #topPanelContent{
+      height: 150px;
+      display: block;
+      top: -150px;
     }
-    #secondRow .fromRight {
-      right: -30vh;
+    #topPanel {
+      z-index: 750;
     }
-    #thirdRow .fromRight {
-      right: -45vh;
+    .infoBtn {
+      width: 100%;
+      margin: 0;
+      padding-left: 10px;
+      border-bottom: rgb(224, 224, 216) 1px solid;
     }
-    #fourthRow .fromRight {
-      right: -60vh;
+    #voicesBtn {
+      border-bottom: none;
     }
-    #fifthRow .fromRight {
-      right: -80vh;
+    #bottomPanel {
+      display: block;
+      height: calc(100% - 180px);
+      bottom: calc(-(100% - 180px));
+      opacity: 0;
     }
-  
-    #topRow .fromLeft {
-      left: -30vw;
-    }
-    #secondRow .fromLeft {
-      left: -30vh;
-    }
-    #thirdRow .fromLeft {
-      left: -45vh;
-    }
-    #fourthRow .fromLeft {
-      left: -60vh;
-    }
-    #fifthRow .fromLeft {
-      left: -80vh;
-    }
-  } */
+    #prevIssue, #nextIssue {
+      width: 50%;
+      height: 50px;
+      margin: 0;
+      display: inline-block;
+      z-index: 800;
+  }
+  #thisIssue {
+    position: absolute;
+  }
+  #issueH1 {
+    margin: 100px auto 10px auto;
+  }
+}
+
 
   /** spinner **/
 	.loadingSpinner {

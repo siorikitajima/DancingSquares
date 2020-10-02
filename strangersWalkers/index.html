@@ -5,12 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crowd Walking Animation Test</title>
     <link rel="stylesheet" href="walking.css">
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/addons/p5.dom.js"></script>
     <script src="p5.play.js"></script>
     <script src="walkerSketch3.js" type="text/javascript"></script>
 </head>
 <body>
-    
+    <div id="topPanel"></div>
+    <div id="topPanelContent">
+        <a href="https://siorikitajima.github.io/strangers/#/" target="_parent">
+        <div class="infoBtn" id="learnBtn">
+            <img src="images/infoIcons-learn.svg" alt="">
+            <p>Learn More</p>
+        </div>
+    </a>
+    <a href="https://siorikitajima.github.io/strangers/#/data" target="_parent">
+        <div class="infoBtn" id="helpBtn">
+            <img src="images/infoIcons-help.svg" alt="">
+            <p>Find Help</p>
+        </div>
+        </a>
+        <a href="https://siorikitajima.github.io/strangers/#/voices" target="_parent">
+        <div class="infoBtn" id="voicesBtn">
+            <img src="images/infoIcons-voices.svg" alt="">
+            <p>Listen to Voices</p>
+        </div>
+        </a>
+    </div>
+    <div id="floor">
+        <img id="GroundImg" src="images/numbers_gray.png" alt="">
+    </div>
+    <div id="bottomPanel">
+        <div id="prevIssue" onclick="previousColor()">
+            <img class="arrows" src="images/left-arrow.svg" alt="">
+        </div>
+        <div id="thisIssue">
+            <h1 id="issueH1">Mental Health Issues</h1>
+            <p id="issueP">A wide range of conditions that affect mood, thinking, and behavior.</p>
+        </div>
+        <div id="nextIssue" onclick="nextColor()">
+            <img class="arrows" src="images/right-arrow.svg" alt="">
+        </div>
+    </div>
 </body>
 </html>

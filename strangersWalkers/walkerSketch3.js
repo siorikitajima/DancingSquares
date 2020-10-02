@@ -6,25 +6,33 @@ var colorSwitch = 7;
 var mainFont, bodyFont;
 var topRowR, topRowL, secondRowR, secondRowL, thirdRowR, thirdRowL, fourthRowR, fourthRowL, fifthRowR, fifthRowL;
 
+// DOM elements
+var bottomPanel, topPanel, topPanelContent;
+var prevIssue, nextIssue;
+var issueH, issueP;
+var GroundImg;
+// var theBody;
+// var learnBtn, helpBtn, voicesBtn;
+
 // Info popup data
 var groundImg = [
-  {id:0, name:'numbers_pink'},
-  {id:1, name:'numbers_green'},
-  {id:2, name:'numbers_yellow'},
-  {id:3, name:'numbers_purple'},
-  {id:4, name:'numbers_orange'},
-  {id:5, name:'numbers_teal'},
-  {id:6, name:'numbers_red'},
-  {id:7, name:'numbers_gray'}];
+  {id:0, name:'images/numbers_pink.png'},
+  {id:1, name:'images/numbers_green.png'},
+  {id:2, name:'images/numbers_yellow.png'},
+  {id:3, name:'images/numbers_purple.png'},
+  {id:4, name:'images/numbers_orange.png'},
+  {id:5, name:'images/numbers_teal.png'},
+  {id:6, name:'images/numbers_red.png'},
+  {id:7, name:'images/numbers_gray.png'}];
 var infoText = [
-  {h1:'Depression / MDD', body:'Persistently depressed mood or loss of interest in activities causing significant impairment in daily life.'},
-  {h1:'Bipolar', body:'Episodes of mood swings ranging from depressive lows to manic highs.'},
-  {h1:'Anxiety / GAD', 'body':"Feelings of worry, anxiety, or fear that are strong enough to interfere with one's daily activities."},
-  {h1:'Obsessive-Compulsive Disorder / OCD', body:'Excessive thoughts and fears (obsessions) that lead to repetitive behaviors.'},
-  {h1:'Alcohol Abuse', body:'Uncontrolled drinking and preoccupation with alcohol.'},
-  {h1:'Alcohol Dependence', body:'Uncontrolled drinking and dependence with alcohol.'},
-  {h1:'Multiple issues', body:'Symptoms often overlap and can be additive.'},
-  {h1:'Mental health issues', body:'A wide range of conditions that affect mood, thinking, and behavior.'}
+  {h1:'Depression / MDD', body:'Persistently depressed mood or loss of interest in activities causing significant impairment in daily life. The most common mental disorder in Singapore.'},
+  {h1:'Bipolar', body:'Episodes of mood swings ranging from depressive lows to manic highs. This disorder is characterised by depressive episodes and mania.'},
+  {h1:'Anxiety / GAD', 'body':"Feelings of worry, anxiety, or fear that are strong enough to interfere with one's daily activities. They are often accompanied by other symptoms."},
+  {h1:'OCD', body:'Obsessive-Compulsive Disorder. The occurrence of obsessions, compulsive rituals or, both recurrent and persistent thoughts, impulses, or images that are experienced as intrusive and cause great anxiety.'},
+  {h1:'Alcohol Abuse', body:'Recurrent alcohol use resulting in failure to fulfill major role obligations, or recurrent use in situations in which it is physically hazardous.'},
+  {h1:'Alcohol Dependence', body:'Maladaptive pattern of alcohol use, leading to clinically significant impairment or distress, and the essential feature of which is a cluster of cognitive, behavioural and physical symptoms.'},
+  {h1:'Multiple issues', body:'Comorbidity, presence of two or more of the above mental disorders in the same period. Symptoms often overlap and can be additive.'},
+  {h1:'Mental health issues', body:'A wide range of conditions that affect mood, thinking, and behavior. 1 in 7 people in Singapore has experienced mental issues, only 2 of them sought help.'}
 ]
 var icons = [
   {name:'learn', img:'images/infoIcons_learn.png'}, 
@@ -76,13 +84,6 @@ function preload() {
       for(var cn=0; cn<colorList[c].number;cn++){
         colorArray.push(colorList[c].id);
     }}
-    // Prepare number images for the floor
-    for(var im=0; im<groundImg.length;im++){
-      groundImg[im] = loadImage('images/' + groundImg[im].name + '.png');
-    }
-    for(var ic=0; ic<icons.length;ic++){
-      icons[ic] = loadImage(icons[ic].img);
-    }
 
     // Prepare all charactor animations x 8 Colors each side x 2
     for(var ch=0; ch<charactorList.length;ch++){
@@ -101,10 +102,24 @@ function preload() {
     //Fonts
     mainFont = loadFont('assets/PlayfairDisplay-BoldItalic.otf');
     bodyFont = loadFont('assets/Montserrat-Regular.otf');
+
+    //Dom elements
+    bottomPanel = select('#bottomPanel');
+    topPanel = select('#topPanel');
+    topPanelContent = select('#topPanelContent');
+    prevIssue = select('#prevIssue');
+    nextIssue = select('#nextIssue');
+    issueH = select('#issueH1');
+    issueP = select('#issueP');
+    GroundImg = select('#GroundImg');
+    // learnBtn = select('#learnBtn');
+    // helpBtn = select('#helpBtn');
+    // voicesBtn = select('#voicesBtn');
+    // thetheBody = select('#theBody');
 };
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, window.innerHeight);
   setFrameRate(30);
   topRowR = new Group(); secondRowR = new Group(); thirdRowR = new Group(); fourthRowR = new Group(); fifthRowR = new Group();
   topRowL = new Group(); secondRowL = new Group(); thirdRowL = new Group(); fourthRowL = new Group(); fifthRowL = new Group();
@@ -117,23 +132,23 @@ playListR = (width < 600) ? [
     {"rowID": fourthRowR, "x": width*12, "y":height/2, "scale":1.5, "speed": -6.5},
     {"rowID": fifthRowR, "x": width*16, "y":height-100, "scale":2.4, "speed": -8}
     ]:[
-    {"rowID": topRowR, "x": width*2, "y":height/7, "scale":0.52, "speed": -3},
-    {"rowID": secondRowR, "x": width*3, "y":height/5, "scale":0.72, "speed": -4},
-    {"rowID": thirdRowR, "x": width*4, "y":height/3, "scale":1.08, "speed": -5},
-    {"rowID": fourthRowR, "x": width*5, "y":height/2, "scale":1.5, "speed": -6.5},
+    {"rowID": topRowR, "x": width*3, "y":height/7, "scale":0.52, "speed": -3},
+    {"rowID": secondRowR, "x": width*4, "y":height/5, "scale":0.72, "speed": -4},
+    {"rowID": thirdRowR, "x": width*5, "y":height/3, "scale":1.08, "speed": -5},
+    {"rowID": fourthRowR, "x": width*6, "y":height/2, "scale":1.5, "speed": -6.5},
     {"rowID": fifthRowR, "x": width*7, "y":height-220, "scale":2.4, "speed": -8}];
 playListL = (width < 600) ? [
-    {"rowID": topRowL, "x": -(width*4), "y":120, "scale":0.6, "speed": 1.5},
-    {"rowID": secondRowL, "x": -(width*6), "y":height/5 + 15, "scale":0.76, "speed": 2.5},
-    {"rowID": thirdRowL, "x": -(width*8), "y":height/3 + 20, "scale":1.12, "speed": 4},
-    {"rowID": fourthRowL, "x": -(width*16), "y":height/2 + 25, "scale":1.54, "speed": 5.5},
-    {"rowID": fifthRowL, "x": -(width*16), "y":height-100, "scale":2.5, "speed": 7}
+    {"rowID": topRowL, "x": -(width*3), "y":120, "scale":0.6, "speed": 3},
+    {"rowID": secondRowL, "x": -(width*5), "y":height/5 + 15, "scale":0.76, "speed": 4},
+    {"rowID": thirdRowL, "x": -(width*7), "y":height/3 + 20, "scale":1.12, "speed": 5},
+    {"rowID": fourthRowL, "x": -(width*15), "y":height/2 + 25, "scale":1.54, "speed": 6.5},
+    {"rowID": fifthRowL, "x": -(width*15), "y":height-100, "scale":2.5, "speed": 8}
     ]:[
-    {"rowID": topRowL, "x": -(width*1.2), "y":height/7 + 20, "scale":0.56, "speed": 1.5},
-    {"rowID": secondRowL, "x": -(width*2.5), "y":height/5 + 30, "scale":0.76, "speed": 2.5},
-    {"rowID": thirdRowL, "x": -(width*4), "y":height/3 + 40, "scale":1.12, "speed": 4},
-    {"rowID": fourthRowL, "x": -(width*5), "y":height/2 + 50, "scale":1.54, "speed": 5.5},
-    {"rowID": fifthRowL, "x": -(width*7), "y":height-200, "scale":2.5, "speed": 7}];
+    {"rowID": topRowL, "x": -(width*2), "y":height/7 + 20, "scale":0.56, "speed": 3},
+    {"rowID": secondRowL, "x": -(width*3), "y":height/5 + 30, "scale":0.76, "speed": 4},
+    {"rowID": thirdRowL, "x": -(width*4), "y":height/3 + 40, "scale":1.12, "speed": 5},
+    {"rowID": fourthRowL, "x": -(width*5), "y":height/2 + 50, "scale":1.54, "speed": 6.5},
+    {"rowID": fifthRowL, "x": -(width*6), "y":height-200, "scale":2.5, "speed": 8}];
 
 // Assign sprites to Right Rows
     for(var r=0; r<playListR.length;r++){
@@ -154,11 +169,13 @@ playListL = (width < 600) ? [
           var newLabel = this.getAnimationLabel();
           var separatedLabel = split(newLabel, 'R');
           (separatedLabel[1] == 7) ? [colorSwitch = colorSwitch]:[colorSwitch = separatedLabel[1]]
+          updateGround();
         };
         animSpr.onMouseOver = function() {
           var newLabel = this.getAnimationLabel();
           var separatedLabel = split(newLabel, 'R');
           (separatedLabel[1] == 7) ? [colorSwitch = colorSwitch]:[colorSwitch = separatedLabel[1]]
+          updateGround();
         };        
         animSpr.addToGroup(playListR[r].rowID);
         }
@@ -183,11 +200,13 @@ playListL = (width < 600) ? [
           var newLabel = this.getAnimationLabel();
           var separatedLabel = split(newLabel, 'L');
           (separatedLabel[1] == 7) ? [colorSwitch = colorSwitch]:[colorSwitch = separatedLabel[1]]
+          updateGround();
         };
         animSpr.onMouseOver = function() {
           var newLabel = this.getAnimationLabel();
           var separatedLabel = split(newLabel, 'L');
           (separatedLabel[1] == 7) ? [colorSwitch = colorSwitch]:[colorSwitch = separatedLabel[1]]
+          updateGround();
         };         
         animSpr.addToGroup(playListL[r].rowID);
         }
@@ -196,7 +215,6 @@ playListL = (width < 600) ? [
 
 function draw() {
   clear();
-  background(202);
 
 ////// Horizontal Animation from the Right
 for(var row=0; row < playListR.length; row++){
@@ -207,7 +225,7 @@ for(var row=0; row < playListR.length; row++){
     cloneRow.splice(i,1);
     var delayValue = floor(random(3,5.9));
     var mappin = map((i + 1) / delayValue, 1/5, rowID.length/3, 0.8, 2.2);
-    thisSpr.velocity.x = playListR[row].speed * 0.7 * mappin;
+    thisSpr.velocity.x = playListR[row].speed * 0.65 * mappin;
      if (thisSpr.position.x < - 300) {
         var oldLabel = thisSpr.getAnimationLabel();
         thisSpr.remove();
@@ -248,7 +266,7 @@ for(var row=0; row < playListL.length; row++){
     cloneRow.splice(i,1);
     var delayValue = floor(random(3,5.9));
     var mappin = map((i + 1) / delayValue, 1/5, rowID.length/3, 1, 2);
-    thisSpr.velocity.x = playListL[row].speed * 0.7 * mappin;
+    thisSpr.velocity.x = playListL[row].speed * 0.65 * mappin;
      if (thisSpr.position.x > width + 200) {
         var oldLabel = thisSpr.getAnimationLabel();
         thisSpr.remove();
@@ -279,38 +297,13 @@ for(var row=0; row < playListL.length; row++){
          }
   }}
 
-// Place number images on the floor
-  imageMode(CENTER);
-  for(var im=0; im<groundImg.length;im++){
-    var c = colorSwitch;
-    (width < 900) ? [
-      image(groundImg[c], width/2, (height/2) - 50, width, width*0.7)
-    ]:[
-      image(groundImg[c], width/2, height/2)
-    ]
-  }
-
 //////// Frame rate test
 var fr = 'FrameRate test:' + floor(getFrameRate());
 fill(100);
 textAlign(CENTER);
 textFont(mainFont);
-textSize(30);
-text(fr, width/2, 50);
-
-// Top info popup
-if(infoSwitch) {
-  var c = colorSwitch;
-  noStroke();
-  fill(colorList[c].r, colorList[c].g, colorList[c].b, 180);
-  rect(0,0, width, 100);
-  noFill();
-  stroke(224);
-  for(ic=0;ic<icons.length;ic++){
-    ellipse((width/2-80) + (80*ic), 50, 50, 50);
-    image(icons[ic],(width/2-80) + (80*ic), 50, 50, 50);
-    }
-}
+textSize(24);
+text(fr, width/2, 150);
 
 // Draw sprite in the Z-index order + white screens in between
 noStroke();
@@ -330,39 +323,53 @@ drawSprites(fourthRowL);
 rect(0,0,width, height);
 drawSprites(fifthRowR);
 drawSprites(fifthRowL);
-
-// Bottom info popup
-if(infoSwitch) {
-  var c = colorSwitch;
-  var h = infoText[c].h1;
-  var t = infoText[c].body;
-  noStroke();
-  fill(colorList[c].r, colorList[c].g, colorList[c].b);
-  (width < 900) ? [
-    rect(0, (height - 40 - 190), width, 200)]:[
-    rect(0, (height - 40 - 100), width, 100)]
-  rect(0, (height - 100), width, 100);
-  fill(224);
-  textFont(mainFont);
-  textAlign(CENTER);
-  (width < 900) ? [textSize(20)]:[textSize(24)];
-  (width < 900) ? [
-    text(h, width/16, (height - 40 - 160), (width - width/8), 100)]:[
-    text(h, width/8, (height - 40 - 80), (width - width/4), 100)];
-  textFont(bodyFont);
-  textSize(16);
-  (width < 900) ? [
-    text(t, width/16, (height - 40 - 120), (width - width/8), 100)]:[
-    text(t, width/8, (height - 40 - 40), (width - width/4), 100)];
-}
 };
 
 function mouseClicked() {
-// Paused + resumed when clicked
+  var c = float(colorSwitch);
+  var pr = (c == 0) ? 7 : c - 1;
+  var ne = (c == 7) ? 0 : c + 1;
+// Update the pannel color & info
     if(pauseSwitch) {  
       noLoop();
+      bottomPanel.style('background-color','rgb('+ colorList[c].r + ',' + colorList[c].g + ',' + colorList[c].b + ')');
+      topPanel.style('background-color','rgb('+ colorList[c].r + ',' + colorList[c].g + ',' + colorList[c].b + ')');
+      prevIssue.style('background-color','rgb('+ colorList[pr].r + ',' + colorList[pr].g + ',' + colorList[pr].b + ')');
+      nextIssue.style('background-color','rgb('+ colorList[ne].r + ',' + colorList[ne].g + ',' + colorList[ne].b + ')');
+      bottomPanel.style('opacity','1');
+      issueH.html(infoText[c].h1);
+      issueP.html(infoText[c].body);
+      bottomPanel.style('bottom','30px');
+      topPanel.style('top','0');
+      topPanelContent.style('top','0');
+      // createA('https://siorikitajima.github.io/strangers/#/data', voicesBtn, '_parent');
+      updateGround();
     } else {
-      loop();}
+      loop();
+      (width < 600) ? bottomPanel.style('bottom','-100vh') : bottomPanel.style('bottom','-150px');
+      (width < 600) ? topPanel.style('top','-150px') : topPanel.style('top','-100px');
+      (width < 600) ? topPanelContent.style('top','-150px') : topPanelContent.style('top','-100px');
+    }
     pauseSwitch = !pauseSwitch;
     infoSwitch = !infoSwitch;
 };
+
+function previousColor() {
+  var c = float(colorSwitch);
+  colorSwitch = (c == 0) ? 7 : c -1;
+  pauseSwitch = true;
+  updateGround();
+};
+
+function nextColor() {
+  var c = float(colorSwitch);
+  colorSwitch = (c == 7) ? 0 : c +1;
+  pauseSwitch = true;
+  updateGround();
+};
+
+function updateGround(){
+  var c = colorSwitch;
+  var theImg = groundImg[c].name;
+  GroundImg.attribute('src', theImg);
+}
