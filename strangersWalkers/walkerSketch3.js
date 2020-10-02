@@ -75,7 +75,7 @@ var colorList = [
     {'id':4, 'name':'_orange', 'number':11, 'r':220, 'g': 96, 'b':46},
     {'id':5, 'name':'_teal', 'number':2, 'r':0, 'g': 175, 'b':185},
     {'id':6, 'name':'_red', 'number':4, 'r':145, 'g': 39, 'b':55},
-    {'id':7, 'name':'_gray', 'number':341, 'r':55, 'g': 55, 'b':55}];
+    {'id':7, 'name':'_gray', 'number':341, 'r':34, 'g': 34, 'b':34}];
 var colorArray = [];
 
 function preload() {
@@ -154,7 +154,7 @@ playListL = (width < 600) ? [
     for(var r=0; r<playListR.length;r++){
       for(var ch=0; ch<charactorList.length;ch++){
         var randomColor = floor(random(0, 399.9));
-        var randomX = random(0.5, 1.5);
+        var randomX = random(0.33, 1.5);
         var coId = colorArray[randomColor];
         var animSpr = charactorList[ch].imageR[coId] + '_spr';
         // var animLab = str(coId);
@@ -185,7 +185,7 @@ playListL = (width < 600) ? [
     for(var r=0; r<playListL.length;r++){
       for(var ch=0; ch<charactorList.length;ch++){
         var randomColor = floor(random(0, 399.9));
-        var randomX = random(0.5, 1.5);
+        var randomX = random(0.1, 1.5);
         var coId = colorArray[randomColor];
         var animSpr = charactorList[ch].imageL[coId] + '_spr';
         // var animLab = str(coId);
@@ -303,7 +303,7 @@ fill(100);
 textAlign(CENTER);
 textFont(mainFont);
 textSize(24);
-text(fr, width/2, 150);
+text(fr, width/2, 100);
 
 // Draw sprite in the Z-index order + white screens in between
 noStroke();
@@ -332,23 +332,25 @@ function mouseClicked() {
 // Update the pannel color & info
     if(pauseSwitch) {  
       noLoop();
-      bottomPanel.style('background-color','rgb('+ colorList[c].r + ',' + colorList[c].g + ',' + colorList[c].b + ')');
+      // (width < 600) ? bottomPanel.style('background-color','rgba('+ colorList[c].r + ',' + colorList[c].g + ',' + colorList[c].b + ',0.8)') : bottomPanel.style('background-color','rgb('+ colorList[c].r + ',' + colorList[c].g + ',' + colorList[c].b + ')');
+      (width < 800) ? bottomPanel.style('background-color','rgba(224, 224, 216, 0.8)') : bottomPanel.style('background-color','rgb('+ colorList[c].r + ',' + colorList[c].g + ',' + colorList[c].b + ')');
       topPanel.style('background-color','rgb('+ colorList[c].r + ',' + colorList[c].g + ',' + colorList[c].b + ')');
       prevIssue.style('background-color','rgb('+ colorList[pr].r + ',' + colorList[pr].g + ',' + colorList[pr].b + ')');
       nextIssue.style('background-color','rgb('+ colorList[ne].r + ',' + colorList[ne].g + ',' + colorList[ne].b + ')');
       bottomPanel.style('opacity','1');
+      (width < 800) ? issueH.style('color','rgb('+ colorList[c].r + ',' + colorList[c].g + ',' + colorList[c].b + ')'):issueH.style('color','rgb(224, 224, 216)');
       issueH.html(infoText[c].h1);
       issueP.html(infoText[c].body);
-      bottomPanel.style('bottom','30px');
+      bottomPanel.style('bottom','0');
       topPanel.style('top','0');
       topPanelContent.style('top','0');
       // createA('https://siorikitajima.github.io/strangers/#/data', voicesBtn, '_parent');
       updateGround();
     } else {
       loop();
-      (width < 600) ? bottomPanel.style('bottom','-100vh') : bottomPanel.style('bottom','-150px');
-      (width < 600) ? topPanel.style('top','-150px') : topPanel.style('top','-100px');
-      (width < 600) ? topPanelContent.style('top','-150px') : topPanelContent.style('top','-100px');
+      (width < 800) ? bottomPanel.style('bottom','-100vh') : bottomPanel.style('bottom','-150px');
+      (width < 800) ? topPanel.style('top','-150px') : topPanel.style('top','-100px');
+      (width < 800) ? topPanelContent.style('top','-150px') : topPanelContent.style('top','-100px');
     }
     pauseSwitch = !pauseSwitch;
     infoSwitch = !infoSwitch;

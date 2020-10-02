@@ -10,6 +10,12 @@ html, body {
     font-family: 'Montserrat', sans-serif;
   }
 
+a:-webkit-any-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+
   canvas {
     z-index: 100;
     position: fixed;
@@ -38,6 +44,18 @@ html, body {
     #GroundImg {
       width: 100vw;
       height: 40vw;
+  }
+  @media only screen and (max-width: 800px) {
+    #GroundImg {
+      transform: translate(-50%, 20%);
+    }
+  }
+  @media only screen and (max-width: 400px) {
+    #GroundImg {
+      transform: translate(-50%, 0);
+      top: unset;
+      bottom: 60px;
+    }
   }
 }
 
@@ -91,7 +109,7 @@ html, body {
     color: rgb(224, 224, 216);
   }
   #prevIssue, #nextIssue {
-    width: calc((100% - 800px)/2);
+    width: calc((100% - 700px)/2);
     height: 100%;
     margin: 0;
     position: absolute;
@@ -110,7 +128,7 @@ html, body {
   }
   #thisIssue {
     text-align: center;
-    width: 800px;
+    width: 700px;
     max-width: 100%;
   }
   #issueH1 {
@@ -136,8 +154,16 @@ html, body {
     opacity: 0.5;
     transition-duration: 300ms;
   }
+  @media only screen and (max-width: 1000px){
+    #prevIssue, #nextIssue {
+      width: calc((100% - 500px)/2);
+    }
+    #thisIssue {
+      width: 500px;
+    }
+  }
 
-  @media only screen and (max-width: 600px){
+  @media only screen and (max-width: 800px){
     #topPanel, #topPanelContent{
       height: 150px;
       display: block;
@@ -157,8 +183,8 @@ html, body {
     }
     #bottomPanel {
       display: block;
-      height: calc(100% - 180px);
-      bottom: calc(-(100% - 180px));
+      height: calc(100% - 150px);
+      bottom: calc(-(100% - 150px));
       opacity: 0;
     }
     #prevIssue, #nextIssue {
@@ -169,15 +195,32 @@ html, body {
       z-index: 800;
   }
   #thisIssue {
+    width: 700px;
+    max-width: 80%;
     position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
   #issueH1 {
     margin: 100px auto 10px auto;
+    color: #343434;
+  }
+  #issueP {
+    color: #343434;
+  }
+}
+@media only screen and (max-width: 400px) {
+  #issueH1 {
+    margin: 70px auto 10px auto;
+    max-width: 90%;
+  }
+  #issueP {
+    max-width: 90%;
   }
 }
 
 
-  /** spinner **/
+  /* * spinner *
 	.loadingSpinner {
 		position: relative;
 		width: 80px;
@@ -248,7 +291,7 @@ html, body {
 
 /** modal **/
 
-	#modalBG {
+	/* #modalBG {
 		position: fixed;
 		background: rgba(224, 224, 216, 0.9);
 		top: 0;
@@ -256,4 +299,4 @@ html, body {
 		width: 100%;
 		height: 100vh;
 		z-index: 9999;
-	}
+	}  */
