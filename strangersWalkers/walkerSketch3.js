@@ -32,7 +32,7 @@ var infoText = [
   {h1:'Alcohol Abuse', body:'Recurrent alcohol use resulting in failure to fulfill major role obligations, or recurrent use in situations in which it is physically hazardous.'},
   {h1:'Alcohol Dependence', body:'Maladaptive pattern of alcohol use, leading to clinically significant impairment or distress, and the essential feature of which is a cluster of cognitive, behavioural and physical symptoms.'},
   {h1:'Multiple issues', body:'Comorbidity, presence of two or more of the above mental disorders in the same period. Symptoms often overlap and can be additive.'},
-  {h1:'Mental health issues', body:'A wide range of conditions that affect mood, thinking, and behavior. 1 in 7 people in Singapore has experienced mental issues, only 2 of them sought help.'}
+  {h1:'Mental health issues', body:'A wide range of conditions that affect mood, thinking, and behavior. 1 in 7 people in Singapore has experienced mental issues, with only two of them seeking help.'}
 ]
 var icons = [
   {name:'learn', img:'images/infoIcons_learn.png'}, 
