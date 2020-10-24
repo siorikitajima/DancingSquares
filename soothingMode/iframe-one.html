@@ -18,8 +18,8 @@
 var halfWidth;
 var halfHeight;
 var gridAngle = 70;
-var sphereSwitchW = true;
-var sphereSwitchH = true;
+// var sphereSwitchW = true;
+// var sphereSwitchH = true;
 var mobile = false;
 var largescreen = false;
 var angle;
@@ -54,10 +54,10 @@ var keyColorFive = color(220, 96, 46);
   stroke(keyColorFive);
   fill(primaryColorLight);
   if (mobile) {
-    sphere(halfHeight);
+    sphere(halfHeight/1.8);
     stroke(primaryColorDark);
     noFill();
-    sphere(halfHeight + 10 + sunShake);
+    sphere(halfHeight/1.8 + 10 + sunShake);
   } else if (largescreen){
     sphere(halfHeight/1.3);
     stroke(primaryColorDark);
