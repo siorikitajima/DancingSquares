@@ -1,55 +1,77 @@
-var angle = 1;
-      
+var halfWidth;
+var halfHeight;
+// var gridAngle = 70;
+// var randomPositionW;
+// var randomPositionH;
+// var sphereSwitchW = true;
+// var sphereSwitchH = true;
+var mobile = false;
+var largescreen = false;
+
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
+  // randomPositionW = random(0, halfWidth);
+  // randomPositionH = random(0, halfHeight);
+  halfWidth = width / 2; //600-1000 in desktop
+  halfHeight = height / 2; //400-600 in desktop
+  if (halfWidth < halfHeight) {
+    mobile = true;
+  }
+  if (halfWidth > 500) {
+    largescreen = true;
+  }
 }
 
 function draw() {
-  background(30, 85, 92);
+  background(225, 206, 122);
+camera(halfWidth / 1.2, 200, 700, halfWidth / 3, 0, 0, 0, -1, 0);
 
-  if(windowWidth>600){
-    camera(130, 130, 20 + sin(frameCount * 0.001) * 400, 0, 0, 0, 0, 1, 0);
-    } else {
-    camera(80, 80, 20 + sin(frameCount * 0.001) * 400, 0, 0, 0, 0, 1, 0);
-    }
+  //The Sun
+  push();
+  var sunShake = random(-5, 5);
+  noStroke();
+  fill(243, 238, 195);
+  if (mobile) {
+    sphere(halfHeight);
+    stroke(243, 238, 195);
+    noFill();
+    sphere(halfHeight + 10 + sunShake);
+  } else if (largescreen){
+    sphere(halfHeight/1.3);
+    stroke(243, 238, 195);
+    noFill();
+    sphere(halfHeight/1.3 + 30 + sunShake);
+  } else  {
+    sphere(halfHeight);
+    stroke(243, 238, 195);
+    noFill();
+    sphere(halfHeight + 20 + sunShake);
+  }
+  pop();
 
-    rotateX(angle * 0.01);
-    rotateY(angle * 0.005);
+  // //Bottom border
+  // push();
+  // noFill();
+  // stroke(243, 238, 195);
+  // if (mobile) {
+  //   translate(0, halfHeight * 0.15, halfWidth * 1.7);
+  // } else {
+  //   translate(0, halfHeight * 0.15, halfWidth * 0.5);
+  // }
+  // rotateZ(-90);
+  // cylinder(50, windowWidth * 8);
+  // pop();
 
-    for (let petals = 0; petals < 30; petals++) {
-        let zAngle = 1;
-        rotateZ(zAngle);
-        push();
-            let a = 0.0;
-            let inc = TWO_PI / 25.0;
-            fill(100);
-            noStroke();
-            for (let i = 0; i < 30; i++) {
-            translate(i * 2, i * sin(a));
-            noStroke();
-            fill(34, 34, 34);
-            cylinder(1, sin(a) * 150);
-            a = a + inc;
-            }
-        pop();
-        rotateX(angle * 0.01);
-        fill(255, 53, 98);
-        stroke(34, 34, 34);
-        box(50);
-        angle = angle + 0.002;
-      }
-      translate(150, 180);
-      noStroke();
-      fill(34, 34, 34);
-      sphere(100);
-    
-      translate(300, 200);
-      noStroke();
-      fill(239, 160, 11);
-      sphere(150);
-      
-      translate(-500, -500);
-      noStroke();
-      fill(239, 160, 11);
-      sphere(50);
+  //Horizon
+  push();
+  rotateY(90);
+  rotateX(90);
+  noStroke();
+  //translate(0,0,35);
+  var horizonColor = color('rgba(183, 168, 134, 0.5)');
+  fill(horizonColor);
+  blendMode(EXCLUSION);
+  plane(10000, 10000);
+  pop();
+
 }

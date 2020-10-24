@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sketch Zero</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+    <style>
+    html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    }
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+var angle = 1;
+
+function setup() {
+  createCanvas(windowWidth, windowHeight, WEBGL);
+  frameRate(30);
+}
+
+function draw() {
+var primaryColorDark = color(34, 34, 34);
+var keyColorOne = color(255, 53, 98);
+var keyColorThree = color(239, 160, 11);
+  background(keyColorOne);
+
+  camera(70, 70, 60 + sin(frameCount * 0.002) * 400, 0, 0, 0, 0, 1, 0);
+
+  rotateX(angle * 0.02);
+  rotateY(angle * 0.01);
+
+  for (let petals = 0; petals < 30; petals++) {
+
+    let zAngle = 1;
+    rotateZ(zAngle);
+
+    push();
+
+    let a = 0.0;
+    let inc = TWO_PI / 25.0;
+    fill(primaryColorDark);
+    noStroke();
+    for (let i = 0; i < 30; i++) {
+      translate(i * 2, i * sin(a));
+      noStroke();
+      fill(primaryColorDark);
+      cylinder(1, sin(a) * 150);
+      a = a + inc;
+    }
+    pop();
+
+    rotateX(angle * 0.01);
+
+    fill(keyColorOne);
+    stroke(primaryColorDark);
+    box(50);
+
+    angle = angle + 0.002;
+
+  }
+  translate(150, 180);
+  noStroke();
+  fill(primaryColorDark);
+  sphere(100);
+
+  translate(300, 200);
+  noStroke();
+  fill(keyColorThree);
+  sphere(150);
+  
+  translate(-500, -500);
+  noStroke();
+  fill(keyColorThree);
+  sphere(50);
+}
+    </script>
+</body>
+</html>

@@ -6,6 +6,8 @@
     <title>Soothing Mode for Strangers</title>
     <link rel="stylesheet" href="soothing.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/addons/p5.dom.js"></script>
     <script src="howler.js"></script>
 </head>
 <body>
@@ -15,8 +17,8 @@
                 <div class="playButton startBtn"></div>
                 <div class="playButton pauseBtn"></div>
                 <div class="trackInfo">
-                    <h3 class="sketchName">Number Zero</h3>
-                    <p class="sketchCredit">Code by Siori Kitajima<br/> Music by Joseph Minadeo "Prism"</p>
+                    <h3 class="sketchName">Number Two</h3>
+                    <p class="sketchCredit">Code by Siori Kitajima<br/> Music by Joseph Minadeo "Geodesic"</p>
                 </div>
             </div>
             <div class="numberBtns">
@@ -38,9 +40,10 @@
             <p class="sketchCredit">Code by Siori Kitajima<br/> Music by Joseph Minadeo "Prism"</p>
         </div>
     </div>
-    <iframe id="iframeZero" src="iframe-zero.html" frameborder="0"></iframe>
-    <iframe id="iframeOne" src="iframe-one.html" frameborder="0"></iframe>
-    <iframe id="iframeTwo" src="iframe-two.html" frameborder="0"></iframe>
+    <script>
+        var sketchNumber = 2;
+    </script>
     <script src="script.js" type="text/javascript"></script>
+    <script src="SketchTwo.js" type="text/javascript"></script>
 </body>
 </html>
