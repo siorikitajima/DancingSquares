@@ -8,9 +8,10 @@ var topRowR, topRowL, secondRowR, secondRowL, thirdRowR, thirdRowL, fourthRowR, 
 
 // DOM elements
 var bottomPanel, topPanel, topPanelContent;
-var prevIssue, nextIssue;
-var issueH, issueP;
+var prevIssue, nextIssue, issueHDiv;
+var issueH, issueP, issueHM, issuePM;
 var GroundImg;
+var learnLink, helpLink, voicesLink, shareLink, copiedMsg;
 // var theBody;
 // var learnBtn, helpBtn, voicesBtn;
 
@@ -25,15 +26,16 @@ var groundImg = [
   {id:6, name:'images/numbers_red.png'},
   {id:7, name:'images/numbers_gray.png'}];
 var infoText = [
-  {h1:'Depression / MDD', body:'Persistently depressed mood or loss of interest in activities causing significant impairment in daily life. The most common mental disorder in Singapore.'},
-  {h1:'Bipolar', body:'Episodes of mood swings ranging from depressive lows to manic highs. This disorder is characterised by depressive episodes and mania.'},
-  {h1:'Anxiety / GAD', body:"Feelings of worry, anxiety, or fear that are strong enough to interfere with one's daily activities. They are often accompanied by other symptoms."},
-  {h1:'OCD', body:'Obsessive-Compulsive Disorder. The occurrence of obsessions, compulsive rituals or, both recurrent and persistent thoughts, impulses, or images that are experienced as intrusive and cause great anxiety.'},
-  {h1:'Alcohol Abuse', body:'Recurrent alcohol use resulting in failure to fulfill major role obligations, or recurrent use in situations in which it is physically hazardous.'},
-  {h1:'Alcohol Dependence', body:'Maladaptive pattern of alcohol use, leading to clinically significant impairment or distress, and the essential feature of which is a cluster of cognitive, behavioural and physical symptoms.'},
-  {h1:'Multiple issues', body:'Comorbidity, presence of two or more of the above mental disorders in the same period. Symptoms often overlap and can be additive.'},
-  {h1:'Mental health issues', body:'A wide range of conditions that affect mood, thinking, and behavior. 1 in 7 people in Singapore has experienced mental issues, with only two of them seeking help.'}
+  {h1:'Depression / MDD', body:'Persistently depressed mood or loss of interest in activities causing significant impairment in daily life. The most common mental disorder in Singapore.', slug: 'depression'},
+  {h1:'Bipolar', body:'Episodes of mood swings ranging from depressive lows to manic highs. This disorder is characterised by depressive episodes and mania.', slug: 'bipolar'},
+  {h1:'Anxiety / GAD', body:"Feelings of worry, anxiety, or fear that are strong enough to interfere with one's daily activities. They are often accompanied by other symptoms.", slug: 'anxiety'},
+  {h1:'OCD', body:'Obsessive-Compulsive Disorder. The occurrence of obsessions, compulsive rituals or, both recurrent and persistent thoughts, impulses, or images that are experienced as intrusive and cause great anxiety.', slug: 'ocd'},
+  {h1:'Alcohol Abuse', body:'Recurrent alcohol use resulting in failure to fulfill major role obligations, or recurrent use in situations in which it is physically hazardous.', slug: 'alcohol-abuse'},
+  {h1:'Alcohol Dependence', body:'Maladaptive pattern of alcohol use, leading to clinically significant impairment or distress, and the essential feature of which is a cluster of cognitive, behavioural and physical symptoms.', slug: 'alcohol-dependence'},
+  {h1:'Multiple issues', body:'Comorbidity, presence of two or more of the above mental disorders in the same period. Symptoms often overlap and can be additive.', slug: 'general'},
+  {h1:'Mental health issues', body:'A wide range of conditions that affect mood, thinking, and behavior. 1 in 7 people in Singapore has experienced mental issues, with only two of them seeking help.', slug: 'general'}
 ]
+
 var icons = [
   {name:'learn', img:'images/infoIcons_learn.png'}, 
   {name:'help', img:'images/infoIcons_help.png'}, 
@@ -65,6 +67,7 @@ var charactorList = [
   { name:'potato', id:'7',
     imageR: ['uncleR_pink', 'uncleR_green', 'uncleR_yellow', 'uncleR_purple', 'uncleR_orange', 'uncleR_teal', 'uncleR_red', 'uncleR_gray'],
     imageL: ['uncleL_pink', 'uncleL_green', 'uncleL_yellow', 'uncleL_purple', 'uncleL_orange', 'uncleL_teal', 'uncleL_red', 'uncleL_gray']}];
+  
 
 // Color Array : Total 400
 var colorList = [
@@ -109,9 +112,17 @@ function preload() {
     topPanelContent = select('#topPanelContent');
     prevIssue = select('#prevIssue');
     nextIssue = select('#nextIssue');
-    issueH = select('#issueH1');
-    issueP = select('#issueP');
+    issueHDiv = select('#issueHDiv');
+    issueH = select('#h1Screen');
+    issueHM = select('#h1Mobile');
+    issueP = select('#pScreen');
+    issuePM = select('#pMobile');
     GroundImg = select('#GroundImg');
+    learnLink = select('#learnLink');
+    helpLink = select('#helpLink');
+    voicesLink = select('#voicesLink');
+    shareLink = select('#shareLink');
+    copiedMsg = select('#copied');
     // learnBtn = select('#learnBtn');
     // helpBtn = select('#helpBtn');
     // voicesBtn = select('#voicesBtn');
@@ -130,25 +141,25 @@ playListR = (width < 600) ? [
     {"rowID": secondRowR, "x": width*6, "y":height/5, "scale":0.72, "speed": -4},
     {"rowID": thirdRowR, "x": width*8, "y":height/3, "scale":1.08, "speed": -5},
     {"rowID": fourthRowR, "x": width*12, "y":height/2, "scale":1.5, "speed": -6.5},
-    {"rowID": fifthRowR, "x": width*16, "y":height-100, "scale":2.4, "speed": -8}
+    {"rowID": fifthRowR, "x": width*16, "y":height-50, "scale":2.4, "speed": -8}
     ]:[
     {"rowID": topRowR, "x": width*3, "y":height/7, "scale":0.52, "speed": -3},
     {"rowID": secondRowR, "x": width*4, "y":height/5, "scale":0.72, "speed": -4},
     {"rowID": thirdRowR, "x": width*5, "y":height/3, "scale":1.08, "speed": -5},
     {"rowID": fourthRowR, "x": width*6, "y":height/2, "scale":1.5, "speed": -6.5},
-    {"rowID": fifthRowR, "x": width*7, "y":height-220, "scale":2.4, "speed": -8}];
+    {"rowID": fifthRowR, "x": width*7, "y":height-100, "scale":2.4, "speed": -8}];
 playListL = (width < 600) ? [
     {"rowID": topRowL, "x": -(width*3), "y":120, "scale":0.6, "speed": 3},
     {"rowID": secondRowL, "x": -(width*5), "y":height/5 + 15, "scale":0.76, "speed": 4},
     {"rowID": thirdRowL, "x": -(width*7), "y":height/3 + 20, "scale":1.12, "speed": 5},
     {"rowID": fourthRowL, "x": -(width*15), "y":height/2 + 25, "scale":1.54, "speed": 6.5},
-    {"rowID": fifthRowL, "x": -(width*15), "y":height-100, "scale":2.5, "speed": 8}
+    {"rowID": fifthRowL, "x": -(width*15), "y":height-40, "scale":2.5, "speed": 8}
     ]:[
     {"rowID": topRowL, "x": -(width*2), "y":height/7 + 20, "scale":0.56, "speed": 3},
     {"rowID": secondRowL, "x": -(width*3), "y":height/5 + 30, "scale":0.76, "speed": 4},
     {"rowID": thirdRowL, "x": -(width*4), "y":height/3 + 40, "scale":1.12, "speed": 5},
     {"rowID": fourthRowL, "x": -(width*5), "y":height/2 + 50, "scale":1.54, "speed": 6.5},
-    {"rowID": fifthRowL, "x": -(width*6), "y":height-200, "scale":2.5, "speed": 8}];
+    {"rowID": fifthRowL, "x": -(width*6), "y":height-90, "scale":2.5, "speed": 8}];
 
 // Assign sprites to Right Rows
     for(var r=0; r<playListR.length;r++){
@@ -159,7 +170,7 @@ playListL = (width < 600) ? [
         var animSpr = charactorList[ch].imageR[coId] + '_spr';
         // var animLab = str(coId);
         var animLab = str(charactorList[ch].id + 'R' + coId);
-        charactorList[ch].imageR[coId].frameDelay = floor(random(3,5.9));
+        charactorList[ch].imageR[coId].frameDelay = floor(random(4,6.9));
         animSpr = createSprite(playListR[r].x * randomX, playListR[r].y, 200, 300);
         animSpr.scale = playListR[r].scale;
         animSpr.addAnimation(animLab, charactorList[ch].imageR[coId]);
@@ -190,7 +201,7 @@ playListL = (width < 600) ? [
         var animSpr = charactorList[ch].imageL[coId] + '_spr';
         // var animLab = str(coId);
         var animLab = str(charactorList[ch].id + 'L' + coId);
-        charactorList[ch].imageL[coId].frameDelay = floor(random(3,5.9));
+        charactorList[ch].imageL[coId].frameDelay = floor(random(4,6.9));
         animSpr = createSprite(playListL[r].x * randomX, playListL[r].y, 200, 300);
         animSpr.scale = playListL[r].scale;
         animSpr.addAnimation(animLab, charactorList[ch].imageL[coId]);
@@ -224,8 +235,8 @@ for(var row=0; row < playListR.length; row++){
     var cloneRow = rowID.slice();
     cloneRow.splice(i,1);
     var delayValue = floor(random(3,5.9));
-    var mappin = map((i + 1) / delayValue, 1/5, rowID.length/3, 0.8, 2.2);
-    thisSpr.velocity.x = playListR[row].speed * 0.65 * mappin;
+    var mappin = map((i + 1) / delayValue, 1/5, rowID.length/3, 0.8, 1.6); 
+    thisSpr.velocity.x = (width < 800) ? playListR[row].speed * 0.4 * mappin : playListR[row].speed * 0.6 * mappin;
      if (thisSpr.position.x < - 300) {
         var oldLabel = thisSpr.getAnimationLabel();
         thisSpr.remove();
@@ -266,7 +277,7 @@ for(var row=0; row < playListL.length; row++){
     cloneRow.splice(i,1);
     var delayValue = floor(random(3,5.9));
     var mappin = map((i + 1) / delayValue, 1/5, rowID.length/3, 1, 2);
-    thisSpr.velocity.x = playListL[row].speed * 0.65 * mappin;
+    thisSpr.velocity.x = playListL[row].speed * 0.6 * mappin;
      if (thisSpr.position.x > width + 200) {
         var oldLabel = thisSpr.getAnimationLabel();
         thisSpr.remove();
@@ -329,28 +340,31 @@ function mouseClicked() {
   var c = float(colorSwitch);
   var pr = (c == 0) ? 7 : c - 1;
   var ne = (c == 7) ? 0 : c + 1;
+
 // Update the pannel color & info
     if(pauseSwitch) {  
       noLoop();
       // (width < 600) ? bottomPanel.style('background-color','rgba('+ colorList[c].r + ',' + colorList[c].g + ',' + colorList[c].b + ',0.8)') : bottomPanel.style('background-color','rgb('+ colorList[c].r + ',' + colorList[c].g + ',' + colorList[c].b + ')');
-      (width < 800) ? bottomPanel.style('background-color','rgba(224, 224, 216, 0.8)') : bottomPanel.style('background-color','rgb('+ colorList[c].r + ',' + colorList[c].g + ',' + colorList[c].b + ')');
-      topPanel.style('background-color','rgb('+ colorList[c].r + ',' + colorList[c].g + ',' + colorList[c].b + ')');
+      issueHDiv.style('background-color','rgb('+ colorList[c].r + ',' + colorList[c].g + ',' + colorList[c].b + ')');
+      bottomPanel.style('background-color','rgb('+ colorList[c].r + ',' + colorList[c].g + ',' + colorList[c].b + ')');
+      // topPanel.style('background-color','rgb('+ colorList[c].r + ',' + colorList[c].g + ',' + colorList[c].b + ')');
       prevIssue.style('background-color','rgb('+ colorList[pr].r + ',' + colorList[pr].g + ',' + colorList[pr].b + ')');
       nextIssue.style('background-color','rgb('+ colorList[ne].r + ',' + colorList[ne].g + ',' + colorList[ne].b + ')');
       bottomPanel.style('opacity','1');
-      (width < 800) ? issueH.style('color','rgb('+ colorList[c].r + ',' + colorList[c].g + ',' + colorList[c].b + ')'):issueH.style('color','rgb(224, 224, 216)');
+      issueH.style('color','rgb(224, 224, 216)');
       issueH.html(infoText[c].h1);
+      issueHM.html(infoText[c].h1);
       issueP.html(infoText[c].body);
-      bottomPanel.style('bottom','0');
-      topPanel.style('top','0');
-      topPanelContent.style('top','0');
-      // createA('https://siorikitajima.github.io/strangers/#/data', voicesBtn, '_parent');
+      issuePM.html(infoText[c].body);
+      (width < 800) ? bottomPanel.style('top','0') : bottomPanel.style('bottom','0');
+      (width < 800) ? topPanel.style('top','50px') : topPanel.style('top','0');
+      (width < 800) ? topPanelContent.style('top','50px') : topPanelContent.style('top','0');
       updateGround();
     } else {
       loop();
-      (width < 800) ? bottomPanel.style('bottom','-100vh') : bottomPanel.style('bottom','-150px');
-      (width < 800) ? topPanel.style('top','-150px') : topPanel.style('top','-100px');
-      (width < 800) ? topPanelContent.style('top','-150px') : topPanelContent.style('top','-100px');
+      (width < 800) ? bottomPanel.style('top','unset') : bottomPanel.style('bottom','-150px');
+      (width < 800) ? topPanel.style('top','-100%') : topPanel.style('top','-100px');
+      (width < 800) ? topPanelContent.style('top','-100%') : topPanelContent.style('top','-100%');
     }
     pauseSwitch = !pauseSwitch;
     infoSwitch = !infoSwitch;
@@ -374,4 +388,37 @@ function updateGround(){
   var c = colorSwitch;
   var theImg = groundImg[c].name;
   GroundImg.attribute('src', theImg);
+}
+
+function learnLinkOpen(){
+  var learnURL = 'https://siorikitajima.github.io/strangers/#/data/' +infoText[colorSwitch].slug;
+  window.open(learnURL, "_self");
+}
+
+function helpLinkOpen(){
+  var helpURL = 'https://siorikitajima.github.io/strangers/#/help/' +infoText[colorSwitch].slug;
+  window.open(helpURL, "_self");
+}
+
+function voicesLinkOpen(){
+  var voicesURL = 'https://siorikitajima.github.io/strangers/#/voices/';
+  window.open(voicesURL, "_self");
+}
+
+function shareLinkOpen(){
+  var shareURL = 'https://siorikitajima.github.io/strangers/#/info/' + colorSwitch + '/' + infoText[colorSwitch].slug;
+  var dummy = document.createElement("textarea");
+  document.body.appendChild(dummy);
+  dummy.value = shareURL;
+  dummy.select();
+  document.execCommand("copy");
+  document.body.removeChild(dummy);
+  copiedMsgShow();
+}
+
+function copiedMsgShow(){
+  copiedMsg.style('right','20px');
+  setTimeout(function(){
+    copiedMsg.style('right','-320px');
+    }, 2000);
 }
