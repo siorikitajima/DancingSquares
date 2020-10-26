@@ -392,17 +392,17 @@ function updateGround(){
 
 function learnLinkOpen(){
   var learnURL = 'https://siorikitajima.github.io/strangers/#/data/' +infoText[colorSwitch].slug;
-  window.open(learnURL, "_self");
+  window.open(learnURL, "_parent");
 }
 
 function helpLinkOpen(){
   var helpURL = 'https://siorikitajima.github.io/strangers/#/help/' +infoText[colorSwitch].slug;
-  window.open(helpURL, "_self");
+  window.open(helpURL, "_parent");
 }
 
 function voicesLinkOpen(){
   var voicesURL = 'https://siorikitajima.github.io/strangers/#/voices/';
-  window.open(voicesURL, "_self");
+  window.open(voicesURL, "_parent");
 }
 
 function shareLinkOpen(){
