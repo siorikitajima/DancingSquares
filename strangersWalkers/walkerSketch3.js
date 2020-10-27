@@ -18,22 +18,35 @@ var learnLink, helpLink, voicesLink, shareLink, copiedMsg;
 // Info popup data
 var groundImg = [
   {id:0, name:'images/numbers_pink.png'},
-  {id:1, name:'images/numbers_green.png'},
+  {id:1, name:'images/numbers_emerald.png'},
   {id:2, name:'images/numbers_yellow.png'},
   {id:3, name:'images/numbers_purple.png'},
   {id:4, name:'images/numbers_orange.png'},
-  {id:5, name:'images/numbers_teal.png'},
+  {id:5, name:'images/numbers_blue.png'},
   {id:6, name:'images/numbers_red.png'},
-  {id:7, name:'images/numbers_gray.png'}];
+  {id:7, name:'images/numbers_gray.png'},
+  {id:8, name:'images/numbers_teal.png'},
+  {id:9, name:'images/numbers_coral.png'},
+  {id:10, name:'images/numbers_lavendar.png'},
+  {id:11, name:'images/numbers_sky.png'},
+  {id:12, name:'images/numbers_maroon.png'},
+  {id:13, name:'images/numbers_green.png'}
+];
 var infoText = [
   {h1:'Depression / MDD', body:'Persistently depressed mood or loss of interest in activities causing significant impairment in daily life. The most common mental disorder in Singapore.', slug: 'depression'},
   {h1:'Bipolar', body:'Episodes of mood swings ranging from depressive lows to manic highs. This disorder is characterised by depressive episodes and mania.', slug: 'bipolar'},
   {h1:'Anxiety / GAD', body:"Feelings of worry, anxiety, or fear that are strong enough to interfere with one's daily activities. They are often accompanied by other symptoms.", slug: 'anxiety'},
   {h1:'OCD', body:'Obsessive-Compulsive Disorder. The occurrence of obsessions, compulsive rituals or, both recurrent and persistent thoughts, impulses, or images that are experienced as intrusive and cause great anxiety.', slug: 'ocd'},
   {h1:'Alcohol Abuse', body:'Recurrent alcohol use resulting in failure to fulfill major role obligations, or recurrent use in situations in which it is physically hazardous.', slug: 'alcohol-abuse'},
-  {h1:'Alcohol Dependence', body:'Maladaptive pattern of alcohol use, leading to clinically significant impairment or distress, and the essential feature of which is a cluster of cognitive, behavioural and physical symptoms.', slug: 'alcohol-dependence'},
+  {h1:'Dissociative Identity Disorder', body:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', slug: 'did'},
   {h1:'Multiple issues', body:'Comorbidity, presence of two or more of the above mental disorders in the same period. Symptoms often overlap and can be additive.', slug: 'general'},
-  {h1:'Mental health issues', body:'A wide range of conditions that affect mood, thinking, and behavior. 1 in 7 people in Singapore has experienced mental issues, with only two of them seeking help.', slug: 'general'}
+  {h1:'Mental health issues', body:'A wide range of conditions that affect mood, thinking, and behavior. 1 in 7 people in Singapore has experienced mental issues, with only two of them seeking help.', slug: 'general'},
+  {h1:'Body Dysmorphic Disorder', body:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', slug: 'bdd'},
+  {h1:'Borderline Personality Disorder', body:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', slug: 'bpd'},
+  {h1:'Post Traumatic Stress Disorder', body:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', slug: 'ptsd'},
+  {h1:'Psychosis', body:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', slug: 'psychosis'},
+  {h1:'Eating Disorder', body:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', slug: 'eating-disorder'},
+  {h1:'Schizophrenia', body:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', slug: 'schizophrenia'}
 ]
 
 var icons = [
