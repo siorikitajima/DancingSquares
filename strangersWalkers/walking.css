@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display:ital,wght@1,700&display=swap');
 
 html, body {
-    background-color: rgb(206, 206, 198);
+    background-color: rgb(206, 206, 206);
     width: 100%;
     height: 100%;
     margin: 0;
@@ -74,6 +74,7 @@ a:-webkit-any-link {
 
   #topPanelContent {
     background: rgb(44, 32, 32, 0.5);
+    box-shadow: 0 0 4px 2px rgba(0,0,0,0.5);
   }
   #topPanelContent a {
     z-index: 999;
@@ -117,6 +118,7 @@ a:-webkit-any-link {
     z-index: 700;
     transition-duration: 300ms;
     color: rgb(224, 224, 216);
+    box-shadow: 0 0 4px 2px rgba(0,0,0,0.5);
   }
   #prevIssue, #nextIssue {
     width: calc((100% - 700px)/2);
@@ -179,9 +181,10 @@ a:-webkit-any-link {
       height: fit-content;
       display: block;
       top: -100%;
-    }
+        }
     #topPanelContent {
       background: rgb(44, 32, 32, 0.9);
+      box-shadow: none;
     }
     #topPanel {
       z-index: 750;
@@ -207,6 +210,7 @@ a:-webkit-any-link {
       height: 50px;
       bottom: -150px;
       opacity: 0;
+      box-shadow: none;
     }
     #prevIssue, #nextIssue {
       width: 50%;
