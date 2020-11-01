@@ -74,7 +74,7 @@ a:-webkit-any-link {
 
   #topPanelContent {
     background: rgba(34,34,34, 0.8);
-    box-shadow: 0 0 4px 2px rgba(0,0,0,0.5);
+    box-shadow: 0 0 4px 2px rgba(0,0,0,0.3);
   }
   #topPanelContent a {
     z-index: 999;
@@ -118,7 +118,7 @@ a:-webkit-any-link {
     z-index: 700;
     transition-duration: 300ms;
     color: rgb(224, 224, 216);
-    box-shadow: 0 0 4px 2px rgba(0,0,0,0.5);
+    box-shadow: 0 0 4px 2px rgba(0,0,0,0.3);
   }
   #prevIssue, #nextIssue {
     width: calc((100% - 700px)/2);

@@ -136,44 +136,40 @@ function setup() {
   topRowL = new Group(); secondRowL = new Group(); thirdRowL = new Group(); fourthRowL = new Group(); fifthRowL = new Group();
 
 // Setup size, speed and position of each row group
-playListR = (width < 600) ? [
-    {"rowID": topRowR, "x": width*4, "y":100, "scale":0.4, "speed": -3, "start":0},
-    {"rowID": secondRowR, "x": width*5, "y":height/5, "scale":0.5, "speed": -4, "start":8},
-    {"rowID": thirdRowR, "x": width*6, "y":height/3, "scale":0.7, "speed": -5, "start":16},
-    {"rowID": fourthRowR, "x": width*7, "y":height/2, "scale":1, "speed": -6.5, "start":4},
-    {"rowID": fifthRowR, "x": width*8, "y":height-50, "scale":1.3, "speed": -8, "start":12}
-    ]:[
-    {"rowID": topRowR, "x": width*2, "y":height/7, "scale":0.5, "speed": -3, "start":0},
-    {"rowID": secondRowR, "x": width*2.5, "y":height/5, "scale":0.7, "speed": -4, "start":8},
-    {"rowID": thirdRowR, "x": width*3, "y":height/3, "scale":1, "speed": -5, "start":16},
-    {"rowID": fourthRowR, "x": width*3.5, "y":height/2, "scale":1.4, "speed": -6.5, "start":4},
-    {"rowID": fifthRowR, "x": width*4, "y":height-100, "scale":2, "speed": -8, "start":12}];
-playListL = (width < 600) ? [
-    {"rowID": topRowL, "x": -(width*2), "y":120, "scale":0.45, "speed": 3, "start":4},
-    {"rowID": secondRowL, "x": -(width*3), "y":height/5 + 15, "scale":0.55, "speed": 4, "start":12},
-    {"rowID": thirdRowL, "x": -(width*4), "y":height/3 + 20, "scale":0.75, "speed": 5, "start":0},
-    {"rowID": fourthRowL, "x": -(width*5), "y":height/2 + 25, "scale":1.05, "speed": 6.5, "start":8},
-    {"rowID": fifthRowL, "x": -(width*6), "y":height-40, "scale":1.35, "speed": 8, "start":16}
-    ]:[
-    {"rowID": topRowL, "x": -(width), "y":height/7 + 20, "scale":0.55, "speed": 3, "start":4},
-    {"rowID": secondRowL, "x": -(width*1.5), "y":height/5 + 30, "scale":0.75, "speed": 4, "start":12},
-    {"rowID": thirdRowL, "x": -(width*2), "y":height/3 + 40, "scale":1.05, "speed": 5, "start":0},
-    {"rowID": fourthRowL, "x": -(width*2.5), "y":height/2 + 50, "scale":1.45, "speed": 6.5, "start":8},
-    {"rowID": fifthRowL, "x": -(width*3), "y":height-90, "scale":2.05, "speed": 8, "start":16}];
+playListR = [
+    {"rowID": topRowR, "x": width*2, "y":height/7, "scale":0.4, "speed": -3, "start":0},
+    {"rowID": secondRowR, "x": width*2.5, "y":height/5, "scale":0.5, "speed": -4, "start":8},
+    {"rowID": thirdRowR, "x": width*3, "y":height/3, "scale":0.7, "speed": -5, "start":16},
+    {"rowID": fourthRowR, "x": width*3.5, "y":height/2, "scale":1, "speed": -6.5, "start":4},
+    {"rowID": fifthRowR, "x": width*4, "y":height-80, "scale":1.4, "speed": -8, "start":12}];
+playListL = [
+    {"rowID": topRowL, "x": -(width), "y":height/7 + 20, "scale":0.45, "speed": 3, "start":4},
+    {"rowID": secondRowL, "x": -(width*1.5), "y":height/5 + 30, "scale":0.55, "speed": 4, "start":12},
+    {"rowID": thirdRowL, "x": -(width*2), "y":height/3 + 40, "scale":0.75, "speed": 5, "start":0},
+    {"rowID": fourthRowL, "x": -(width*2.5), "y":height/2 + 50, "scale":1.05, "speed": 6.5, "start":8},
+    {"rowID": fifthRowL, "x": -(width*3), "y":height-70, "scale":1.45, "speed": 8, "start":16}];
 
 // Assign sprites to Right Rows
     for(var r=0; r<playListR.length;r++){
       for(var ch = 0; ch < charaInARow; ch++){
-        var chs = playListR[r].start + ch; // Which character to load
+        var chs = playListR[r].start + ch; // The character to load
         var randomColor = floor(random(0, 699.9));
         var coId = colorArray[randomColor]; // Pull a color from the array
         var randomX = random(0.01, 1);
-        var rightrowX = map(randomX, 0, 1, width, playListR[r].x); // Set X position
+        // Set X position
+        var rightrowX = map(randomX, 0, 1, width, playListR[r].x); 
+        if (width > 1200) {rightrowX = rightrowX * 0.75;}
+        else if (width < 800) {rightrowX = rightrowX * 2;}
+        else if (width < 480) {rightrowX = rightrowX * 3;}
         var animSpr = charactorList[chs].name + colorList[coId].name + 'R_spr';
         var animLab = str(charactorList[chs].id + 'R' + coId);
         charactorList[chs].anime[coId].frameDelay = floor(random(4,6.9)); // Sprite animation frame delay: the bigger number the greater delay
         animSpr = createSprite(rightrowX, playListR[r].y, 200, 300);
-        animSpr.scale = playListR[r].scale;
+        // Set scale
+        if (width < 800) {animSpr.scale = playListR[r].scale * 0.8;}
+        else if (width < 480) {animSpr.scale = playListR[r].scale * 0.4;}
+        else { animSpr.scale = playListR[r].scale;}
+        
         animSpr.addAnimation(animLab, charactorList[chs].anime[coId]);
         //// Get color ID when clicked and hover
         animSpr.setCollider("rectangle", 35, 0, 130, 230);
@@ -200,11 +196,19 @@ playListL = (width < 600) ? [
         var randomColor = floor(random(0, 699.9));
         var coId = colorArray[randomColor];
         var randomX = random(0.01, 1);
+        // Set X position
+        var leftrowX = playListL[r].x * randomX; 
+        if (width > 1200) {leftrowX = leftrowX * 0.75;}
+        else if (width < 800) {leftrowX = leftrowX * 2;}
+        else if (width < 480) {leftrowX = leftrowX * 3;}
         var animSpr = charactorList[chs].name + colorList[coId].name + 'L_spr';
         var animLab = str(charactorList[chs].id + 'L' + coId);
         charactorList[chs].anime[coId].frameDelay = floor(random(4,6.9));
-        animSpr = createSprite(playListL[r].x * randomX, playListL[r].y, 200, 300);
-        animSpr.scale = playListL[r].scale;
+        animSpr = createSprite(leftrowX, playListL[r].y, 200, 300);
+        // Set scale
+        if (width < 800) {animSpr.scale = playListL[r].scale * 0.8;}
+        else if (width < 480) {animSpr.scale = playListL[r].scale * 0.4;}
+        else { animSpr.scale = playListL[r].scale;}
         animSpr.addAnimation(animLab, charactorList[chs].anime[coId]);
         //// Get color ID when clicked and hover
         animSpr.setCollider("rectangle", 35, 0, 130, 230);
@@ -237,7 +241,13 @@ for(var row=0; row < playListR.length; row++){
     cloneRow.splice(i,1);
     var delayValue = floor(random(4,6.9));
     var mappin = map((i + 1) / delayValue, 1/5, rowID.length/3, 0.8, 1.6); 
-    thisSpr.velocity.x = (width < 800) ? playListR[row].speed * 0.4 * mappin : playListR[row].speed * 0.6 * mappin;
+    // Set velocity
+    var speedControl;
+    if (width > 1200) {speedControl = playListR[row].speed * 0.5 * mappin;}
+    else if (width < 800) {speedControl = playListR[row].speed * 0.3 * mappin;}
+    else if (width < 480) {speedControl = playListR[row].speed * 0.1 * mappin;}
+    else {speedControl = playListR[row].speed * 0.5 * mappin;}
+    thisSpr.velocity.x = speedControl;
     //// When arrive to the left ent, it changes color and character and come back to the starting position
      if (thisSpr.position.x < - 200) {
         var oldLabel = thisSpr.getAnimationLabel();
@@ -250,9 +260,16 @@ for(var row=0; row < playListR.length; row++){
         var charaId = (oldCharaId > charactorList.length - charaInARow - 2) ? oldCharaId + charaInARow + 1 - charactorList.length : oldCharaId + charaInARow + 1;
         var newR_label = charaId + 'R' + coId;
         var randomX = random(0.01, 1);
-        var rightrowX = map(randomX, 0, 1, width, playListR[row].x); // Set X position
+        // Set X position
+        var rightrowX = map(randomX, 0, 1, width, playListR[row].x); 
+        if (width > 1200) {rightrowX = rightrowX * 0.75;}
+        else if (width < 800) {rightrowX = rightrowX * 2;}
+        else if (width < 480) {rightrowX = rightrowX * 3;}
         var newSpr = createSprite(rightrowX, playListR[row].y, 200, 300);
-        newSpr.scale = playListR[row].scale;
+        // Set scale
+        if (width < 800) {newSpr.scale = playListR[row].scale * 0.8;}
+        else if (width < 480) {newSpr.scale = playListR[row].scale * 0.4;}
+        else { newSpr.scale = playListR[row].scale;}
         charactorList[charaId].anime[coId].frameDelay = delayValue;
         newSpr.addAnimation(newR_label, charactorList[charaId].anime[coId]);
         }
@@ -283,7 +300,13 @@ for(var row=0; row < playListL.length; row++){
     var delayValue = floor(random(4,6.9));
     var mappin = map((i + 1) / delayValue, 1/5, rowID.length/3, 1, 2);
     thisSpr.mirrorX(-1);
-    thisSpr.velocity.x = playListL[row].speed * 0.6 * mappin;
+    // Set velocity
+    var speedControl;
+    if (width > 1200) {speedControl = playListL[row].speed * 0.5 * mappin;}
+    else if (width < 800) {speedControl = playListL[row].speed * 0.3 * mappin;}
+    else if (width < 480) {speedControl = playListL[row].speed * 0.1 * mappin;}
+    else {speedControl = playListL[row].speed * 0.5 * mappin;}
+    thisSpr.velocity.x = speedControl;
     //// When arrive to the left ent, it changes color and character and come back to the starting position    
      if (thisSpr.position.x > width + 200) {
         var oldLabel = thisSpr.getAnimationLabel();
@@ -294,9 +317,16 @@ for(var row=0; row < playListL.length; row++){
         var coId = colorArray[randomColor];
         var newL_label = charaId + 'L' + coId;
         var randomX = random(0.01, 1);
-        var newSpr = createSprite(playListL[row].x*randomX, playListL[row].y, 200, 300);
-        newSpr.scale = playListL[row].scale;
-        var oldCharaId = int(separateLabel[0]);
+        // Set X position
+        var rightrowX = playListL[row].x * randomX; 
+        if (width > 1200) {rightrowX = rightrowX * 0.75;}
+        else if (width < 800) {rightrowX = rightrowX * 2;}
+        else if (width < 480) {rightrowX = rightrowX * 3;}
+        var newSpr = createSprite(rightrowX, playListL[row].y, 200, 300);
+        // Set scale
+        if (width < 800) {newSpr.scale = playListL[row].scale * 0.8;}
+        else if (width < 480) {newSpr.scale = playListL[row].scale * 0.4;}
+        else { newSpr.scale = playListL[row].scale;}        var oldCharaId = int(separateLabel[0]);
         var charaId = (oldCharaId > charactorList.length - charaInARow - 2) ? oldCharaId + charaInARow + 1 - charactorList.length : oldCharaId + charaInARow + 1;
         charactorList[charaId].anime[coId].frameDelay = delayValue;
         newSpr.addAnimation(newL_label, charactorList[charaId].anime[coId]);
