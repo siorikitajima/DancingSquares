@@ -13,7 +13,7 @@ var right_frames = [
   ];
 
   function preload() {
-    right_sprite_sheet = loadSpriteSheet('assets/wasabi_gray.png', right_frames);
+    right_sprite_sheet = loadSpriteSheet('assets/uncle_gray.png', right_frames);
     right_animation = loadAnimation(right_sprite_sheet);
   }
 

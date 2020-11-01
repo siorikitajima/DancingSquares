@@ -1,0 +1,72 @@
+[
+    {
+       "h1":"Depression / MDD",
+       "body":"Persistently depressed mood or loss of interest in activities causing significant impairment in daily life. The most common mental disorder in Singapore.",
+       "slug":"depression"
+    },
+    {
+       "h1":"Bipolar",
+       "body":"Episodes of mood swings ranging from depressive lows to manic highs. This disorder is characterised by depressive episodes and mania.",
+       "slug":"bipolar"
+    },
+    {
+       "h1":"Anxiety / GAD",
+       "body":"Feelings of worry, anxiety, or fear that are strong enough to interfere with one's daily activities. They are often accompanied by other symptoms.",
+       "slug":"anxiety"
+    },
+    {
+       "h1":"OCD",
+       "body":"Obsessive-Compulsive Disorder. The occurrence of obsessions, compulsive rituals or, both recurrent and persistent thoughts, impulses, or images that are experienced as intrusive and cause great anxiety.",
+       "slug":"ocd"
+    },
+    {
+       "h1":"Alcohol Abuse",
+       "body":"Recurrent alcohol use resulting in failure to fulfill major role obligations, or recurrent use in situations in which it is physically hazardous.",
+       "slug":"alcohol-abuse"
+    },
+    {
+       "h1":"Dissociative Identity Disorder",
+       "body":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+       "slug":"did"
+    },
+    {
+       "h1":"Multiple issues",
+       "body":"Comorbidity, presence of two or more of the above mental disorders in the same period. Symptoms often overlap and can be additive.",
+       "slug":"general"
+    },
+    {
+       "h1":"Mental health issues",
+       "body":"A wide range of conditions that affect mood, thinking, and behavior. 1 in 7 people in Singapore has experienced mental issues, with only two of them seeking help.",
+       "slug":"general"
+    },
+    {
+       "h1":"Body Dysmorphic Disorder",
+       "body":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+       "slug":"bdd"
+    },
+    {
+       "h1":"Borderline Personality Disorder",
+       "body":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+       "slug":"bpd"
+    },
+    {
+       "h1":"Post Traumatic Stress Disorder",
+       "body":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+       "slug":"ptsd"
+    },
+    {
+       "h1":"Psychosis",
+       "body":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+       "slug":"psychosis"
+    },
+    {
+       "h1":"Eating Disorder",
+       "body":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+       "slug":"eating-disorder"
+    },
+    {
+       "h1":"Schizophrenia",
+       "body":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+       "slug":"schizophrenia"
+    }
+ ]
