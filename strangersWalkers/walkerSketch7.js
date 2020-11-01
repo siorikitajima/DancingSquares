@@ -401,7 +401,7 @@ function mouseClicked() {
       updateGround();
     } else {
       loop();
-      (width < 800) ? bottomPanel.style('top','unset') : bottomPanel.style('bottom','-150px');
+      (width < 800) ? bottomPanel.style('top','unset') : bottomPanel.style('bottom','-200px');
       (width < 800) ? topPanel.style('top','-100%') : topPanel.style('top','-100px');
       (width < 800) ? topPanelContent.style('top','-100%') : topPanelContent.style('top','-100%');
     }
