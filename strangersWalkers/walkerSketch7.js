@@ -131,7 +131,7 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, window.innerHeight);
-  setFrameRate(30);
+  setFrameRate(28);
   topRowR = new Group(); secondRowR = new Group(); thirdRowR = new Group(); fourthRowR = new Group(); fifthRowR = new Group();
   topRowL = new Group(); secondRowL = new Group(); thirdRowL = new Group(); fourthRowL = new Group(); fifthRowL = new Group();
 
