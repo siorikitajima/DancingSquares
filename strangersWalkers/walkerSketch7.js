@@ -130,6 +130,14 @@ function preload() {
 };
 
 function setup() {
+    if (typeof canvas === "object" && canvas !== null) {
+        canvas.width = 0;
+        canvas.height = 0;
+    
+        canvas.remove();
+        delete canvas;
+        canvas = null;
+    }
   createCanvas(windowWidth, window.innerHeight);
   setFrameRate(28);
   topRowR = new Group(); secondRowR = new Group(); thirdRowR = new Group(); fourthRowR = new Group(); fifthRowR = new Group();
