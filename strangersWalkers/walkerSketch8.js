@@ -367,20 +367,20 @@ text(fr, width/2, 100);
 
 // Draw sprite in the Z-index order + white screens in between
 noStroke();
-// fill(255,255,255,25);
-// rect(0,0,width, height);
+fill(255,255,255,25);
+rect(0,0,width, height);
 drawSprites(topRowR);
 drawSprites(topRowL);
-// rect(0,0,width, height);
+rect(0,0,width, height);
 drawSprites(secondRowR);
 drawSprites(secondRowL);
-// rect(0,0,width, height);
+rect(0,0,width, height);
 drawSprites(thirdRowR);
 drawSprites(thirdRowL);
-// rect(0,0,width, height);
+rect(0,0,width, height);
 drawSprites(fourthRowR);
 drawSprites(fourthRowL);
-// rect(0,0,width, height);
+rect(0,0,width, height);
 drawSprites(fifthRowR);
 drawSprites(fifthRowL);
 };
