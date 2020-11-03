@@ -347,7 +347,7 @@ drawSprites(fourthRowL);
 // drawSprites(fifthRowL);
 };
 
-function touchStarted() {
+function touchEnd() {
     mouseClicked();
 }
 
