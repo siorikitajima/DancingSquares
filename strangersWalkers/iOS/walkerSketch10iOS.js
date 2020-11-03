@@ -64,8 +64,8 @@ var colorArray = [];
 
 function preload() {
     //JSON
-    issueData = loadJSON('json/issueData.json');
-    groundImgData = loadJSON('json/groundImgData.json');
+    issueData = loadJSON('../json/issueData.json');
+    groundImgData = loadJSON('../json/groundImgData.json');
 
     // Push 700 colors into the array
     for(var c=0; c<colorList.length;c++){
@@ -86,8 +86,8 @@ function preload() {
     }
 
     //Fonts
-    mainFont = loadFont('assets/PlayfairDisplay-BoldItalic.otf');
-    bodyFont = loadFont('assets/Montserrat-Regular.otf');
+    mainFont = loadFont('../assets/PlayfairDisplay-BoldItalic.otf');
+    bodyFont = loadFont('../assets/Montserrat-Regular.otf');
 
     //Dom elements
     bottomPanel = select('#bottomPanel');
