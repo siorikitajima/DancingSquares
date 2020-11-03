@@ -146,7 +146,7 @@ playListL = [
     for(var r=0; r<playListR.length;r++){
       for(var ch = 0; ch < charaInARow; ch++){
         var chs = playListR[r].start + ch; // The character to load
-        chs = (chs >= charactorList.length) ? chs = 0 : chs = chs;
+        chs = (chs >= charactorList.length) ? chs = chs - 8 : chs = chs;
         var randomColor = floor(random(0, 699.9));
         var coId = colorArray[randomColor]; // Pull a color from the array
         var randomX = random(0.01, 1);
@@ -181,7 +181,7 @@ playListL = [
     for(var r = 0; r < playListL.length; r++){
       for(var ch=0; ch < charaInARow; ch++){
         var chs = playListL[r].start + ch;
-        chs = (chs >= charactorList.length) ? chs = 0 : chs = chs;
+        chs = (chs >= charactorList.length) ? chs = chs - 8 : chs = chs;
         var randomColor = floor(random(0, 699.9));
         var coId = colorArray[randomColor];
         var randomX = random(0.01, 1);
@@ -347,10 +347,6 @@ drawSprites(fourthRowL);
 // drawSprites(fifthRowL);
 };
 
-function touchEnd() {
-    mouseClicked();
-}
-
 function mouseClicked() {
   var c = float(colorSwitch);
   var pr = (c == 0) ? 13 : c - 1;
@@ -404,13 +400,13 @@ function updateGround(){
 }
 
 function learnLinkOpen(){
-  var learnURL = 'https://siorikitajima.github.io/strangers/#/data/' +issueData[colorSwitch].slug;
+  var learnURL = 'https://siorikitajima.github.io/strangers/#/data/' + issueData[colorSwitch].slug;
   clearCache();
   window.open(learnURL, "_parent");
 }
 
 function helpLinkOpen(){
-  var helpURL = 'https://siorikitajima.github.io/strangers/#/help/' +issueData[colorSwitch].slug;
+  var helpURL = 'https://siorikitajima.github.io/strangers/#/help/' + issueData[colorSwitch].slug;
   clearCache();
   window.open(helpURL, "_parent");
 }
