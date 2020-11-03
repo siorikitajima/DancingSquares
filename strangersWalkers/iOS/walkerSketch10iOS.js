@@ -395,7 +395,7 @@ function nextColor() {
 
 function updateGround(){
   var c = colorSwitch;
-  var theImg = groundImgData[c].name;
+  var theImg = '../' + groundImgData[c].name;
   GroundImg.attribute('src', theImg);
 }
 
