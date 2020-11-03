@@ -1,7 +1,7 @@
 var pauseSwitch = true;
 var infoSwitch = false;
 var colorSwitch = 7; // Default to set as Gray
-var charaInARow = 6; // Total number of characters in the row each side at once
+var charaInARow; // Total number of characters in the row each side at once
 
 var mainFont, bodyFont;
 var topRowR, topRowL, secondRowR, secondRowL, thirdRowR, thirdRowL, fourthRowR, fourthRowL, fifthRowR, fifthRowL;
@@ -37,14 +37,10 @@ var charactorList = [
     anime: ['zen_pink', 'zen_emerald', 'zen_yellow', 'zen_purple', 'zen_orange', 'zen_blue', 'zen_red', 'zen_gray', 'zen_teal', 'zen_coral', 'zen_lavendar', 'zen_sky', 'zen_maroon', 'zen_green']}, 
   { name:'cora', id:5,
     anime: ['cora_pink', 'cora_emerald', 'cora_yellow', 'cora_purple', 'cora_orange', 'cora_blue', 'cora_red', 'cora_gray', 'cora_teal', 'cora_coral', 'cora_lavendar', 'cora_sky', 'cora_maroon', 'cora_green']}, 
-  { name:'hiba', id:6,
-    anime: ['hiba_pink', 'hiba_emerald', 'hiba_yellow', 'hiba_purple', 'hiba_orange', 'hiba_blue', 'hiba_red', 'hiba_gray', 'hiba_teal', 'hiba_coral', 'hiba_lavendar', 'hiba_sky', 'hiba_maroon', 'hiba_green']}, 
-  { name:'dingus', id:7,
+  { name:'dingus', id:6,
     anime: ['dingus_pink', 'dingus_emerald', 'dingus_yellow', 'dingus_purple', 'dingus_orange', 'dingus_blue', 'dingus_red', 'dingus_gray', 'dingus_teal', 'dingus_coral', 'dingus_lavendar', 'dingus_sky', 'dingus_maroon', 'dingus_green']}, 
-  { name:'guru', id:8,
-    anime: ['guru_pink', 'guru_emerald', 'guru_yellow', 'guru_purple', 'guru_orange', 'guru_blue', 'guru_red', 'guru_gray', 'guru_teal', 'guru_coral', 'guru_lavendar', 'guru_sky', 'guru_maroon', 'guru_green']}, 
-  { name:'notsure', id:9,
-    anime: ['notsure_pink', 'notsure_emerald', 'notsure_yellow', 'notsure_purple', 'notsure_orange', 'notsure_blue', 'notsure_red', 'notsure_gray', 'notsure_teal', 'notsure_coral', 'notsure_lavendar', 'notsure_sky', 'notsure_maroon', 'notsure_green']}
+  { name:'guru', id:7,
+    anime: ['guru_pink', 'guru_emerald', 'guru_yellow', 'guru_purple', 'guru_orange', 'guru_blue', 'guru_red', 'guru_gray', 'guru_teal', 'guru_coral', 'guru_lavendar', 'guru_sky', 'guru_maroon', 'guru_green']}
 ];
 
 // Color List + Array (Total 700)
@@ -80,8 +76,8 @@ function preload() {
     for(var ch=0; ch<charactorList.length;ch++){
       for(var c=0; c<colorList.length;c++){
         animName = charactorList[ch].name + colorList[c].name + '_anim';
-        animImgA = 'walkeriOS/' + charactorList[ch].name + colorList[c].name +'.png';
-        animName = loadSpriteSheet(animImgA, 100, 150, 6);
+        animImgA = 'walkersLiOS/' + charactorList[ch].name + colorList[c].name +'.png';
+        animName = loadSpriteSheet(animImgA, 200, 300, 6);
         charactorList[ch].anime[c] = loadAnimation(animName);
       }
     }
@@ -110,6 +106,8 @@ function preload() {
 };
 
 function setup() {
+    (width > 800) ? charaInARow = 5 : charaInARow = 4;
+
     if (typeof canvas === "object" && canvas !== null) {
         canvas.width = 0;
         canvas.height = 0;
@@ -130,14 +128,14 @@ function setup() {
 // Setup size, speed and position of each row group
 playListR = [
     // {"rowID": topRowR, "x": width*2, "y":height/7, "scale":0.4, "speed": -3, "start":0},
-    {"rowID": secondRowR, "x": width*2.5, "y":height/5, "scale":0.6, "speed": -4, "start":0},
-    {"rowID": thirdRowR, "x": width*3, "y":height/3, "scale":0.8, "speed": -5, "start":4},
+    {"rowID": secondRowR, "x": width*2.5, "y":height/5, "scale":0.5, "speed": -4, "start":0},
+    {"rowID": thirdRowR, "x": width*3, "y":height/3, "scale":0.7, "speed": -5, "start":4},
     {"rowID": fourthRowR, "x": width*3.5, "y":height/2, "scale": 1, "speed": -6.5, "start":8}];
     // {"rowID": fifthRowR, "x": width*4, "y":height-80, "scale":1.4, "speed": -8, "start":12}];
 playListL = [
     // {"rowID": topRowL, "x": -(width), "y":height/7 + 20, "scale":0.45, "speed": 3, "start":4},
-    {"rowID": secondRowL, "x": -(width*1.5), "y":height/5 + 30, "scale":0.65, "speed": 4, "start":2},
-    {"rowID": thirdRowL, "x": -(width*2), "y":height/3 + 40, "scale":0.85, "speed": 5, "start":6},
+    {"rowID": secondRowL, "x": -(width*1.5), "y":height/5 + 30, "scale":0.55, "speed": 4, "start":2},
+    {"rowID": thirdRowL, "x": -(width*2), "y":height/3 + 40, "scale":0.75, "speed": 5, "start":6},
     {"rowID": fourthRowL, "x": -(width*2.5), "y":height/2 + 50, "scale": 1.05, "speed": 6.5, "start":0}];
     // {"rowID": fifthRowL, "x": -(width*3), "y":height-70, "scale":1.45, "speed": 8, "start":16}];
 
@@ -150,16 +148,16 @@ playListL = [
         var coId = colorArray[randomColor]; // Pull a color from the array
         var randomX = random(0.01, 1);
         // Set X position
-        var rightrowX = map(randomX, 0, 1, width, playListR[r].x) * 2;
+        var rightrowX = map(randomX, 0, 1, width, playListR[r].x);
         var animSpr = charactorList[chs].name + colorList[coId].name + 'R_spr';
         var animLab = str(charactorList[chs].id + 'R' + coId);
         charactorList[chs].anime[coId].frameDelay = floor(random(4,6.9)); // Sprite animation frame delay: the bigger number the greater delay
-        animSpr = createSprite(rightrowX, playListR[r].y, 100, 150);
+        animSpr = createSprite(rightrowX, playListR[r].y, 200, 300);
         // Set scale
         animSpr.scale = playListR[r].scale;
         animSpr.addAnimation(animLab, charactorList[chs].anime[coId]);
         //// Get color ID when clicked and hover
-        animSpr.setCollider("rectangle", 35, 0, 100, 150);
+        animSpr.setCollider("rectangle", 35, 0, 200, 300);
         animSpr.onMousePressed = function() {
           var newLabel = this.getAnimationLabel();
           var separatedLabel = split(newLabel, 'R');
@@ -185,11 +183,11 @@ playListL = [
         var coId = colorArray[randomColor];
         var randomX = random(0.01, 1);
         // Set X position
-        var leftrowX = playListL[r].x * randomX * 2;
+        var leftrowX = playListL[r].x * randomX;
         var animSpr = charactorList[chs].name + colorList[coId].name + 'L_spr';
         var animLab = str(charactorList[chs].id + 'L' + coId);
         charactorList[chs].anime[coId].frameDelay = floor(random(4,6.9));
-        animSpr = createSprite(leftrowX, playListL[r].y, 100, 150);
+        animSpr = createSprite(leftrowX, playListL[r].y, 200, 300);
         // Set scale
         animSpr.scale = playListL[r].scale;
         animSpr.addAnimation(animLab, charactorList[chs].anime[coId]);
@@ -226,7 +224,7 @@ for(var row=0; row < playListR.length; row++){
     var mappin = map((i + 1) / delayValue, 1/5, rowID.length/3, 0.8, 1.6); 
     // Set velocity
     var speedControl;
-    speedControl = playListR[row].speed * 0.2 * mappin;
+    (width > 800) ? speedControl = playListR[row].speed * 0.3 * mappin : speedControl = playListR[row].speed * 0.2 * mappin;
     thisSpr.velocity.x = speedControl;
     //// When arrive to the left ent, it changes color and character and come back to the starting position
      if (thisSpr.position.x < - 200) {
@@ -241,15 +239,15 @@ for(var row=0; row < playListR.length; row++){
         var newR_label = charaId + 'R' + coId;
         var randomX = random(0.01, 1);
         // Set X position
-        var rightrowX = map(randomX, 0, 1, width, playListR[row].x) * 3;
-        var newSpr = createSprite(rightrowX, playListR[row].y, 100, 150);
+        var rightrowX = map(randomX, 0, 1, width, playListR[row].x);
+        var newSpr = createSprite(rightrowX, playListR[row].y, 200, 300);
         // Set scale
         newSpr.scale = playListR[row].scale;
         charactorList[charaId].anime[coId].frameDelay = delayValue;
         newSpr.addAnimation(newR_label, charactorList[charaId].anime[coId]);
         }
         //Get color ID from new sprites
-        newSpr.setCollider("rectangle", 35, 0, 100, 150);
+        newSpr.setCollider("rectangle", 35, 0, 200, 300);
         newSpr.onMousePressed = function() {
           var newLabel = this.getAnimationLabel();
           var separatedLabel = split(newLabel, 'R');
@@ -277,7 +275,7 @@ for(var row=0; row < playListL.length; row++){
     thisSpr.mirrorX(-1);
     // Set velocity
     var speedControl;
-    speedControl = playListL[row].speed * 0.2 * mappin;
+    (width > 800) ? speedControl = playListL[row].speed * 0.3 * mappin : speedControl = playListL[row].speed * 0.2 * mappin;
     thisSpr.velocity.x = speedControl;
     //// When arrive to the left ent, it changes color and character and come back to the starting position    
      if (thisSpr.position.x > width + 200) {
@@ -290,8 +288,8 @@ for(var row=0; row < playListL.length; row++){
         var newL_label = charaId + 'L' + coId;
         var randomX = random(0.01, 1);
         // Set X position
-        var rightrowX = playListL[row].x * randomX * 3;
-        var newSpr = createSprite(rightrowX, playListL[row].y, 100, 150);
+        var rightrowX = playListL[row].x * randomX;
+        var newSpr = createSprite(rightrowX, playListL[row].y, 200, 300);
         // Set scale
         newSpr.scale = playListL[row].scale;
         var oldCharaId = int(separateLabel[0]);
@@ -301,7 +299,7 @@ for(var row=0; row < playListL.length; row++){
         newSpr.addAnimation(newL_label, charactorList[charaId].anime[coId]);
         }
         //Get color ID from new sprites
-        newSpr.setCollider("rectangle", 35, 0, 100, 150);
+        newSpr.setCollider("rectangle", 35, 0, 200, 300);
         newSpr.onMousePressed = function() {
           var newLabel = this.getAnimationLabel();
           var separatedLabel = split(newLabel, 'L');

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Crowd Walking Animation Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/addons/p5.dom.js"></script>
+    <script src="p5.play.js"></script>
+    <link rel="stylesheet" href="walking.css">
+
+    <!-- <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script> -->
+    <script src="walkerSketch9-iPad.js" type="text/javascript">
+    // function init() {
+    //     var stage = new createjs.Stage("demoCanvas");
+    //     var circle = new createjs.Shape();
+    //     circle.graphics.beginFill("DeepSkyBlue").drawCircle(0, 0, 50);
+    //     circle.x = 100;
+    //     circle.y = 100;
+    //     stage.addChild(circle);
+    //     stage.update();
+    //     // code here.
+    // };
+    // var stage, w, h, loader;
+    // var sky, grant, ground, hill, hill2;
+
+    // function init() {
+    //     examples.showDistractor();
+    //     stage = new createjs.StageGL("testCanvas");
+
+    //     // grab canvas width and height for later calculations:
+    //     w = stage.canvas.width;
+    //     h = stage.canvas.height;
+
+    //     manifest = [
+    //         {src: "artsy_gray.png", id: "artsy_gray"},
+    //         {src: "brutus_gray.png", id: "brutus_gray"},
+    //         {src: "cora_gray.png", id: "cora_gray"},
+    //         {src: "dingus_gray.png", id: "dingus_gray"},
+    //         {src: "notsure_gray.png", id: "notsure_gray"}
+    //     ];
+
+    //     loader = new createjs.LoadQueue(false);
+    //     loader.addEventListener("complete", handleComplete);
+    //     loader.loadManifest(manifest, true, "../walkers/");
+    // }
+
+    // function handleComplete() {
+    //     examples.hideDistractor();
+
+    //     sky = new createjs.Shape();
+    //     sky.graphics.beginBitmapFill(loader.getResult("sky")).drawRect(0, 0, w, h);
+    //     //By default swapping between Stage for StageGL will not allow for vector drawing operation such as BitmapFill, useless you cache your shape.
+    //     sky.cache(0, 0, w, h);
+
+    //     var groundImg = loader.getResult("ground");
+    //     ground = new createjs.Shape();
+    //     ground.graphics.beginBitmapFill(groundImg).drawRect(0, 0, w + groundImg.width, groundImg.height);
+    //     ground.tileW = groundImg.width;
+    //     ground.y = h - groundImg.height;
+    //     //By default swapping between Stage for StageGL will not allow for vector drawing operation such as BitmapFill, useless you cache your shape.
+    //     ground.cache(0, 0, w + groundImg.width, groundImg.height);
+
+    //     hill = new createjs.Bitmap(loader.getResult("hill"));
+    //     hill.setTransform(Math.random() * w, h - hill.image.height * 4 - groundImg.height, 4, 4);
+    //     hill.alpha = 0.5;
+
+    //     hill2 = new createjs.Bitmap(loader.getResult("hill2"));
+    //     hill2.setTransform(Math.random() * w, h - hill2.image.height * 3 - groundImg.height, 3, 3);
+
+    //     var spriteSheet = new createjs.SpriteSheet({
+    //             framerate: 30,
+    //             "images": [loader.getResult("grant")],
+    //             "frames": {"regX": 82, "height": 292, "count": 64, "regY": 0, "width": 165},
+    //             // define two animations, run (loops, 1.5x speed) and jump (returns to run):
+    //             "animations": {
+    //                 "run": [0, 25, "run", 1.5],
+    //                 "jump": [26, 63, "run"]
+    //             }
+    //         });
+    //     grant = new createjs.Sprite(spriteSheet, "run");
+    //     grant.y = 35;
+
+    //     stage.addChild(sky, hill, hill2, ground, grant);
+    //     stage.addEventListener("stagemousedown", handleJumpStart);
+
+    //     createjs.Ticker.timingMode = createjs.Ticker.RAF;
+    //     createjs.Ticker.addEventListener("tick", tick);
+    // }
+
+    // function handleJumpStart() {
+    //     grant.gotoAndPlay("jump");
+    // }
+
+    // function tick(event) {
+    //     var deltaS = event.delta / 1000;
+    //     var position = grant.x + 150 * deltaS;
+
+    //     var grantW = grant.getBounds().width * grant.scaleX;
+    //     grant.x = (position >= w + grantW) ? -grantW : position;
+
+    //     ground.x = (ground.x - deltaS * 150) % ground.tileW;
+    //     hill.x = (hill.x - deltaS * 30);
+    //     if (hill.x + hill.image.width * hill.scaleX <= 0) {
+    //         hill.x = w;
+    //     }
+    //     hill2.x = (hill2.x - deltaS * 45);
+    //     if (hill2.x + hill2.image.width * hill2.scaleX <= 0) {
+    //         hill2.x = w;
+    //     }
+
+    //     stage.update(event);
+    // };
+  </script>
+</head>
+<body>
+    <div id="topPanel">
+    <div id="topPanelContent">
+        <div class="infoBtn" id="issueHDiv">
+            <h1 class="issueH1" id="h1Mobile"></h1>
+            <p class="issueP" id="pMobile"></p>
+        </div>
+        <a id="learnLink" onclick="learnLinkOpen()">
+            <div class="infoBtn" id="learnBtn">
+                <img src="images/infoIcons-learn.svg" alt="">
+                <p>Learn More</p>
+            </div>
+        </a>
+        <a id="helpLink" onclick="helpLinkOpen()">
+            <div class="infoBtn" id="helpBtn">
+                <img src="images/infoIcons-help.svg" alt="">
+                <p>Find Help</p>
+            </div>
+        </a>
+        <a id="voicesLink" onclick="voicesLinkOpen()">
+        <div class="infoBtn" id="voicesBtn">
+            <img src="images/infoIcons-voices.svg" alt="">
+            <p>Listen to Voices</p>
+        </div>
+        </a>
+        <a id="shareLink" onclick="shareLinkOpen()">
+            <div class="infoBtn" id="shareBtn">
+                <img src="images/infoIcons-share.svg" alt="">
+                <p>Share</p>
+            </div>
+        </a>
+    </div>
+    </div>
+
+    <canvas id="demoCanvas" width="500" height="500"></canvas>
+
+    <div id="floor">
+        <img id="GroundImg" src="images/numbers_gray.png" alt="">
+    </div>
+    <div id="bottomPanel">
+        <div id="prevIssue" onclick="previousColor()">
+            <img class="arrows" src="images/left-arrow.svg" alt="">
+        </div>
+        <div id="thisIssue">
+            <h1 class="issueH1" id="h1Screen"></h1>
+            <p class="issueP" id="pScreen"></p>
+        </div>
+        <div id="nextIssue" onclick="nextColor()">
+            <img class="arrows" src="images/right-arrow.svg" alt="">
+        </div>
+    </div>
+    <div id="copied">URL Copied!</div>
+</body>
+</html>
