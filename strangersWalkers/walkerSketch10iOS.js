@@ -72,6 +72,9 @@ function preload() {
       for(var cn=0; cn<colorList[c].number;cn++){
         colorArray.push(colorList[c].id);
     }}
+
+    clearCache();
+
     // Prepare all charactor animations x 14 Colors
     for(var ch=0; ch<charactorList.length;ch++){
       for(var c=0; c<colorList.length;c++){
@@ -108,14 +111,14 @@ function preload() {
 function setup() {
     (width > 800) ? charaInARow = 5 : charaInARow = 4;
 
-    if (typeof canvas === "object" && canvas !== null) {
-        canvas.width = 0;
-        canvas.height = 0;
+    // if (typeof canvas === "object" && canvas !== null) {
+    //     canvas.width = 0;
+    //     canvas.height = 0;
     
-        canvas.remove();
-        delete canvas;
-        canvas = null;
-    }
+    //     canvas.remove();
+    //     delete canvas;
+    //     canvas = null;
+    // }
   createCanvas(windowWidth, windowHeight);
   setFrameRate(28);
 //   topRowR = new Group(); 
@@ -402,16 +405,19 @@ function updateGround(){
 
 function learnLinkOpen(){
   var learnURL = 'https://siorikitajima.github.io/strangers/#/data/' +issueData[colorSwitch].slug;
+  clearCache();
   window.open(learnURL, "_parent");
 }
 
 function helpLinkOpen(){
   var helpURL = 'https://siorikitajima.github.io/strangers/#/help/' +issueData[colorSwitch].slug;
+  clearCache();
   window.open(helpURL, "_parent");
 }
 
 function voicesLinkOpen(){
   var voicesURL = 'https://siorikitajima.github.io/strangers/#/voices/';
+  clearCache();
   window.open(voicesURL, "_parent");
 }
 
@@ -431,4 +437,15 @@ function copiedMsgShow(){
   setTimeout(function(){
     copiedMsg.style('right','-320px');
     }, 2000);
+}
+
+function clearCache(){
+    if (typeof canvas === "object" && canvas !== null) {
+        canvas.width = 0;
+        canvas.height = 0;
+    
+        canvas.remove();
+        delete canvas;
+        canvas = null;
+    }
 }
