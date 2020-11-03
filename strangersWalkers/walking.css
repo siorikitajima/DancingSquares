@@ -20,7 +20,7 @@ a:-webkit-any-link {
     z-index: 100;
     position: fixed;
     top: 0;
-    pointer-events: none;
+    /* pointer-events: none; */
   }
 
   #floor {
