@@ -28,7 +28,7 @@ function setup() {
         canvas = null;
     }
   createCanvas(windowWidth, windowHeight, WEBGL);
-  frameRate(30);
+  frameRate(28);
 }
 
 function draw() {
@@ -38,12 +38,12 @@ var keyColorThree = color(224, 224, 224);
 
   background(keyColorOne);
 
-  camera(70, 70, 80 + sin(frameCount * 0.001) * 400, 0, 0, 0, 0, 1, 0);
+  camera(70, 70, 100 + sin(frameCount * 0.001) * 400, 0, 0, 0, 0, 1, 0);
 
   rotateX(angle * 0.02);
   rotateY(angle * 0.01);
 
-  for (let petals = 0; petals < 30; petals++) {
+  for (let petals = 0; petals < 20; petals++) {
 
     let zAngle = 1;
     rotateZ(zAngle);
@@ -54,7 +54,7 @@ var keyColorThree = color(224, 224, 224);
     let inc = TWO_PI / 25.0;
     fill(primaryColorDark);
     noStroke();
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 15; i++) {
       translate(i * 2, i * sin(a));
       noStroke();
       fill(primaryColorDark);
@@ -63,7 +63,7 @@ var keyColorThree = color(224, 224, 224);
     }
     pop();
 
-    rotateX(angle * 0.01);
+    rotateX(angle * 0.005);
 
     fill(keyColorOne);
     stroke(primaryColorDark);
