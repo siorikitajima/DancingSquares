@@ -47,13 +47,13 @@ a:-webkit-any-link {
   @media only screen and (max-width: 800px) {
     #GroundImg {
       transform: translate(-50%, 20%);
+      top: unset;
+      bottom: 30px;
     }
   }
   @media only screen and (max-width: 400px) {
     #GroundImg {
       transform: translate(-50%, 0);
-      top: unset;
-      bottom: 30px;
     }
   }
 }
