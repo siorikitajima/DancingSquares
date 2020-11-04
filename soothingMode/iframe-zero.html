@@ -10,6 +10,7 @@
     width: 100%;
     height: 100%;
     margin: 0;
+    padding: 0;
     }
     </style>
 </head>
@@ -18,6 +19,14 @@
 var angle = 1;
 
 function setup() {
+  if (typeof canvas === "object" && canvas !== null) {
+        canvas.width = 0;
+        canvas.height = 0;
+    
+        canvas.remove();
+        delete canvas;
+        canvas = null;
+    }
   createCanvas(windowWidth, windowHeight, WEBGL);
   frameRate(30);
 }
@@ -26,9 +35,10 @@ function draw() {
 var primaryColorDark = color(34, 34, 34);
 var keyColorOne = color(233, 115, 109);
 var keyColorThree = color(224, 224, 224);
+
   background(keyColorOne);
 
-  camera(70, 70, 60 + sin(frameCount * 0.002) * 400, 0, 0, 0, 0, 1, 0);
+  camera(70, 70, 80 + sin(frameCount * 0.001) * 400, 0, 0, 0, 0, 1, 0);
 
   rotateX(angle * 0.02);
   rotateY(angle * 0.01);
@@ -44,7 +54,7 @@ var keyColorThree = color(224, 224, 224);
     let inc = TWO_PI / 25.0;
     fill(primaryColorDark);
     noStroke();
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 20; i++) {
       translate(i * 2, i * sin(a));
       noStroke();
       fill(primaryColorDark);

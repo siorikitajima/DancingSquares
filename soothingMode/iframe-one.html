@@ -10,6 +10,7 @@
     width: 100%;
     height: 100%;
     margin: 0;
+    padding: 0;
     }
     </style>
 </head>
@@ -25,6 +26,14 @@ var largescreen = false;
 var angle;
 
 function setup() {
+  if (typeof canvas === "object" && canvas !== null) {
+        canvas.width = 0;
+        canvas.height = 0;
+    
+        canvas.remove();
+        delete canvas;
+        canvas = null;
+    }
   createCanvas(windowWidth, windowHeight, WEBGL);
   frameRate(30);
   halfWidth = width / 2; //600-1000 in desktop
