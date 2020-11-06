@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sketch Two</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+    <style>
+    html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    }
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+var inc = 0.002;
+var start = 0;
+
+function setup() {
+  if (typeof canvas === "object" && canvas !== null) {
+        canvas.width = 0;
+        canvas.height = 0;
+    
+        canvas.remove();
+        delete canvas;
+        canvas = null;
+    }
+  createCanvas(windowWidth, windowHeight);
+  frameRate(30);
+}
+
+function draw() {
+var primaryColorDark = color(76, 133, 0);
+var keyColorOne = color('rgba(224,224,224, 0.7)');
+var keyColorThree = color(207, 167, 104);
+
+  background(keyColorThree);
+
+  // Black Lines
+  var mesh = height;
+  var y;
+  for (var hori = 0; hori < mesh; hori = hori + 10) {
+    stroke(primaryColorDark);
+    noFill();
+    beginShape();
+    var xoff = start;
+    var horioff = noise(xoff * hori * 0.005);
+    for (var x = 0; x < width; x = x + 4) {
+      y = noise(xoff) * height * horioff;
+      vertex(x, y);
+      xoff += inc;
+    }
+    endShape();
+    horioff += (mesh / 10);
+  }
+
+  // Black Filled
+  fill(primaryColorDark);
+  beginShape();
+  var xoffBF = start + 200;
+  var horioffBF = noise(xoffBF * 2 * 0.005);
+  for (var xBF = 0; xBF < width; xBF = xBF + 4) {
+    noStroke();
+    yBF = noise(xoffBF) * height * horioffBF + height/3;
+    vertex(xBF, yBF);
+    xoffBF += inc;
+  }
+  vertex(width, yBF);
+  vertex(width, height);
+  vertex(0, height);
+  endShape();
+
+  // Red Floating
+  fill(keyColorOne);
+  noStroke();
+  beginShape();
+  var yoffRF = start + noise(0, 0.01);
+  for (var yRF = 0; yRF < height; yRF++) {
+    var xRF = noise(yoffRF) * width * 1.5;
+    vertex(xRF, yRF);
+    yoffRF += inc * 0.5;
+  }
+  endShape(CLOSE);
+
+  start += inc;
+
+}
+    </script>
+</body>
+</html>

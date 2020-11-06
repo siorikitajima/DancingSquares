@@ -38,7 +38,7 @@ var keyColorThree = color(224, 224, 224);
 
   background(keyColorOne);
 
-  camera(70, 70, 100 + sin(frameCount * 0.001) * 400, 0, 0, 0, 0, 1, 0);
+  // camera(70, 70, 100 + sin(frameCount * 0.001) * 400, 0, 0, 0, 0, 1, 0);
 
   rotateX(angle * 0.02);
   rotateY(angle * 0.01);
@@ -63,7 +63,7 @@ var keyColorThree = color(224, 224, 224);
     }
     pop();
 
-    rotateX(angle * 0.005);
+    rotateX(angle * 0.01);
 
     fill(keyColorOne);
     stroke(primaryColorDark);

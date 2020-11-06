@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sketch One</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+    <style>
+    html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    }
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+var halfWidth;
+var halfHeight;
+var gridAngle = 70;
+// var sphereSwitchW = true;
+// var sphereSwitchH = true;
+var mobile = false;
+var largescreen = false;
+var angle;
+
+function setup() {
+  if (typeof canvas === "object" && canvas !== null) {
+        canvas.width = 0;
+        canvas.height = 0;
+    
+        canvas.remove();
+        delete canvas;
+        canvas = null;
+    }
+  createCanvas(windowWidth, windowHeight, WEBGL);
+  frameRate(30);
+  halfWidth = width / 2; //600-1000 in desktop
+  halfHeight = height / 2; //400-600 in desktop
+  if (halfWidth < halfHeight) {
+    mobile = true;
+  }
+  if (halfWidth > 500) {
+    largescreen = true;
+  }
+  angle = 0.001;
+}
+
+function draw() {
+var primaryColorDark = color(34, 34, 34);
+var primaryColorLight = color(224, 224, 224);
+var keyColorTwo = color(30, 85, 92);
+var keyColorFive = color(220, 96, 46);
+
+  background(keyColorTwo);
+  camera(halfWidth / 1.2, 200, 700, halfWidth / 3, 0, 0, 0, -1, 0);
+  
+  //The Sun
+  push();
+  var sunShake = random(-5, 5);
+  rotateX(angle);
+  stroke(keyColorFive);
+  fill(primaryColorLight);
+  if (mobile) {
+    sphere(halfHeight/1.8);
+    stroke(primaryColorDark);
+    noFill();
+    sphere(halfHeight/1.8 + 10 + sunShake);
+  } else if (largescreen){
+    sphere(halfHeight/1.3);
+    stroke(primaryColorDark);
+    noFill();
+    sphere(halfHeight/1.3 + 30 + sunShake);
+  } else  {
+    sphere(halfHeight);
+    stroke(primaryColorDark);
+    noFill();
+    sphere(halfHeight + 20 + sunShake);
+  }
+  pop();
+
+  angle = angle + 0.003;
+  //Horizon
+  push();
+  rotateY(90);
+  rotateX(90);
+  noStroke();
+  //translate(0,0,35);
+  var horizonColor = color('rgba(220, 96, 46, 0.5)');
+  fill(horizonColor);
+  blendMode(EXCLUSION);
+  plane(10000, 10000);
+  pop();
+
+}
+    </script>
+</body>
+</html>
