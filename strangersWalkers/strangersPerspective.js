@@ -443,7 +443,7 @@ function learnLinkOpen(){
 }
 
 function helpLinkOpen(){
-  var helpURL = 'https://siorikitajima.github.io/strangers/#/help/' +issueData[colorSwitch].slug;
+  var helpURL = 'https://siorikitajima.github.io/strangers/#/help/' +issueData[colorSwitch].help;
   window.open(helpURL, "_parent");
 }
 
