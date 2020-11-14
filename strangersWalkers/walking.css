@@ -8,6 +8,7 @@ html, body {
     margin: 0;
     overflow: hidden;
     font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
   }
 
 a:-webkit-any-link {
@@ -24,13 +25,14 @@ a:-webkit-any-link {
   }
 
   #floor {
-    z-index: 1;
+    z-index: 0;
     width: 100%;
     height: 100%;
     position: fixed;
     top: 0;
     left: 0;
     position: relative;
+    pointer-events: none;
   }
   #GroundImg {
     width: 1000px;
@@ -50,33 +52,29 @@ a:-webkit-any-link {
       transform: translate(-50%, 20%);
     }
   }
-  @media only screen and (max-width: 400px) {
+  @media only screen and (max-width: 420px) {
     #GroundImg {
       transform: translate(-50%, 0);
       top: unset;
-      bottom: 60px;
+      bottom: 40px;
     }
   }
 }
 
-  #topPanel, #topPanelContent{
-    height: 60px;
+  #topPanel{
+    height: 50px;
     width: 100%;
     position: fixed;
-    top: -100px;
+    bottom: -100px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition-duration: 300ms;
     z-index: 900;
-
+    background: rgb(34,34,34);
   }
 
-  #topPanelContent {
-    background: rgba(34,34,34, 0.8);
-    /* box-shadow: 0 0 4px 2px rgba(0,0,0,0.3); */
-  }
-  #topPanelContent a {
+  #topPanel a {
     z-index: 999;
   }
   /* #topPanel {
@@ -108,7 +106,7 @@ a:-webkit-any-link {
   }
 
   #bottomPanel {
-    height: 150px;
+    height: 120px;
     width: 100%;
     position: fixed;
     bottom: -200px;
@@ -145,7 +143,7 @@ a:-webkit-any-link {
   }
   .issueH1 {
     font-family: 'Playfair Display', serif;
-    font-size: 24px;
+    font-size: 20px;
     margin: 0 auto 10px auto;
     width: 700px;
     max-width: 80%;
@@ -177,13 +175,13 @@ a:-webkit-any-link {
   }
 
   @media only screen and (max-width: 800px){
-    #topPanel, #topPanelContent{
+    #topPanel{
+      height: -moz-fit-content;
       height: fit-content;
       display: block;
       top: -100%;
-        }
-    #topPanelContent {
-      background: rgb(44, 32, 32, 0.9);
+      opacity: 0;
+      background: rgba(44, 32, 32, 0.9);
       box-shadow: none;
     }
     #topPanel {
@@ -250,7 +248,7 @@ a:-webkit-any-link {
 }
 
 
-  /* * spinner *
+  /* spinner */
 	.loadingSpinner {
 		position: relative;
 		width: 80px;
@@ -321,15 +319,15 @@ a:-webkit-any-link {
 
 /** modal **/
 
-	/* #modalBG {
+	 #modalBG {
 		position: fixed;
-		background: rgba(224, 224, 216, 0.9);
+		background: rgba(206, 206, 206, 0.9);
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100vh;
 		z-index: 9999;
-  }  */
+  } 
   
   #copied {
     position: fixed;

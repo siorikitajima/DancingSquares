@@ -1,25 +1,25 @@
 [
     {
        "h1":"Depression / MDD",
-       "body":"Persistently depressed mood or loss of interest in activities causing significant impairment in daily life. The most common mental disorder in Singapore.",
+       "body":"MDD is characterised by a depressed mood: a profound feeling of sadness, emptiness, worthlessness and hopelessness.",
        "slug":"depression",
        "help":"counselling"
     },
     {
        "h1":"Bipolar",
-       "body":"Episodes of mood swings ranging from depressive lows to manic highs. This disorder is characterised by depressive episodes and mania.",
+       "body":"Bipolar is characterised by depressive episodes and mania. Mania is characterised by abnormally elevated, expansive, or irritable mood.",
        "slug":"bipolar",
        "help":"counselling"
     },
     {
        "h1":"Anxiety / GAD",
-       "body":"Feelings of worry, anxiety, or fear that are strong enough to interfere with one's daily activities. They are often accompanied by other symptoms.",
+       "body":"The essential feature of GAD is a general feeling of excessive anxiety and worry that is difficult to control.",
        "slug":"anxiety",
        "help":"counselling"
     },
     {
        "h1":"OCD",
-       "body":"Obsessive-Compulsive Disorder. The occurrence of obsessions, compulsive rituals or, both recurrent and persistent thoughts, impulses, or images that are experienced as intrusive and cause great anxiety.",
+       "body":"The occurrence of obsessions, compulsive rituals or, both recurrent and persistent thoughts, impulses, or images that are experienced as intrusive and cause great anxiety.",
        "slug":"ocd",
        "help":"counselling"
     },
@@ -31,7 +31,7 @@
     },
     {
        "h1":"Dissociative Identity Disorder",
-       "body":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+       "body":"DID is characterized by the maintenance of at least two distinct and relatively enduring personality states.",
        "slug":"did",
        "help":"counselling"
     },
@@ -43,43 +43,43 @@
     },
     {
        "h1":"Mental health issues",
-       "body":"A wide range of conditions that affect mood, thinking, and behavior. 1 in 7 people in Singapore has experienced mental issues, with only two of them seeking help.",
+       "body":"A behavioral or mental pattern that causes significant distress or impairment of personal functioning.",
        "slug":"general",
        "help":"counselling"
     },
     {
        "h1":"Body Dysmorphic Disorder",
-       "body":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+       "body":"BDD is characterized by the obsessive idea that some aspect of one's own body part or appearance is severely flawed.",
        "slug":"bdd",
        "help":"counselling"
     },
     {
        "h1":"Borderline Personality Disorder",
-       "body":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+       "body":"BPD is characterized by a long-term pattern of unstable relationships, distorted sense of self, and strong emotional reactions.",
        "slug":"bpd",
        "help":"counselling"
     },
     {
        "h1":"Post Traumatic Stress Disorder",
-       "body":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+       "body":"PSTD is a major psychological disorder that affects many people who survive major traumatic experiences.",
        "slug":"ptsd",
        "help":"counselling"
     },
     {
        "h1":"Psychosis",
-       "body":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+       "body":"Psychosis is a psychiatric syndrome that most commonly occurs in young adults.",
        "slug":"psychosis",
        "help":"counselling"
     },
     {
        "h1":"Eating Disorder",
-       "body":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+       "body":"An eating disorder is a mental disorder defined by abnormal eating habits that negatively affect a person's physical and/or mental health.",
        "slug":"eating-disorder",
        "help":"specialists"
     },
     {
        "h1":"Schizophrenia",
-       "body":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+       "body":"Schizophrenia is a major psychotic illness and a disorder of fragmented mental processes.",
        "slug":"schizophrenia",
        "help":"counselling"
     }

@@ -1,5 +1,6 @@
 var pauseSwitch = true;
 var infoSwitch = false;
+var loadSwitch = false;
 var colorSwitch = 7; // Default to set as Gray
 var charaInARow = 4; // Total number of characters in the row each side at once
 
@@ -7,7 +8,7 @@ var mainFont, bodyFont;
 var topRowR, topRowL, secondRowR, secondRowL, thirdRowR, thirdRowL, fourthRowR, fourthRowL, fifthRowR, fifthRowL;
 
 // DOM elements
-var bottomPanel, topPanel, topPanelContent;
+var bottomPanel, topPanel;
 var prevIssue, nextIssue, issueHDiv;
 var issueH, issueP, issueHM, issuePM;
 var GroundImg;
@@ -113,7 +114,7 @@ function preload() {
     //Dom elements
     bottomPanel = select('#bottomPanel');
     topPanel = select('#topPanel');
-    topPanelContent = select('#topPanelContent');
+    // topPanelContent = select('#topPanelContent');
     prevIssue = select('#prevIssue');
     nextIssue = select('#nextIssue');
     issueHDiv = select('#issueHDiv');
@@ -128,6 +129,8 @@ function preload() {
     shareLink = select('#shareLink');
     copiedMsg = select('#copied');
 };
+
+p5.disableFriendlyErrors = true;
 
 function setup() {
     if (typeof canvas === "object" && canvas !== null) {
@@ -145,17 +148,17 @@ function setup() {
 
 // Setup size, speed and position of each row group
 playListR = [
-    {"rowID": topRowR, "x": width*2, "y":height/7, "scale":0.4, "speed": -3, "start":0},
+    {"rowID": topRowR, "x": width*2, "y":height/8, "scale":0.4, "speed": -3, "start":0},
     {"rowID": secondRowR, "x": width*2.5, "y":height/5, "scale":0.5, "speed": -4, "start":8},
     {"rowID": thirdRowR, "x": width*3, "y":height/3, "scale":0.7, "speed": -5, "start":16},
     {"rowID": fourthRowR, "x": width*3.5, "y":height/2, "scale":1, "speed": -6.5, "start":4},
-    {"rowID": fifthRowR, "x": width*4, "y":height-80, "scale":1.4, "speed": -8, "start":12}];
+    {"rowID": fifthRowR, "x": width*4, "y":height-110, "scale":1.4, "speed": -8, "start":12}];
 playListL = [
-    {"rowID": topRowL, "x": -(width), "y":height/7 + 20, "scale":0.45, "speed": 3, "start":4},
+    {"rowID": topRowL, "x": -(width), "y":height/8 + 20, "scale":0.45, "speed": 3, "start":4},
     {"rowID": secondRowL, "x": -(width*1.5), "y":height/5 + 30, "scale":0.55, "speed": 4, "start":12},
     {"rowID": thirdRowL, "x": -(width*2), "y":height/3 + 40, "scale":0.75, "speed": 5, "start":0},
     {"rowID": fourthRowL, "x": -(width*2.5), "y":height/2 + 50, "scale":1.05, "speed": 6.5, "start":8},
-    {"rowID": fifthRowL, "x": -(width*3), "y":height-70, "scale":1.45, "speed": 8, "start":16}];
+    {"rowID": fifthRowL, "x": -(width*3), "y":height-90, "scale":1.45, "speed": 8, "start":16}];
 
 // Assign sprites to Right Rows
     for(var r=0; r<playListR.length;r++){
@@ -166,9 +169,9 @@ playListL = [
         var randomX = random(0.01, 1);
         // Set X position
         var rightrowX = map(randomX, 0, 1, width, playListR[r].x); 
-        if (width > 1200) {rightrowX = rightrowX * 0.75;}
-        else if (width < 800) {rightrowX = rightrowX * 2;}
-        else if (width < 480) {rightrowX = rightrowX * 3;}
+        if (width > 1200) {rightrowX = rightrowX;}
+        else if (width < 800) {rightrowX = rightrowX * 1.5;}
+        else if (width < 480) {rightrowX = rightrowX * 2;}
         var animSpr = charactorList[chs].name + colorList[coId].name + 'R_spr';
         var animLab = str(charactorList[chs].id + 'R' + coId);
         charactorList[chs].anime[coId].frameDelay = floor(random(4,6.9)); // Sprite animation frame delay: the bigger number the greater delay
@@ -254,7 +257,7 @@ for(var row=0; row < playListR.length; row++){
     if (width > 1200) {speedControl = playListR[row].speed * 0.5 * mappin;}
     else if (width < 800) {speedControl = playListR[row].speed * 0.3 * mappin;}
     else if (width < 480) {speedControl = playListR[row].speed * 0.1 * mappin;}
-    else {speedControl = playListR[row].speed * 0.5 * mappin;}
+    else {speedControl = playListR[row].speed * 0.4 * mappin;}
     thisSpr.velocity.x = speedControl;
     //// When arrive to the left ent, it changes color and character and come back to the starting position
      if (thisSpr.position.x < - 200) {
@@ -270,9 +273,9 @@ for(var row=0; row < playListR.length; row++){
         var randomX = random(0.01, 1);
         // Set X position
         var rightrowX = map(randomX, 0, 1, width, playListR[row].x); 
-        if (width > 1200) {rightrowX = rightrowX * 0.75;}
-        else if (width < 800) {rightrowX = rightrowX * 2;}
-        else if (width < 480) {rightrowX = rightrowX * 3;}
+        if (width > 1200) {rightrowX = rightrowX;}
+        else if (width < 800) {rightrowX = rightrowX * 1.5;}
+        else if (width < 480) {rightrowX = rightrowX * 2;}
         var newSpr = createSprite(rightrowX, playListR[row].y, 200, 300);
         // Set scale
         if (width < 800) {newSpr.scale = playListR[row].scale * 0.8;}
@@ -310,10 +313,10 @@ for(var row=0; row < playListL.length; row++){
     thisSpr.mirrorX(-1);
     // Set velocity
     var speedControl;
-    if (width > 1200) {speedControl = playListL[row].speed * 0.5 * mappin;}
+    if (width > 1200) {speedControl = playListL[row].speed * 0.4 * mappin;}
     else if (width < 800) {speedControl = playListL[row].speed * 0.3 * mappin;}
     else if (width < 480) {speedControl = playListL[row].speed * 0.1 * mappin;}
-    else {speedControl = playListL[row].speed * 0.5 * mappin;}
+    else {speedControl = playListL[row].speed * 0.3 * mappin;}
     thisSpr.velocity.x = speedControl;
     //// When arrive to the left ent, it changes color and character and come back to the starting position    
      if (thisSpr.position.x > width + 200) {
@@ -326,11 +329,11 @@ for(var row=0; row < playListL.length; row++){
         var newL_label = charaId + 'L' + coId;
         var randomX = random(0.01, 1);
         // Set X position
-        var rightrowX = playListL[row].x * randomX; 
-        if (width > 1200) {rightrowX = rightrowX * 0.75;}
-        else if (width < 800) {rightrowX = rightrowX * 2;}
-        else if (width < 480) {rightrowX = rightrowX * 3;}
-        var newSpr = createSprite(rightrowX, playListL[row].y, 200, 300);
+        var leftrowX = playListL[row].x * randomX; 
+        if (width > 1200) {leftrowX = leftrowX * 0.75;}
+        else if (width < 800) {leftrowX = leftrowX * 2;}
+        else if (width < 480) {leftrowX = leftrowX * 3;}
+        var newSpr = createSprite(leftrowX, playListL[row].y, 200, 300);
         // Set scale
         if (width < 800) {newSpr.scale = playListL[row].scale * 0.8;}
         else if (width < 480) {newSpr.scale = playListL[row].scale * 0.4;}
@@ -383,9 +386,12 @@ drawSprites(fourthRowL);
 rect(0,0,width, height);
 drawSprites(fifthRowR);
 drawSprites(fifthRowL);
+
+loadSwitch = true;
 };
 
 function mouseClicked() {
+  if (loadSwitch) {
   var c = float(colorSwitch);
   var pr = (c == 0) ? 13 : c - 1;
   var ne = (c == 13) ? 0 : c + 1;
@@ -404,18 +410,22 @@ function mouseClicked() {
       issueP.html(issueData[c].body);
       issuePM.html(issueData[c].body);
       (width < 800) ? bottomPanel.style('top','0') : bottomPanel.style('bottom','0');
-      (width < 800) ? topPanel.style('top','50px') : topPanel.style('top','0');
-      (width < 800) ? topPanelContent.style('top','50px') : topPanelContent.style('top','0');
+      (width < 800) ? topPanel.style('top','50px') : topPanel.style('bottom','120px');
+      if (width < 800) {topPanel.style('opacity','1');}
+      // (width < 800) ? topPanelContent.style('top','50px') : topPanelContent.style('top','0');
       updateGround();
     } else {
       loop();
       (width < 800) ? bottomPanel.style('top','unset') : bottomPanel.style('bottom','-200px');
-      (width < 800) ? topPanel.style('top','-100%') : topPanel.style('top','-100px');
-      (width < 800) ? topPanelContent.style('top','-100%') : topPanelContent.style('top','-100%');
+      (width < 800) ? topPanel.style('top','-100%') : topPanel.style('bottom','-100px');
+      if (width < 800) {topPanel.style('opacity','0');}
+      // (width < 800) ? topPanelContent.style('top','-100%') : topPanelContent.style('top','-100%');
     }
     pauseSwitch = !pauseSwitch;
     infoSwitch = !infoSwitch;
+  }
 };
+
 
 function previousColor() {
   var c = float(colorSwitch);

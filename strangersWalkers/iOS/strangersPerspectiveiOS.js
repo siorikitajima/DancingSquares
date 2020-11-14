@@ -1,5 +1,6 @@
 var pauseSwitch = true;
 var infoSwitch = false;
+var loadSwitch = false;
 var colorSwitch = 7; // Default to set as Gray
 var charaInARow; // Total number of characters in the row each side at once
 
@@ -7,7 +8,7 @@ var mainFont, bodyFont;
 var topRowR, topRowL, secondRowR, secondRowL, thirdRowR, thirdRowL, fourthRowR, fourthRowL, fifthRowR, fifthRowL;
 
 // DOM elements
-var bottomPanel, topPanel, topPanelContent;
+var bottomPanel, topPanel;
 var prevIssue, nextIssue, issueHDiv;
 var issueH, issueP, issueHM, issuePM;
 var GroundImg;
@@ -92,7 +93,7 @@ function preload() {
     //Dom elements
     bottomPanel = select('#bottomPanel');
     topPanel = select('#topPanel');
-    topPanelContent = select('#topPanelContent');
+    // topPanelContent = select('#topPanelContent');
     prevIssue = select('#prevIssue');
     nextIssue = select('#nextIssue');
     issueHDiv = select('#issueHDiv');
@@ -107,6 +108,8 @@ function preload() {
     shareLink = select('#shareLink');
     copiedMsg = select('#copied');
 };
+
+p5.disableFriendlyErrors = true;
 
 function setup() {
     (width > 800) ? charaInARow = 5 : charaInARow = 4;
@@ -152,6 +155,8 @@ playListL = [
         var randomX = random(0.01, 1);
         // Set X position
         var rightrowX = map(randomX, 0, 1, width, playListR[r].x);
+        if (width < 480) {rightrowX = rightrowX * 2;}
+        else {rightrowX = rightrowX;}
         var animSpr = charactorList[chs].name + colorList[coId].name + 'R_spr';
         var animLab = str(charactorList[chs].id + 'R' + coId);
         charactorList[chs].anime[coId].frameDelay = floor(random(4,6.9)); // Sprite animation frame delay: the bigger number the greater delay
@@ -187,6 +192,8 @@ playListL = [
         var randomX = random(0.01, 1);
         // Set X position
         var leftrowX = playListL[r].x * randomX;
+        if (width < 480) {leftrowX = leftrowX * 2;}
+        else {rightrowX = leftrowX;}
         var animSpr = charactorList[chs].name + colorList[coId].name + 'L_spr';
         var animLab = str(charactorList[chs].id + 'L' + coId);
         charactorList[chs].anime[coId].frameDelay = floor(random(4,6.9));
@@ -243,6 +250,8 @@ for(var row=0; row < playListR.length; row++){
         var randomX = random(0.01, 1);
         // Set X position
         var rightrowX = map(randomX, 0, 1, width, playListR[row].x);
+        if (width < 480) {rightrowX = rightrowX * 2;}
+        else {rightrowX = rightrowX;}
         var newSpr = createSprite(rightrowX, playListR[row].y, 200, 300);
         // Set scale
         newSpr.scale = playListR[row].scale;
@@ -291,8 +300,10 @@ for(var row=0; row < playListL.length; row++){
         var newL_label = charaId + 'L' + coId;
         var randomX = random(0.01, 1);
         // Set X position
-        var rightrowX = playListL[row].x * randomX;
-        var newSpr = createSprite(rightrowX, playListL[row].y, 200, 300);
+        var leftrowX = playListL[row].x * randomX;
+        if (width < 480) {leftrowX = leftrowX * 2;}
+        else {leftrowX = leftrowX;}
+        var newSpr = createSprite(leftrowX, playListL[row].y, 200, 300);
         // Set scale
         newSpr.scale = playListL[row].scale;
         var oldCharaId = int(separateLabel[0]);
@@ -345,9 +356,13 @@ drawSprites(fourthRowL);
 // rect(0,0,width, height);
 // drawSprites(fifthRowR);
 // drawSprites(fifthRowL);
+
+loadSwitch = true;
 };
 
 function mouseClicked() {
+  if (loadSwitch) {
+
   var c = float(colorSwitch);
   var pr = (c == 0) ? 13 : c - 1;
   var ne = (c == 13) ? 0 : c + 1;
@@ -366,17 +381,20 @@ function mouseClicked() {
       issueP.html(issueData[c].body);
       issuePM.html(issueData[c].body);
       (width < 800) ? bottomPanel.style('top','0') : bottomPanel.style('bottom','0');
-      (width < 800) ? topPanel.style('top','50px') : topPanel.style('top','0');
-      (width < 800) ? topPanelContent.style('top','50px') : topPanelContent.style('top','0');
+      (width < 800) ? topPanel.style('top','50px') : topPanel.style('bottom','120px');
+      if (width < 800) {topPanel.style('opacity','1');}
+      // (width < 800) ? topPanelContent.style('top','50px') : topPanelContent.style('top','0');
       updateGround();
     } else {
       loop();
       (width < 800) ? bottomPanel.style('top','unset') : bottomPanel.style('bottom','-200px');
-      (width < 800) ? topPanel.style('top','-100%') : topPanel.style('top','-100px');
-      (width < 800) ? topPanelContent.style('top','-100%') : topPanelContent.style('top','-100%');
+      (width < 800) ? topPanel.style('top','-100%') : topPanel.style('bottom','-100px');
+      if (width < 800) {topPanel.style('opacity','0');}
+      // (width < 800) ? topPanelContent.style('top','-100%') : topPanelContent.style('top','-100%');
     }
     pauseSwitch = !pauseSwitch;
     infoSwitch = !infoSwitch;
+  }
 };
 
 function previousColor() {
