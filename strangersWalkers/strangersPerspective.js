@@ -114,7 +114,6 @@ function preload() {
     //Dom elements
     bottomPanel = select('#bottomPanel');
     topPanel = select('#topPanel');
-    // topPanelContent = select('#topPanelContent');
     prevIssue = select('#prevIssue');
     nextIssue = select('#nextIssue');
     issueHDiv = select('#issueHDiv');
@@ -412,14 +411,12 @@ function mouseClicked() {
       (width < 800) ? bottomPanel.style('top','0') : bottomPanel.style('bottom','0');
       (width < 800) ? topPanel.style('top','50px') : topPanel.style('bottom','120px');
       if (width < 800) {topPanel.style('opacity','1');}
-      // (width < 800) ? topPanelContent.style('top','50px') : topPanelContent.style('top','0');
       updateGround();
     } else {
       loop();
       (width < 800) ? bottomPanel.style('top','unset') : bottomPanel.style('bottom','-200px');
       (width < 800) ? topPanel.style('top','-100%') : topPanel.style('bottom','-100px');
       if (width < 800) {topPanel.style('opacity','0');}
-      // (width < 800) ? topPanelContent.style('top','-100%') : topPanelContent.style('top','-100%');
     }
     pauseSwitch = !pauseSwitch;
     infoSwitch = !infoSwitch;
@@ -448,21 +445,25 @@ function updateGround(){
 }
 
 function learnLinkOpen(){
+  // var learnURL = 'https://strangersinmyhead.info/explore/' +issueData[colorSwitch].slug;
   var learnURL = 'https://siorikitajima.github.io/strangers/#/explore/' +issueData[colorSwitch].slug;
   window.open(learnURL, "_parent");
 }
 
 function helpLinkOpen(){
+  // var helpURL = 'https://strangersinmyhead.info/help/' +issueData[colorSwitch].help;
   var helpURL = 'https://siorikitajima.github.io/strangers/#/help/' +issueData[colorSwitch].help;
   window.open(helpURL, "_parent");
 }
 
 function voicesLinkOpen(){
+  // var voicesURL = 'https://strangersinmyhead.info/voices/';
   var voicesURL = 'https://siorikitajima.github.io/strangers/#/voices/';
   window.open(voicesURL, "_parent");
 }
 
 function shareLinkOpen(){
+  // var shareURL = 'https://strangersinmyhead.info/info/' + colorSwitch + '/' + issueData[colorSwitch].slug;
   var shareURL = 'https://siorikitajima.github.io/strangers/#/info/' + colorSwitch + '/' + issueData[colorSwitch].slug;
   var dummy = document.createElement("textarea");
   document.body.appendChild(dummy);

@@ -93,7 +93,6 @@ function preload() {
     //Dom elements
     bottomPanel = select('#bottomPanel');
     topPanel = select('#topPanel');
-    // topPanelContent = select('#topPanelContent');
     prevIssue = select('#prevIssue');
     nextIssue = select('#nextIssue');
     issueHDiv = select('#issueHDiv');
@@ -114,36 +113,21 @@ p5.disableFriendlyErrors = true;
 function setup() {
     (width > 800) ? charaInARow = 5 : charaInARow = 4;
 
-    // if (typeof canvas === "object" && canvas !== null) {
-    //     canvas.width = 0;
-    //     canvas.height = 0;
-    
-    //     canvas.remove();
-    //     delete canvas;
-    //     canvas = null;
-    // }
   createCanvas(windowWidth, windowHeight);
+
   setFrameRate(28);
-//   topRowR = new Group(); 
   secondRowR = new Group(); thirdRowR = new Group(); fourthRowR = new Group(); 
-//   fifthRowR = new Group();
-//   topRowL = new Group(); 
   secondRowL = new Group(); thirdRowL = new Group(); fourthRowL = new Group(); 
-//   fifthRowL = new Group();
 
 // Setup size, speed and position of each row group
 playListR = [
-    // {"rowID": topRowR, "x": width*2, "y":height/7, "scale":0.4, "speed": -3, "start":0},
     {"rowID": secondRowR, "x": width*2.5, "y":height/5, "scale":0.5, "speed": -4, "start":0},
     {"rowID": thirdRowR, "x": width*3, "y":height/3, "scale":0.7, "speed": -5, "start":4},
     {"rowID": fourthRowR, "x": width*3.5, "y":height/2, "scale": 1, "speed": -6.5, "start":8}];
-    // {"rowID": fifthRowR, "x": width*4, "y":height-80, "scale":1.4, "speed": -8, "start":12}];
 playListL = [
-    // {"rowID": topRowL, "x": -(width), "y":height/7 + 20, "scale":0.45, "speed": 3, "start":4},
     {"rowID": secondRowL, "x": -(width*1.5), "y":height/5 + 30, "scale":0.55, "speed": 4, "start":2},
     {"rowID": thirdRowL, "x": -(width*2), "y":height/3 + 40, "scale":0.75, "speed": 5, "start":6},
     {"rowID": fourthRowL, "x": -(width*2.5), "y":height/2 + 50, "scale": 1.05, "speed": 6.5, "start":0}];
-    // {"rowID": fifthRowL, "x": -(width*3), "y":height-70, "scale":1.45, "speed": 8, "start":16}];
 
 // Assign sprites to Right Rows
     for(var r=0; r<playListR.length;r++){
@@ -222,7 +206,6 @@ playListL = [
 
 function draw() {
   clear();
-
 ////// Horizontal Animation from the Right
 for(var row=0; row < playListR.length; row++){
     var rowID = playListR[row].rowID;
@@ -340,28 +323,19 @@ text(fr, width/2, 100);
 
 // Draw sprite in the Z-index order + white screens in between
 noStroke();
-fill(255,255,255,25);
-// rect(0,0,width, height);
-// drawSprites(topRowR);
-// drawSprites(topRowL);
-// rect(0,0,width, height);
 drawSprites(secondRowR);
 drawSprites(secondRowL);
-// rect(0,0,width, height);
 drawSprites(thirdRowR);
 drawSprites(thirdRowL);
-// rect(0,0,width, height);
 drawSprites(fourthRowR);
 drawSprites(fourthRowL);
-// rect(0,0,width, height);
-// drawSprites(fifthRowR);
-// drawSprites(fifthRowL);
 
-loadSwitch = true;
+ loadSwitch = true;
+
 };
 
-function mouseClicked() {
-  if (loadSwitch) {
+function panelControl() {
+   if (loadSwitch) {
 
   var c = float(colorSwitch);
   var pr = (c == 0) ? 13 : c - 1;
@@ -383,18 +357,16 @@ function mouseClicked() {
       (width < 800) ? bottomPanel.style('top','0') : bottomPanel.style('bottom','0');
       (width < 800) ? topPanel.style('top','50px') : topPanel.style('bottom','120px');
       if (width < 800) {topPanel.style('opacity','1');}
-      // (width < 800) ? topPanelContent.style('top','50px') : topPanelContent.style('top','0');
       updateGround();
     } else {
       loop();
       (width < 800) ? bottomPanel.style('top','unset') : bottomPanel.style('bottom','-200px');
       (width < 800) ? topPanel.style('top','-100%') : topPanel.style('bottom','-100px');
       if (width < 800) {topPanel.style('opacity','0');}
-      // (width < 800) ? topPanelContent.style('top','-100%') : topPanelContent.style('top','-100%');
     }
     pauseSwitch = !pauseSwitch;
     infoSwitch = !infoSwitch;
-  }
+   }
 };
 
 function previousColor() {
@@ -418,24 +390,28 @@ function updateGround(){
 }
 
 function learnLinkOpen(){
+  // var learnURL = 'https://strangersinmyhead.info/explore/' + issueData[colorSwitch].slug;
   var learnURL = 'https://siorikitajima.github.io/strangers/#/explore/' + issueData[colorSwitch].slug;
   clearCache();
   window.open(learnURL, "_parent");
 }
 
 function helpLinkOpen(){
+  // var helpURL = 'https://strangersinmyhead.info/help/' + issueData[colorSwitch].help;
   var helpURL = 'https://siorikitajima.github.io/strangers/#/help/' + issueData[colorSwitch].help;
   clearCache();
   window.open(helpURL, "_parent");
 }
 
 function voicesLinkOpen(){
+  // var voicesURL = 'https://strangersinmyhead.info/voices/';
   var voicesURL = 'https://siorikitajima.github.io/strangers/#/voices/';
   clearCache();
   window.open(voicesURL, "_parent");
 }
 
 function shareLinkOpen(){
+  // var shareURL = 'https://strangersinmyhead.info/info/' + colorSwitch + '/' + issueData[colorSwitch].slug;
   var shareURL = 'https://siorikitajima.github.io/strangers/#/info/' + colorSwitch + '/' + issueData[colorSwitch].slug;
   var dummy = document.createElement("textarea");
   document.body.appendChild(dummy);
